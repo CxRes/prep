@@ -24,9 +24,9 @@ venue:
 
 author:
  -
-    fullname: Your Name Here
+    fullname: "Rahul Gupta"
     organization: Your Organization Here
-    email: your.email@example.com
+    email: "CxRes@users.noreply.github.com"
 
 normative:
 
