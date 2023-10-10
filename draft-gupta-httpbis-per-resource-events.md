@@ -39,6 +39,7 @@ normative:
   RFC822:
   RFC2046:
   RFC5789:
+  RFC8126:
   RFC9112:
     -: HTTP1
     display: HTTP/1.1
@@ -108,15 +109,8 @@ Per Resource Events is a minimal protocol built on top of HTTP that allows clien
 
 {::include sections/rfc822.md}
 
+{::include sections/security.md}
 
-# Security Considerations
-
-TODO Security
-
-
-# IANA Considerations
-
-This document has no IANA actions.
-
+{::include sections/iana.md}
 
 --- back
