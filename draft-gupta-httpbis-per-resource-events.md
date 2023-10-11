@@ -103,7 +103,7 @@ Per Resource Events is a minimal protocol built on top of HTTP that allows clien
 
 {::include-nested sections/request.md}
 
-{::include-nested sections/response-1.md}
+{::include sections/response-1.md}
 
 {::include-nested sections/response-2.md}
 
