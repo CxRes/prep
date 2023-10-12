@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-10-10T00:43:58.770881+00:00",
+  "timestamp": "2023-10-12T00:42:21.647156+00:00",
   "repo": "CxRes/prep",
   "labels": [
     {
@@ -49,6 +49,71 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOKcksa85zaAKD",
+      "title": "Handling Illegal `Accept-Events` Header",
+      "url": "https://github.com/CxRes/prep/issues/1",
+      "state": "OPEN",
+      "author": "CxRes",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Where a recipient receives an illegal `Accept-Events` header field, can we:\r\n\r\n+ Ignore it (as we do now)?\r\n+ Send an error message. If so what could be the form of the error message?",
+      "createdAt": "2023-10-10T20:45:10Z",
+      "updatedAt": "2023-10-10T20:45:10Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOKcksa85zaDm5",
+      "title": "Protocol identifier as a URL?",
+      "url": "https://github.com/CxRes/prep/issues/2",
+      "state": "OPEN",
+      "author": "CxRes",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Can we a URL (in lieu of an identifier) to identify the notifications protocol?\r\n\r\nIf we use such a URL, can we obviate the need for an IANA registry for notifications protocol?",
+      "createdAt": "2023-10-10T20:49:49Z",
+      "updatedAt": "2023-10-10T20:49:49Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOKcksa85zaHJR",
+      "title": "Handling response with notifications when not requested",
+      "url": "https://github.com/CxRes/prep/issues/3",
+      "state": "OPEN",
+      "author": "CxRes",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Does compliance with HTTP demand that we ignore the `Events` header when sent in response to a request that does not contain an `Accept-Events` header? \r\n\r\nHow should the recipient process such a response, that presumably contains notifications that it has not requested?",
+      "createdAt": "2023-10-10T20:54:04Z",
+      "updatedAt": "2023-10-10T20:54:04Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 4,
+      "id": "I_kwDOKcksa85zaMpD",
+      "title": "Handling `Events` header for unsupported methods",
+      "url": "https://github.com/CxRes/prep/issues/4",
+      "state": "OPEN",
+      "author": "CxRes",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Does the handling of  `Events` field need to be made more specific for unsupported/unrecognized methods?\r\n\r\nSuch as:\r\n\"A recipient MUST ignore the `Events` header field received in response to a request method that is unrecognized or for which notifications response is not defined for a particular notifications protocol.\"",
+      "createdAt": "2023-10-10T21:02:49Z",
+      "updatedAt": "2023-10-10T21:02:49Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
   "pulls": []
 }
