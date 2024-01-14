@@ -12,9 +12,75 @@ Per Resource Events is a minimal protocol built on top of HTTP that allows clien
 
 ## How it Works {#how-it-works}
 
-A client application that wishes to receive notifications about updates to a resource simply places a `GET` request on that resource with just one additional =Accept-Events= header. The server responds by sending, first the current representation of the resource (though a client can request for this to be skipped), followed by notifications sent in response to resource events as parts of a multipart response while the request is open.
+Consider an ordinary HTTP `GET` request:
 
-If a server does not implement the {{&protocol}}, the `Accept Events` header in a `GET` request is simply ignored. The resource returns the current representation thereby preserving backwards compatibility.
+~~~
+{::include examples/introduction/plain-request.http}
+~~~
+{: sourcecode-name="plain-request.http" #plain-request-example title="A sample HTTP `GET` request"}
+
+A client application that wishes to receive PREP notifications from a resource adds just one additional =Accept-Events= header to the `GET` request.
+
+~~~
+{::include examples/introduction/minimal-request.http}
+~~~
+{: sourcecode-name="minimal-request.http" #minimal-request-example title="A minimal PREP notifications request"}
+
+Additional parameters might be added to the =Accept-Events= header to negotiate the form of notifications as discussed in {{request}}, {{<<request}}.
+
+\\
+If a server does not implement the {{&protocol}}, the =Accept-Events= header in a `GET` request is simply ignored. The resource returns the current representation thereby preserving backwards compatibility. Let us presume this response is:
+
+~~~
+{::include examples/introduction/plain-response.http}
+~~~
+{: sourcecode-name="plain-response.http" #plain-response-example title="Response to the sample HTTP `GET` request"}
+
+\\
+However, if the server supports the {{&protocol}}, it sends a multipart response with the current representation followed any notifications.
+
+The response now includes an additional =Events= headers which specifies `PREP` as the notifications protocol and a status for the notifications response. As a courtesy, the response also includes the `Vary` header to indicate that response was influenced by the `Accept-Events` header in the request and the =Accept-Events= header itself for reactive negotiation in the future.
+
+The `Content-type` header now indicates a response body of `multipart/mixed` to reflect the two part responses. Thus, we have the following response headers:
+
+~~~
+{::include examples/introduction/response-headers.http}
+~~~
+{: sourcecode-name="intro-response-headers.http" #intro-response-headers title="Response with PREP Notifications - Headers"}
+
+\\
+The first part of this multipart response is the current representation of the resource:
+
+~~~
+{::include examples/introduction/response-current-representation.http}
+~~~
+{: sourcecode-name="intro-response-current-representation.http" #intro-response-current-representation title="Response with PREP Notifications - Current Representation"}
+
+The client can request for this to be skipped by specifying a `Last-Event-Id` header set either to the ID of the previous representation or `*` as described in {{request}}.
+
+\\
+The second part of this multipart response is itself a multipart message that contains notifications. Upon a resource event, a notification is transmitted as a part of this multipart message.
+
+By default, notifications are sent in the `message/rfc822` format (which is structurally identical to a HTTP/1.1 message) with some additional semantics as specified in {{rfc822-semantics}}. Alternate formats and semantics might be negotiated using the =Accept-Events= header.
+
+The response stream is closed when the time limit for notification has elapsed or immediately after the resource is deleted as in the example below:
+
+~~~
+{::include examples/introduction/response-notifications.http}
+~~~
+{: sourcecode-name="intro-response-notifications.http" #intro-response-notifications title="Response with PREP Notifications - Notifications"}
+
+\\
+Together, the complete response with PREP notifications is:
+
+~~~
+{::include examples/introduction/response-headers.http}
+
+{::include examples/introduction/response-current-representation.http}
+
+{::include examples/introduction/response-notifications.http}
+~~~
+{: sourcecode-name="intro-response.http" #intro-response title="Complete Response"}
 
 ## Scope {#scope}
 

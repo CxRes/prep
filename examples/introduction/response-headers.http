@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+Last-Modified: Sat, 1 April 2023 10:11:12 GMT
+Transfer-Encoding: chunked
+ETag: 1234abcd
+Events: protocol=PREP, status=200
+Vary: Accept-Events
+Accept-Events: PREP; accept=message/rfc822
+Content-Type: multipart/mixed; boundary=MAIN-SEPARATOR

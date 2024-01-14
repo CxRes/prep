@@ -79,7 +79,7 @@ Per Resource Events is a minimal protocol built on top of HTTP that allows clien
 
 <!-- Informative Sections -->
 
-{::include sections/introduction.md}
+{::include-nested sections/introduction.md}
 
 {::include sections/design.md}
 
