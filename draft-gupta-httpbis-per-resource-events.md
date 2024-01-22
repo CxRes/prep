@@ -29,6 +29,7 @@ author:
 
 autolink-iref-cleanup: true
 entity:
+  empty: ""
   protocol: Per Resource Events Protocol
 
 normative:
