@@ -85,7 +85,7 @@ Per Resource Events is a minimal protocol built on top of HTTP that allows clien
 {::include sections/design.md}
 
 
-<!-- Conformance Section -->
+<!-- Conformance Sections -->
 
 {::include boilerplate/conformance.md}
 
@@ -109,6 +109,10 @@ Per Resource Events is a minimal protocol built on top of HTTP that allows clien
 {::include-nested sections/response-2.md}
 
 {::include sections/rfc822.md}
+
+<!-- Considerations Sections -->
+
+{::include sections/implementation.md}
 
 {::include sections/security.md}
 
