@@ -9,7 +9,7 @@ Content-Type: multipart/mixed; boundary=main-boundary
 
 --main-boundary
 Content-Type: text/html
-CRLF
+
 <html>
 --main-boundary
 Content-Type: multipart/digest; boundary=next-message
