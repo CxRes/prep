@@ -6,6 +6,9 @@ Protocols MUST ensure that the semantics be so defined that these header fields 
 
 *[=Accept-Events=]: #accept-events-header (((Accept-Events))) `Accept-Events`
 
+{:aside}
+> \* *This specification uses a modified version of Structured Fields ({{HTTP-SF}}) that allows parameters to also have as value, a bare array of Items.*
+
 ## Accept-Events {#accept-events-header}
 
 The =Accept-Events= header field can be used by application clients to specify their preferred protocol for receiving notifications. For example, the =Accept-Events= header field can be used to indicate that the request is specifically limited to a small set of desired protocols, as in the case for notifications with the {{&protocol}}.
@@ -28,7 +31,7 @@ A recipient MUST ignore the protocols specified in the =Accept-Events= header fi
 
 ### Syntax {#accept-events-header-syntax}
 
-=Accept-Events= is a List structured ({{HTTP-SF, Section 3.1}}) header field. Its members MUST be of type string that identifies a notification protocol. A protocol identifier MAY be followed with zero or more parameters defined by the given protocol, which MAY be followed by a `q` parameter.
+=Accept-Events= is a List structured ({{HTTP-SF, Section 3.1}}) header field*. Its members MUST be of type string that identifies a notification protocol. A protocol identifier MAY be followed with zero or more parameters defined by the given protocol, which MAY be followed by a `q` parameter.
 
 The `q` parameter assigns a relative "weight" to the sender's preference for a notification protocol with semantics as defined in {{HTTP, Section 12.4.2}}. Senders using weights SHOULD send `q` last (after all protocol parameters). Recipients SHOULD process any parameter named `q` as weight, regardless of parameter ordering.
 
@@ -52,4 +55,4 @@ If the response contains a =Events= header field that the recipient does not und
 
 ### Syntax {#events-header-syntax}
 
-=Events= is a Dictionary structured ({{HTTP-SF, Section 3.1}}) header field. It MUST contain one member with the key `protocol` whose value identifies the notification protocol used in the response. It MAY contain other members that are defined by the given notification protocol.
+=Events= is a Dictionary structured ({{HTTP-SF, Section 3.1}}) header field*. It MUST contain one member with the key `protocol` whose value identifies the notification protocol used in the response. It MAY contain other members that are defined by the given notification protocol.

@@ -4,9 +4,9 @@
 
 The {{&protocol}} reuses existing HTTP fields ({{HTTP, Section 5}}) as event fields. Any HTTP field MAY be used as an event field. For the limited context of notifications using the {{&protocol}}, an event field with the same name as an HTTP field MUST have identical semantics to that HTTP field, unless otherwise specified.
 
-This specification restricts =Accept-Events= and =Events= as Structured header fields {{HTTP-SF}}. From this it follows:
+This specification restricts =Accept-Events= and =Events= as Structured header fields* {{HTTP-SF}}. From this it follows:
 
-+ An event field whose value is anything except an item without parameters MUST be specified in an Inner List ({{HTTP-SF, Section 3.1.1}}).
++ An event field whose value is anything except a bare Item, that is, an Item without Parameters, MUST be specified inside an Inner List.
 + Unless otherwise specified, an event field that is not already defined as a Structured Field, therefore, MUST be handled as a Retrofit Structured Field {{HTTP-Retrofit}} when such handling is defined.
 + An event field that is not already defined as a Structured Field but cannot be handled as a Retrofit Structured Field either, MUST be explicitly specified by the implementation.
 
