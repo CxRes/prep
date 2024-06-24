@@ -4,7 +4,12 @@ Accept-Events: "prep"; accept="message/rfc822"
 Events: protocol="prep", status=200, vary="accept"
 Last-Modified: Sat, 1 April 2023 10:11:12 GMT
 Transfer-Encoding: chunked
-ETag: 1234abcd
+Content-Type: multipart/mixed; boundary="main-boundary"
+
+--main-boundary
+Content-Type: text/html
+
+--main-boundary
 Content-Type: multipart/digest; boundary="next-message"
 
 --next-message
@@ -12,3 +17,4 @@ Content-Type: message/rfc822
 
 <message>
 --next-message-- 
+--main-boundary-- 
