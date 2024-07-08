@@ -1,5 +1,5 @@
 --MAIN-SEPARATOR
-Content-Type: multipart/digest; boundary=MESSAGE-SEPARATOR
+Content-Type: multipart/digest; boundary="MESSAGE-SEPARATOR"
 
 --MESSAGE-SEPARATOR
 
@@ -7,10 +7,14 @@ Method: PUT
 Date: Sat, 1 April 2023 10:11:12 GMT
 Event-ID: 456
 E-tag: 6789wxyz
+
+
 --MESSAGE-SEPARATOR
 
 Method: DELETE
 Date: Sat, 1 April 2023 10:11:12 GMT
 Event-ID: 789
+
+
 --MESSAGE-SEPARATOR--
 --MAIN-SEPARATOR--
