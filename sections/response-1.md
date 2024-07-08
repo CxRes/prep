@@ -47,8 +47,8 @@ A resource server not implementing the {{&protocol}} (or not supporting it for t
 
 A resource server that does not provide notifications using the {{&protocol}} MUST NOT:
 
-+ list `PREP` as as one of the available protocols in the =Accept-Events= header field, if sent in the response.
-+ send the =Events= header field in the response with the `protocol` event field set to `PREP`.
++ list `prep` as as one of the available protocols in the =Accept-Events= header field, if sent in the response.
++ send the =Events= header field in the response with the `protocol` event field set to `prep`.
 
 {:aside}
 > **Implementation Guidance**
@@ -67,7 +67,7 @@ A resource server MUST NOT include PREP notifications in a response, unless requ
 A resource server that does not serve PREP notifications, on account of the response not having one of the above-mentioned status codes:
 
 + SHOULD include the =Events= header fields where:
-  + the `protocol` event field MUST be set to a value of `PREP`,
+  + the `protocol` event field MUST be set to a value of `prep`,
   + the `status` event field MUST be set to `412 (Precondition Failed)` ({{HTTP, Section 15.5.13}}) status code.
 
 ## Notification Errors {#response-with-notification-errors}
@@ -77,5 +77,5 @@ A resource server might still not be able to send notifications using the {{&pro
 A resource server unable to serve PREP notifications, even when the request results in a status code mentioned in {{error-response}}:
 
 + SHOULD include the =Events= header fields in the response where:
-  + the `protocol` event field MUST be set to a value of `PREP`,
+  + the `protocol` event field MUST be set to a value of `prep`,
   + the `status` event field MUST be set to appropriate  status code indicating the reason for not serving notifications.

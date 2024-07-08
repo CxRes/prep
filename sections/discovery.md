@@ -8,7 +8,7 @@ An application client can discover the ability of a resource server to deliver P
 
 ## Not Available {#discovery-response-when-notifications-not-available}
 
-In the response to a `HEAD` request, a resource server that does not provide notifications for the target resource using the {{&protocol}} MUST NOT list `PREP` as as one of the available protocols in the =Accept-Events= header field.
+In the response to a `HEAD` request, a resource server that does not provide notifications for the target resource using the {{&protocol}} MUST NOT list `prep` as as one of the available protocols in the =Accept-Events= header field.
 
 ~~~ http-message
 {::include examples/discovery/request.http}
@@ -17,9 +17,9 @@ In the response to a `HEAD` request, a resource server that does not provide not
 
 ## Available {#discovery-response-when-notifications-available}
 
-In response to a `HEAD` request, a resource server that serves notifications for the target resource using the {{&protocol}} SHOULD include the =Accept-Events= header field, which MUST list `PREP` as one of the available protocols.
+In response to a `HEAD` request, a resource server that serves notifications for the target resource using the {{&protocol}} SHOULD include the =Accept-Events= header field, which MUST list `prep` as one of the available protocols.
 
-Associated with `PREP` list item, the resource server MUST include an `accept` event field with at least one acceptable media-type for notifications.
+Associated with `prep` list item, the resource server MUST include an `accept` event field with at least one acceptable media-type for notifications.
 
 ~~~ http-message
 {::include examples/discovery/response.http}

@@ -14,13 +14,13 @@ This specification restricts =Accept-Events= and =Events= as Structured header f
 
 For the {{&protocol}}, `HEAD` ({{HTTP, Section 9.3.2}}) and `GET` ({{HTTP, Section 9.3.1}}) are the only methods in response to which notifications are advertised.
 
-A resource server MUST NOT send the =Accept-Events= header field with `PREP` as a protocol in response to a request with any method other than `HEAD` or `GET`.
+A resource server MUST NOT send the =Accept-Events= header field with `prep` as a protocol in response to a request with any method other than `HEAD` or `GET`.
 
 For the {{&protocol}}, `GET` ({{HTTP, Section 9.3.1}}) is the only method by which notifications are requested and for which notifications response is defined.
 
-An application client MUST NOT send the =Accept-Events= header field with `PREP` as a protocol in a request with any method other than `GET`.
+An application client MUST NOT send the =Accept-Events= header field with `prep` as a protocol in a request with any method other than `GET`.
 
-A resource server MUST NOT send the =Events= header field with the parameter `protocol` with a value of `PREP` in response to a request with any method other than `GET`.
+A resource server MUST NOT send the =Events= header field with the parameter `protocol` with a value of `prep` in response to a request with any method other than `GET`.
 
 A resource server MUST NOT send the =Events= header field except in response to a `GET` request.
 
@@ -28,6 +28,6 @@ A resource server MUST NOT send the =Events= header field except in response to 
 
 The {{&protocol}} reuses existing HTTP status codes ({{HTTP, Section 15}}) to describe the result of the request for notifications and the semantics of notifications in the response.
 
-In response to a request where =Accept-Events= header field indicates `PREP` as the preferred protocol, a resource server that supports notifications using the {{&protocol}} MUST communicate the status code for the notifications response using the `status` parameter in the =Events= header field.
+In response to a request where =Accept-Events= header field indicates `prep` as the preferred protocol, a resource server that supports notifications using the {{&protocol}} MUST communicate the status code for the notifications response using the `status` parameter in the =Events= header field.
 
 For the limited context of notifications using the {{&protocol}}, the status code communicated using the `status` parameter in the =Events= header field MUST have identical semantics to the corresponding HTTP status code, unless otherwise specified.

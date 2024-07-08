@@ -52,7 +52,7 @@ However, if the server supports the {{&protocol}}, it sends a multipart response
 #### {{&empty}}
 {: anchor="simple-prep-response-headers" numbered="false" toc="exclude"}
 
-The response now includes an additional =Events= headers which specifies `PREP` as the notifications protocol and a status for the notifications response. As a courtesy, the response also includes the `Vary` header to indicate that response was influenced by the `Accept-Events` header in the request and the =Accept-Events= header itself for reactive negotiation in the future.
+The response now includes an additional =Events= headers which specifies `prep` as the notifications protocol and a status for the notifications response. As a courtesy, the response also includes the `Vary` header to indicate that response was influenced by the `Accept-Events` header in the request and the =Accept-Events= header itself for reactive negotiation in the future.
 
 The `Content-type` header now indicates a response body of `multipart/mixed` to reflect the two part response. Thus, we have the following response headers:
 

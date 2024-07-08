@@ -2,7 +2,7 @@
 
 <!--
 
-In response to a `GET` request with a =Accept-Events= header field with `PREP` as the preferred notifications protocol, a resource server providing notifications:
+In response to a `GET` request with a =Accept-Events= header field with `prep` as the preferred notifications protocol, a resource server providing notifications:
 
 + MUST respond with a status code identical to the one that would have been sent with the response had notifications not been requested.
 + MUST include the message body that would have been transmitted had notifications not been requested, unless the `Prefer` header field {{RFC7240}} indicates a preference of `return=minimal` ({{RFC7240 Section 4.2}}).
@@ -18,7 +18,7 @@ A resource server providing notifications using the {{&protocol}}:
   + `Date` ({{HTTP, Section 6.6.1}}).
   + `Content-Type` ({{HTTP, Section 8.3}}) with the media type set to `multipart` ({{HTTP, Section 8.3.3}}). The subtype will depend on whether the base response is included in the response body.
   + =Events= which MUST include the following event fields:
-    + `protocol` set to the value `PREP`.
+    + `protocol` set to the value `prep`.
     + `status` set to the `200 (OK)` ({{HTTP, Section 15.3.1}}) status code.
     + `expires` with an integer value in seconds indicating an interval after `Date` when notifications will no longer be sent and the response stream is closed.
 
@@ -32,7 +32,7 @@ A resource server providing notifications using the {{&protocol}}:
 
 + MAY include the following header fields in the response:
 
-  + =Accept-Events= which MUST list `PREP` as one of the available notification protocols. Associated with the `PREP` list item, the resource server:
+  + =Accept-Events= which MUST list `prep` as one of the available notification protocols. Associated with the `prep` list item, the resource server:
     + MUST include an `accept` event field with at least one acceptable media-type for notifications.
 
 ## Only Notifications {#only-notifications-response}
