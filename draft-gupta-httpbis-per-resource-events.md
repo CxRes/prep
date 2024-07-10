@@ -35,7 +35,7 @@ entity:
 normative:
   Delta: RFC3229
   HTTP: RFC9110
-  HTTP-SF: I-D.ietf-httpbis-sfbis-03
+  HTTP-SF: I-D.ietf-httpbis-sfbis-06
   HTTP-Retrofit: I-D.ietf-httpbis-retrofit-06
   RFC2046:
   RFC5789:
