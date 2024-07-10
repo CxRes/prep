@@ -37,7 +37,6 @@ normative:
   HTTP: RFC9110
   HTTP-SF: I-D.ietf-httpbis-sfbis-03
   HTTP-Retrofit: I-D.ietf-httpbis-retrofit-06
-  RFC822:
   RFC2046:
   RFC5789:
   RFC8126:
