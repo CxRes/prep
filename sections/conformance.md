@@ -23,4 +23,4 @@ The {{&protocol}} identifies the following Classes of Products for conforming im
 Interoperability occurs between [Application Client—Resource Server](#interoperability-1) as defined by the {{&protocol}}.
 
 {: #interoperability-1}Application Client—Resource Server Interoperability
-: Interoperability of implementations for application clients and resource servers is tested by evaluating an implementation’s ability to request and respond to HTTP messages that conform to the {{&protocol}}.
+: Interoperability of implementations for application clients and resource servers is tested by evaluating an implementation's ability to request and respond to HTTP messages that conform to the {{&protocol}}.
