@@ -16,8 +16,6 @@
 /node_modules/
 /versioned/
 Gemfile.lock
-TODO
-_*
 archive.json
 draft-gupta-httpbis-per-resource-events.xml
 package-lock.json
