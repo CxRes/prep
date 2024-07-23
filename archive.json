@@ -1,0 +1,135 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2024-07-23T00:53:41.926216+00:00",
+  "repo": "CxRes/prep",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOKcksa85zaAKD",
+      "title": "Handling Illegal `Accept-Events` Header",
+      "url": "https://github.com/CxRes/prep/issues/1",
+      "state": "OPEN",
+      "author": "CxRes",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Where a recipient receives an illegal `Accept-Events` header field, can we:\r\n\r\n+ Ignore it (as we do now)?\r\n+ Send an error message. If so what could be the form of the error message?",
+      "createdAt": "2023-10-10T20:45:10Z",
+      "updatedAt": "2023-10-10T20:45:10Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOKcksa85zaDm5",
+      "title": "Protocol identifier as a URL?",
+      "url": "https://github.com/CxRes/prep/issues/2",
+      "state": "OPEN",
+      "author": "CxRes",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Can we a URL (in lieu of an identifier) to identify the notifications protocol?\r\n\r\nIf we use such a URL, can we obviate the need for an IANA registry for notifications protocol?",
+      "createdAt": "2023-10-10T20:49:49Z",
+      "updatedAt": "2023-10-10T20:49:49Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOKcksa85zaHJR",
+      "title": "Handling response with notifications when not requested",
+      "url": "https://github.com/CxRes/prep/issues/3",
+      "state": "OPEN",
+      "author": "CxRes",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Does compliance with HTTP demand that we ignore the `Events` header when sent in response to a request that does not contain an `Accept-Events` header? \r\n\r\nHow should the recipient process such a response, that presumably contains notifications that it has not requested?",
+      "createdAt": "2023-10-10T20:54:04Z",
+      "updatedAt": "2023-10-10T20:54:04Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 4,
+      "id": "I_kwDOKcksa85zaMpD",
+      "title": "Handling `Events` header for unsupported methods",
+      "url": "https://github.com/CxRes/prep/issues/4",
+      "state": "OPEN",
+      "author": "CxRes",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Does the handling of  `Events` field need to be made more specific for unsupported/unrecognized methods?\r\n\r\nSuch as:\r\n\"A recipient MUST ignore the `Events` header field received in response to a request method that is unrecognized or for which notifications response is not defined for a particular notifications protocol.\"",
+      "createdAt": "2023-10-10T21:02:49Z",
+      "updatedAt": "2023-10-10T21:02:49Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 5,
+      "id": "I_kwDOKcksa86Hggr7",
+      "title": "Feedback on draft in `implementation` branch",
+      "url": "https://github.com/CxRes/prep/issues/5",
+      "state": "OPEN",
+      "author": "toomim",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Hi! I just did a full read-through of the draft in the `implementation` branch, and took these notes. I'd be happy to talk 1-1, but in the meantime want to make them available to you, and this seemed like a reasonable place to put them. Feel free to close this issue or move them around however you'd like.\r\n\r\nFirst, congratulations on the draft progress! I can see it coming together, and it's shaping up to portray a very interesting approach on the problem.\r\n\r\nIn particular, I'm struck by the cool and intriguing use of multipart and message/rfc822.  I must admit that I don't fully understand them yet, but intrigued. I hope to understand them, and then understand what the advantages are of using them.\r\n\r\nNow, I think to move forward, it would be most excellent to achieve a connected understanding of how PREP and Braid are similar and different, so that we can work towards finding common language and headers for the things that are similar, and then for the parts that are different, either switch to using the same things, or create a modular option for the differences so that both can co-exist.\r\n\r\nTo get there, I still have some things I don't understand in PREP, and there are some parts that I have suggestions for improvements on. Here are my notes as I read PREP and work towards a common understanding. I think these might need a 1-1 conversation. Perhaps we can arrange that sometime \u2014 but I'm leaving the notes here in case it's useful!\r\n\r\nI'd like to start with you on these two sections of issues:\r\n\r\n**Accept-Events & Events:**\r\n\r\n - What are all the parameters available?\r\n   - What is `vary=` for?  How does it differ from Vary header in response?\r\n     - Example: `Events: ... vary=accept-encoding`\r\n   - What is `status=` for?  How does it differ from status in HTTP response?\r\n - What exactly is \"PREP\"?\r\n   - Doesn't PREP define Events and Accept-Events?  Or is it something within?\r\n   - Is `Events: protocol=PREP` the same as `Accept-Events: PREP`?\r\n   - What do you mean by \"protocol for receiving notifications\" in 4.1.?\r\n - Confused by recursion of:\r\n   - PREP: inside a field defined by PREP, in `Accept-Events: PREP; ` and `Events: protocol=PREP `\r\n     - if PREP defines the Events fields, what does it mean to say you're using PREP within your use of these PREP fields?\r\n   - Accept: the word \"accept\" appears twice within `Accept-Events: accept=message/rfc822`. Are we accepting what we accept?\r\n - What does it mean for a server to \"prefer\" a notification protocol?\r\n - It seems hard to use Accept-Events for improving performance without being\r\n   relied upon.  If you cannot rely upon it, then you cannot use it, right?\r\n   Am I missing something?  What can you rely upon vs. not rely upon?\r\n - Intro confused me with Accept-Events vs. Events -- distinction wasn't clear\r\n   - I suggest making Accept-Events optional and introducing later once core\r\n     concept is understood\r\n\r\n**Snapshots vs. Patches (or other terminology)**\r\n\r\n - Definitions:\r\n    - I'm calling a \"snapshot\" a complete copy of a the resource as seen at a point in time\r\n    - and \"patch\" a description of a change from the prior version to the current version, in whatever format.\r\n - This PREP draft makes a *snapshot* the first message, and then streams a sequence of patches, like this:\r\n   - `[ snapshot, [ patch, patch, patch, patch ] ]`\r\n - That's a common pattern, but this is more general and simpler:\r\n   - `[ snapshot-or-patch, snapshot-or-patch, snapshot-or-patch, snapshot-or-patch ]`\r\n - This would support\r\n   - systems that send a keyframe as a snapshot, and then send a series of diffs. Video works this way, as does `mosh` (I believe)\r\n   - systems where the server needs to periodically compute merges on behalf of the client. It can send all patches to the client, and then periodically send a full snapshot to clear up any ambiguities that occurred.\r\n\r\n...and then we could move on to discuss these smaller ones:\r\n\r\n**Time Representations**\r\n\r\n - These won't work for relative (distributed) time:\r\n   - Event-ID, Last-Event-ID, Etag, Date\r\n - So we also need `Version` (*c.f.* [Braid-HTTP](https://datatracker.ietf.org/doc/html/draft-toomim-httpbis-braid-http#section-2.1))\r\n - That adds up to including all these forms:\r\n   - `Event-ID`\r\n   - `Etag`\r\n   - `Date`\r\n   - `Version`\r\n - Are these all necessary?  Perhaps we could distinguish when each would be\r\n   needed, so that programmers don't have to fill out all 4 fields for each\r\n   version?\r\n\r\n**Multiparts**\r\n\r\n - As we've discussed, boundary specifiers can get clobbered, and I like your new multipart frame spec as a solution to that\r\n - I still don't see the need for multipart, myself, and prefer putting framing natively within HTTP messages rather than nesting multipart framing within bodies, but I am happy to work towards connection on this issue.\r\n\r\n**4.1.1. Validity**\r\n\r\n - The \"server must ignore fields it does not understand\" is already a part of\r\n   HTTP, and need not be repeated in so much detail here IMO.\r\n\r\n**5.1.  Event Fields**\r\n\r\n - What is an event field?\r\n   - It says that header fields can be event fields, but doesn't say what an\r\n     event field is.\r\n   - This sounds conusing, because there is an \"Event:\" \"header field\", but I\r\n     think that might be different from an \"Event Field\" as mentioned here.\r\n\r\n**Events vs. Patches?**\r\n\r\n - It seems that the concept of an \"Event\", since it can be arbitrarily\r\n   defined according to the event type, serves the same semantic purpose in\r\n   mutating a resource as the PATCH method in HTTP.  Is that true?  Or is\r\n   there a distinction?\r\n\r\n**What is DPoP in the example in section 7?**\r\n\r\n**Deltas**\r\n\r\n - What precisely do you mean by a delta here?  Do you mean the delta\r\n   mentioned in [delta], do you mean an arbitrary patch e.g. as used in a HTTP\r\n   PATCH method?  Or something else, or more general?\r\n\r\n - Would help if the example gave a concrete delta instead of the placeholder <delta>",
+      "createdAt": "2024-05-01T12:43:26Z",
+      "updatedAt": "2024-05-01T17:02:56Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": []
+}
