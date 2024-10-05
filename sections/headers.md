@@ -7,7 +7,7 @@ Protocols MUST ensure that the semantics be so defined that these header fields 
 *[=Accept-Events=]: #accept-events-header (((Accept-Events))) `Accept-Events`
 
 {:aside}
-> \* *This specification uses a modified version of Structured Fields ({{HTTP-SF}}) that allows parameters to also have as value, a bare array of Items.*
+> \* *This specification uses a modified version of Structured Fields ({{HTTP-SF}}) that allows parameters to also have as value, a bare array of Items. An JavaScript implementation of this modification based on <https://github.com/badgateway/structured-headers> is available at <https://github.com/CxRes/structured-headers/tree/nesting>*
 
 ## Accept-Events {#accept-events-header}
 
