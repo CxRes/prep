@@ -3,9 +3,9 @@
 
 
 HTTP                                                            R. Gupta
-Internet-Draft                                              16 July 2024
+Internet-Draft                                            5 October 2024
 Intended status: Standards Track                                        
-Expires: 17 January 2025
+Expires: 8 April 2025
 
 
                           Per Resource Events
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 January 2025.
+   This Internet-Draft will expire on 8 April 2025.
 
 Copyright Notice
 
@@ -510,7 +510,12 @@ Table of Contents
 
       |  * _This specification uses a modified version of Structured
       |  Fields ([HTTP-SF]) that allows parameters to also have as
-      |  value, a bare array of Items._
+      |  value, a bare array of Items.  An JavaScript implementation of
+      |  this modification based on https://github.com/badgateway/
+      |  structured-headers (https://github.com/badgateway/structured-
+      |  headers) is available at https://github.com/CxRes/structured-
+      |  headers/tree/nesting (https://github.com/CxRes/structured-
+      |  headers/tree/nesting)_
 
 4.1.  Accept-Events
 
@@ -1335,10 +1340,8 @@ Table of Contents
               retrofit-06>.
 
    [HTTP-SF]  Nottingham, M. and P. Kamp, "Structured Field Values for
-              HTTP", Work in Progress, Internet-Draft, draft-ietf-
-              httpbis-sfbis-06, 21 April 2024,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              sfbis-06>.
+              HTTP", RFC 9651, DOI 10.17487/RFC9651, September 2024,
+              <https://www.rfc-editor.org/rfc/rfc9651>.
 
    [HTTP/1.1] Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "HTTP/1.1", STD 99, RFC 9112, DOI 10.17487/RFC9112,
