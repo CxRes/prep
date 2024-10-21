@@ -15,7 +15,7 @@
 <meta content="draft-gupta-httpbis-per-resource-events-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.23.2
-    Python 3.12.6
+    Python 3.12.7
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
@@ -1029,7 +1029,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Gupta</td>
-<td class="center">Expires 8 April 2025</td>
+<td class="center">Expires 24 April 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1042,12 +1042,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-gupta-httpbis-per-resource-events-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-10-05" class="published">5 October 2024</time>
+<time datetime="2024-10-21" class="published">21 October 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-04-08">8 April 2025</time></dd>
+<dd class="expires"><time datetime="2025-04-24">24 April 2025</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1095,7 +1095,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 8 April 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 24 April 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1331,10 +1331,13 @@ svg :is([fill="white"], [fill^="#fff"]) {
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
-            <p id="section-toc.1-1.15.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-index" class="internal xref">Index</a></p>
+            <p id="section-toc.1-1.15.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
-            <p id="section-toc.1-1.16.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+            <p id="section-toc.1-1.16.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-index" class="internal xref">Index</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17">
+            <p id="section-toc.1-1.17.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
 </li>
         </ul>
 </nav>
@@ -1693,8 +1696,8 @@ Event-ID: 789
         <h3 id="name-known-limitations">
 <a href="#section-2.4" class="section-number selfRef">2.4. </a><a href="#name-known-limitations" class="section-name selfRef">Known Limitations</a>
         </h3>
-<p id="section-2.4-1">The Per Resource Events Protocol only allows <span id="iref-notification-45" class="iref"></span><a href="#notification" class="internal xref">notifications</a> to be sent for events on a given resource. It is not possible for resources to send <span id="iref-notification-46" class="iref"></span><a href="#notification" class="internal xref">notifications</a> for arbitrary events such as state changes on multiple resources or combinations thereof. Implementations using Per Resource Events Protocol have to create separate resources to realize such <span id="iref-notification-47" class="iref"></span><a href="#notification" class="internal xref">notification</a> endpoints. But this is no different from APIs built on top of existing messaging protocols (See, for example, <span>[<a href="#WS" class="cite xref">WS</a>]</span> and <span>[<a href="#WEBSUB" class="cite xref">WEBSUB</a>]</span>).<a href="#section-2.4-1" class="pilcrow">¶</a></p>
-<p id="section-2.4-2">Due to the limits on connections per domain, the Per Resource Events Protocol is not suitable for use with HTTP/1.1, especially when providing <span id="iref-notification-48" class="iref"></span><a href="#notification" class="internal xref">notifications</a> for multiple resource from the same domain that might be accessed simultaneously. This limitation is identical to that of other HTTP based streaming based protocols such as Server-Sent Events <span>[<a href="#SSE" class="cite xref">SSE</a>]</span>. Implementations are strongly encouraged to adopt HTTP/2 (or later) and implement mitigation strategies, such as to maximize the number of concurrent connections and to provide alternate locations for resources on different domains.<a href="#section-2.4-2" class="pilcrow">¶</a></p>
+<p id="section-2.4-1">The Per Resource Events Protocol only allows <span id="iref-notification-45" class="iref"></span><a href="#notification" class="internal xref">notifications</a> to be sent for events on a given resource. It is not possible for resources to send <span id="iref-notification-46" class="iref"></span><a href="#notification" class="internal xref">notifications</a> for arbitrary events such as state changes on multiple resources or combinations thereof. Implementations using the Per Resource Events Protocol have to create separate resources to realize such <span id="iref-notification-47" class="iref"></span><a href="#notification" class="internal xref">notification</a> endpoints. But this is no different from APIs built on top of existing messaging protocols (See, for example, <span>[<a href="#WS" class="cite xref">WS</a>]</span> and <span>[<a href="#WEBSUB" class="cite xref">WEBSUB</a>]</span>).<a href="#section-2.4-1" class="pilcrow">¶</a></p>
+<p id="section-2.4-2">Browsers cap the number of persistent HTTP/1.1 connections per host, limiting the suitability of the Per Resource Events Protocol for web applications in the browser that simultaneously require <span id="iref-notification-48" class="iref"></span><a href="#notification" class="internal xref">notifications</a> from multiple resources on the same host. This limitation is identical to that of other HTTP streaming based protocols, such as Server-Sent Events <span>[<a href="#SSE" class="cite xref">SSE</a>]</span>. Implementations are strongly encouraged to adopt HTTP/2 (or later). HTTP/1.1 servers might consider setting up a reverse proxy to serve PREP <span id="iref-notification-49" class="iref"></span><a href="#notification" class="internal xref">notifications</a> over HTTP/2 (or later) or implement mitigation strategies, such as to maximize the number of concurrent connections and to provide alternate hosts for resources. Browser clients receiving PREP <span id="iref-notification-50" class="iref"></span><a href="#notification" class="internal xref">notifications</a> over an HTTP/1.1 connection are advised to exercise caution when opening multiple simultaneous persistent connections to any given host.<a href="#section-2.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1758,7 +1761,7 @@ appear in all capitals, as shown here.<a href="#section-3.2-1" class="pilcrow">�
 <div id="interoperability-1">Application Client—Resource Server Interoperability</div>
           </dt>
 <dd style="margin-left: 1.5em" id="section-3.4-2.2">
-            <p id="section-3.4-2.2.1">Interoperability of implementations for <span id="iref-application-client-49" class="iref"></span><a href="#application-client" class="internal xref">application clients</a> and <span id="iref-resource-server-50" class="iref"></span><a href="#resource-server" class="internal xref">resource servers</a> is tested by evaluating an implementation's ability to request and respond to HTTP messages that conform to the Per Resource Events Protocol.<a href="#section-3.4-2.2.1" class="pilcrow">¶</a></p>
+            <p id="section-3.4-2.2.1">Interoperability of implementations for <span id="iref-application-client-51" class="iref"></span><a href="#application-client" class="internal xref">application clients</a> and <span id="iref-resource-server-52" class="iref"></span><a href="#resource-server" class="internal xref">resource servers</a> is tested by evaluating an implementation's ability to request and respond to HTTP messages that conform to the Per Resource Events Protocol.<a href="#section-3.4-2.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1773,25 +1776,25 @@ appear in all capitals, as shown here.<a href="#section-3.2-1" class="pilcrow">�
 <span class="break"></span><dl class="dlParallel" id="section-3.5-2">
           <dt id="section-3.5-2.1">
 <div id="notification">
-<span id="iref-notification-51" class="iref"></span><a href="#notification" class="internal xref">Notification</a>
+<span id="iref-notification-53" class="iref"></span><a href="#notification" class="internal xref">Notification</a>
 </div>
           </dt>
 <dd style="margin-left: 1.5em" id="section-3.5-2.2">
-            <p id="section-3.5-2.2.1">A message sent to <span id="iref-application-client-52" class="iref"></span><a href="#application-client" class="internal xref">application clients</a> (that had previously requested it) when an HTTP request made on a resource fulfils some specified criteria.<a href="#section-3.5-2.2.1" class="pilcrow">¶</a></p>
+            <p id="section-3.5-2.2.1">A message sent to <span id="iref-application-client-54" class="iref"></span><a href="#application-client" class="internal xref">application clients</a> (that had previously requested it) when an HTTP request made on a resource fulfils some specified criteria.<a href="#section-3.5-2.2.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 <dt id="section-3.5-2.3">
 <div id="base-response">Base Response</div>
           </dt>
 <dd style="margin-left: 1.5em" id="section-3.5-2.4">
-            <p id="section-3.5-2.4.1">The response that would have been returned, were <span id="iref-notification-53" class="iref"></span><a href="#notification" class="internal xref">notifications</a> not requested for, in an otherwise identical HTTP request.<a href="#section-3.5-2.4.1" class="pilcrow">¶</a></p>
+            <p id="section-3.5-2.4.1">The response that would have been returned, were <span id="iref-notification-55" class="iref"></span><a href="#notification" class="internal xref">notifications</a> not requested for, in an otherwise identical HTTP request.<a href="#section-3.5-2.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 <dt id="section-3.5-2.5">
 <div id="event-field">Event Field</div>
           </dt>
 <dd style="margin-left: 1.5em" id="section-3.5-2.6">
-            <p id="section-3.5-2.6.1">A parameter for a protocol item in the <span id="iref-accept-events-54" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field or a member of the <span id="iref-events-55" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> header field.<a href="#section-3.5-2.6.1" class="pilcrow">¶</a></p>
+            <p id="section-3.5-2.6.1">A parameter for a protocol item in the <span id="iref-accept-events-56" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field or a member of the <span id="iref-events-57" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> header field.<a href="#section-3.5-2.6.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1804,7 +1807,7 @@ appear in all capitals, as shown here.<a href="#section-3.2-1" class="pilcrow">�
       <h2 id="name-header-fields">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-header-fields" class="section-name selfRef">Header Fields</a>
       </h2>
-<p id="section-4-1">The Per Resource Events Protocol introduces new header fields. These header fields are not specific to the Per Resource Events Protocol. They can be used by other protocols that augment resources with the ability to send <span id="iref-notification-56" class="iref"></span><a href="#notification" class="internal xref">notifications</a>.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-1">The Per Resource Events Protocol introduces new header fields. These header fields are not specific to the Per Resource Events Protocol. They can be used by other protocols that augment resources with the ability to send <span id="iref-notification-58" class="iref"></span><a href="#notification" class="internal xref">notifications</a>.<a href="#section-4-1" class="pilcrow">¶</a></p>
 <p id="section-4-2">Protocols <span class="bcp14">MUST</span> ensure that the semantics be so defined that these header fields are safely ignored by recipients that do not recognize them (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-5.1" class="relref">Section 5.1</a></span>).<a href="#section-4-2" class="pilcrow">¶</a></p>
 <aside id="section-4-3">
         <p id="section-4-3.1">* <em>This specification uses a modified version of Structured Fields (<span>[<a href="#HTTP-SF" class="cite xref">HTTP-SF</a>]</span>) that allows parameters to also have as value, a bare array of Items. An JavaScript implementation of this modification based on <a href="https://github.com/badgateway/structured-headers">https://github.com/badgateway/structured-headers</a> is available at <a href="https://github.com/CxRes/structured-headers/tree/nesting">https://github.com/CxRes/structured-headers/tree/nesting</a></em><a href="#section-4-3.1" class="pilcrow">¶</a></p>
@@ -1814,18 +1817,18 @@ appear in all capitals, as shown here.<a href="#section-3.2-1" class="pilcrow">�
         <h3 id="name-accept-events">
 <a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-accept-events" class="section-name selfRef">Accept-Events</a>
         </h3>
-<span id="iref-accept-events-57" class="iref"></span>
-        <p id="section-4.1-1">The <code>Accept-Events</code> header field can be used by <span id="iref-application-client-58" class="iref"></span><a href="#application-client" class="internal xref">application clients</a> to specify their preferred protocol for receiving <span id="iref-notification-59" class="iref"></span><a href="#notification" class="internal xref">notifications</a>. For example, the <code>Accept-Events</code> header field can be used to indicate that the request is specifically limited to a small set of desired protocols, as in the case for <span id="iref-notification-60" class="iref"></span><a href="#notification" class="internal xref">notifications</a> with the Per Resource Events Protocol.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.1-2">When sent by a <span id="iref-resource-server-61" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> in a response, the <code>Accept-Events</code> header field provides information about which <span id="iref-notification-62" class="iref"></span><a href="#notification" class="internal xref">notification</a> protocols are preferred in a subsequent request to the same resource.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
-<p id="section-4.1-3">An <span id="iref-application-client-63" class="iref"></span><a href="#application-client" class="internal xref">application client</a> <span class="bcp14">MAY</span> generate a request for <span id="iref-notification-64" class="iref"></span><a href="#notification" class="internal xref">notifications</a> regardless of having received an <code>Accept-Events</code> header field. The information only provides advice for the sake of improving performance and reducing unnecessary network transfers.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
-<p id="section-4.1-4">Conversely, an <span id="iref-application-client-65" class="iref"></span><a href="#application-client" class="internal xref">application client</a> <span class="bcp14">MUST NOT</span> assume that receiving an <code>Accept-Events</code> header field means that future requests will return <span id="iref-notification-66" class="iref"></span><a href="#notification" class="internal xref">notifications</a>. The content might change, the server might only support <span id="iref-notification-67" class="iref"></span><a href="#notification" class="internal xref">notifications</a> requests at certain times or under certain conditions, or a different intermediary might process the next request.<a href="#section-4.1-4" class="pilcrow">¶</a></p>
+<span id="iref-accept-events-59" class="iref"></span>
+        <p id="section-4.1-1">The <code>Accept-Events</code> header field can be used by <span id="iref-application-client-60" class="iref"></span><a href="#application-client" class="internal xref">application clients</a> to specify their preferred protocol for receiving <span id="iref-notification-61" class="iref"></span><a href="#notification" class="internal xref">notifications</a>. For example, the <code>Accept-Events</code> header field can be used to indicate that the request is specifically limited to a small set of desired protocols, as in the case for <span id="iref-notification-62" class="iref"></span><a href="#notification" class="internal xref">notifications</a> with the Per Resource Events Protocol.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.1-2">When sent by a <span id="iref-resource-server-63" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> in a response, the <code>Accept-Events</code> header field provides information about which <span id="iref-notification-64" class="iref"></span><a href="#notification" class="internal xref">notification</a> protocols are preferred in a subsequent request to the same resource.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+<p id="section-4.1-3">An <span id="iref-application-client-65" class="iref"></span><a href="#application-client" class="internal xref">application client</a> <span class="bcp14">MAY</span> generate a request for <span id="iref-notification-66" class="iref"></span><a href="#notification" class="internal xref">notifications</a> regardless of having received an <code>Accept-Events</code> header field. The information only provides advice for the sake of improving performance and reducing unnecessary network transfers.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
+<p id="section-4.1-4">Conversely, an <span id="iref-application-client-67" class="iref"></span><a href="#application-client" class="internal xref">application client</a> <span class="bcp14">MUST NOT</span> assume that receiving an <code>Accept-Events</code> header field means that future requests will return <span id="iref-notification-68" class="iref"></span><a href="#notification" class="internal xref">notifications</a>. The content might change, the server might only support <span id="iref-notification-69" class="iref"></span><a href="#notification" class="internal xref">notifications</a> requests at certain times or under certain conditions, or a different intermediary might process the next request.<a href="#section-4.1-4" class="pilcrow">¶</a></p>
 <div id="accept-events-header-validity">
 <section id="section-4.1.1">
           <h4 id="name-validity">
 <a href="#section-4.1.1" class="section-number selfRef">4.1.1. </a><a href="#name-validity" class="section-name selfRef">Validity</a>
           </h4>
-<p id="section-4.1.1-1">A recipient <span class="bcp14">MUST</span> ignore the <code>Accept-Events</code> header field received with a request method that is unrecognized or for which <span id="iref-notification-68" class="iref"></span><a href="#notification" class="internal xref">notifications</a> response is not defined for a particular <span id="iref-notification-69" class="iref"></span><a href="#notification" class="internal xref">notifications</a> protocol.<a href="#section-4.1.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.1.1-2">A recipient <span class="bcp14">MUST</span> ignore the <code>Accept-Events</code> header field received in response to a request method that is unrecognized or for which <span id="iref-notification-70" class="iref"></span><a href="#notification" class="internal xref">notifications</a> discovery and/or response is not defined for a particular <span id="iref-notification-71" class="iref"></span><a href="#notification" class="internal xref">notifications</a> protocol.<a href="#section-4.1.1-2" class="pilcrow">¶</a></p>
+<p id="section-4.1.1-1">A recipient <span class="bcp14">MUST</span> ignore the <code>Accept-Events</code> header field received with a request method that is unrecognized or for which <span id="iref-notification-70" class="iref"></span><a href="#notification" class="internal xref">notifications</a> response is not defined for a particular <span id="iref-notification-71" class="iref"></span><a href="#notification" class="internal xref">notifications</a> protocol.<a href="#section-4.1.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.1-2">A recipient <span class="bcp14">MUST</span> ignore the <code>Accept-Events</code> header field received in response to a request method that is unrecognized or for which <span id="iref-notification-72" class="iref"></span><a href="#notification" class="internal xref">notifications</a> discovery and/or response is not defined for a particular <span id="iref-notification-73" class="iref"></span><a href="#notification" class="internal xref">notifications</a> protocol.<a href="#section-4.1.1-2" class="pilcrow">¶</a></p>
 <p id="section-4.1.1-3">A recipient <span class="bcp14">MUST</span> ignore the <code>Accept-Events</code> header field that it does not understand.<a href="#section-4.1.1-3" class="pilcrow">¶</a></p>
 <p id="section-4.1.1-4">A recipient <span class="bcp14">MUST</span> ignore the protocols specified in the <code>Accept-Events</code> header field that they are not aware of.<a href="#section-4.1.1-4" class="pilcrow">¶</a></p>
 </section>
@@ -1835,9 +1838,9 @@ appear in all capitals, as shown here.<a href="#section-3.2-1" class="pilcrow">�
           <h4 id="name-syntax">
 <a href="#section-4.1.2" class="section-number selfRef">4.1.2. </a><a href="#name-syntax" class="section-name selfRef">Syntax</a>
           </h4>
-<p id="section-4.1.2-1"><code>Accept-Events</code> is a List structured (<span>[<a href="#HTTP-SF" class="cite xref">HTTP-SF</a>], <a href="https://rfc-editor.org/rfc/rfc9651#section-3.1" class="relref">Section 3.1</a></span>) header field*. Its members <span class="bcp14">MUST</span> be of type string that identifies a <span id="iref-notification-72" class="iref"></span><a href="#notification" class="internal xref">notification</a> protocol. A protocol identifier <span class="bcp14">MAY</span> be followed with zero or more parameters defined by the given protocol, which <span class="bcp14">MAY</span> be followed by a <code>q</code> parameter.<a href="#section-4.1.2-1" class="pilcrow">¶</a></p>
-<p id="section-4.1.2-2">The <code>q</code> parameter assigns a relative "weight" to the sender's preference for a <span id="iref-notification-73" class="iref"></span><a href="#notification" class="internal xref">notification</a> protocol with semantics as defined in <span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-12.4.2" class="relref">Section 12.4.2</a></span>. Senders using weights <span class="bcp14">SHOULD</span> send <code>q</code> last (after all protocol parameters). Recipients <span class="bcp14">SHOULD</span> process any parameter named <code>q</code> as weight, regardless of parameter ordering.<a href="#section-4.1.2-2" class="pilcrow">¶</a></p>
-<p id="section-4.1.2-3">Note: Use of the <code>q</code> parameter name to negotiate <span id="iref-notification-74" class="iref"></span><a href="#notification" class="internal xref">notification</a> protocols would interfere with any parameter having the same name. Hence, protocol parameters named <code>q</code> are disallowed.<a href="#section-4.1.2-3" class="pilcrow">¶</a></p>
+<p id="section-4.1.2-1"><code>Accept-Events</code> is a List structured (<span>[<a href="#HTTP-SF" class="cite xref">HTTP-SF</a>], <a href="https://rfc-editor.org/rfc/rfc9651#section-3.1" class="relref">Section 3.1</a></span>) header field*. Its members <span class="bcp14">MUST</span> be of type string that identifies a <span id="iref-notification-74" class="iref"></span><a href="#notification" class="internal xref">notification</a> protocol. A protocol identifier <span class="bcp14">MAY</span> be followed with zero or more parameters defined by the given protocol, which <span class="bcp14">MAY</span> be followed by a <code>q</code> parameter.<a href="#section-4.1.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.2-2">The <code>q</code> parameter assigns a relative "weight" to the sender's preference for a <span id="iref-notification-75" class="iref"></span><a href="#notification" class="internal xref">notification</a> protocol with semantics as defined in <span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-12.4.2" class="relref">Section 12.4.2</a></span>. Senders using weights <span class="bcp14">SHOULD</span> send <code>q</code> last (after all protocol parameters). Recipients <span class="bcp14">SHOULD</span> process any parameter named <code>q</code> as weight, regardless of parameter ordering.<a href="#section-4.1.2-2" class="pilcrow">¶</a></p>
+<p id="section-4.1.2-3">Note: Use of the <code>q</code> parameter name to negotiate <span id="iref-notification-76" class="iref"></span><a href="#notification" class="internal xref">notification</a> protocols would interfere with any parameter having the same name. Hence, protocol parameters named <code>q</code> are disallowed.<a href="#section-4.1.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1847,16 +1850,16 @@ appear in all capitals, as shown here.<a href="#section-3.2-1" class="pilcrow">�
         <h3 id="name-events">
 <a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-events" class="section-name selfRef">Events</a>
         </h3>
-<span id="iref-events-75" class="iref"></span>
-        <p id="section-4.2-1">The <code>Events</code> header field is sent by a <span id="iref-resource-server-76" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> to provide <span id="iref-event-field-77" class="iref"></span><a href="#event-field" class="internal xref">event fields</a> in response to a request for <span id="iref-notification-78" class="iref"></span><a href="#notification" class="internal xref">notifications</a>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
-<p id="section-4.2-2">Where the <span id="iref-accept-events-79" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field sent in the request is ignored, a <span id="iref-resource-server-80" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST NOT</span> send the <code>Events</code> header field in a response.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
-<p id="section-4.2-3">Conversely, a <span id="iref-resource-server-81" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST</span> send the <code>Events</code> header field in a response, if the <span id="iref-accept-events-82" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field sent in the request is not ignored.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
+<span id="iref-events-77" class="iref"></span>
+        <p id="section-4.2-1">The <code>Events</code> header field is sent by a <span id="iref-resource-server-78" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> to provide <span id="iref-event-field-79" class="iref"></span><a href="#event-field" class="internal xref">event fields</a> in response to a request for <span id="iref-notification-80" class="iref"></span><a href="#notification" class="internal xref">notifications</a>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2-2">Where the <span id="iref-accept-events-81" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field sent in the request is ignored, a <span id="iref-resource-server-82" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST NOT</span> send the <code>Events</code> header field in a response.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+<p id="section-4.2-3">Conversely, a <span id="iref-resource-server-83" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST</span> send the <code>Events</code> header field in a response, if the <span id="iref-accept-events-84" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field sent in the request is not ignored.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
 <div id="events-header-validity">
 <section id="section-4.2.1">
           <h4 id="name-validity-2">
 <a href="#section-4.2.1" class="section-number selfRef">4.2.1. </a><a href="#name-validity-2" class="section-name selfRef">Validity</a>
           </h4>
-<p id="section-4.2.1-1">If the <code>Events</code> header field is sent in response to a request that does not contain the <span id="iref-accept-events-83" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field, the recipient <span class="bcp14">MUST</span> treat the response as invalid.<a href="#section-4.2.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.1-1">If the <code>Events</code> header field is sent in response to a request that does not contain the <span id="iref-accept-events-85" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field, the recipient <span class="bcp14">MUST</span> treat the response as invalid.<a href="#section-4.2.1-1" class="pilcrow">¶</a></p>
 <p id="section-4.2.1-2">If the response contains a <code>Events</code> header field that the recipient does not understand or the <code>Events</code> header field specifies a <code>protocol</code> that the recipient does not understand, the recipient <span class="bcp14">MUST NOT</span> process the response. A proxy that receives such a message <span class="bcp14">SHOULD</span> forward it downstream.<a href="#section-4.2.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1865,7 +1868,7 @@ appear in all capitals, as shown here.<a href="#section-3.2-1" class="pilcrow">�
           <h4 id="name-syntax-2">
 <a href="#section-4.2.2" class="section-number selfRef">4.2.2. </a><a href="#name-syntax-2" class="section-name selfRef">Syntax</a>
           </h4>
-<p id="section-4.2.2-1"><code>Events</code> is a Dictionary structured (<span>[<a href="#HTTP-SF" class="cite xref">HTTP-SF</a>], <a href="https://rfc-editor.org/rfc/rfc9651#section-3.1" class="relref">Section 3.1</a></span>) header field*. It <span class="bcp14">MUST</span> contain one member with the key <code>protocol</code> whose value identifies the <span id="iref-notification-84" class="iref"></span><a href="#notification" class="internal xref">notification</a> protocol used in the response. It <span class="bcp14">MAY</span> contain other members that are defined by the given <span id="iref-notification-85" class="iref"></span><a href="#notification" class="internal xref">notification</a> protocol.<a href="#section-4.2.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.2-1"><code>Events</code> is a Dictionary structured (<span>[<a href="#HTTP-SF" class="cite xref">HTTP-SF</a>], <a href="https://rfc-editor.org/rfc/rfc9651#section-3.1" class="relref">Section 3.1</a></span>) header field*. It <span class="bcp14">MUST</span> contain one member with the key <code>protocol</code> whose value identifies the <span id="iref-notification-86" class="iref"></span><a href="#notification" class="internal xref">notification</a> protocol used in the response. It <span class="bcp14">MAY</span> contain other members that are defined by the given <span id="iref-notification-87" class="iref"></span><a href="#notification" class="internal xref">notification</a> protocol.<a href="#section-4.2.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1882,17 +1885,17 @@ appear in all capitals, as shown here.<a href="#section-3.2-1" class="pilcrow">�
         <h3 id="name-event-fields">
 <a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-event-fields" class="section-name selfRef">Event Fields</a>
         </h3>
-<p id="section-5.1-1">The Per Resource Events Protocol reuses existing HTTP fields (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-5" class="relref">Section 5</a></span>) as <span id="iref-event-field-86" class="iref"></span><a href="#event-field" class="internal xref">event fields</a>. Any HTTP field <span class="bcp14">MAY</span> be used as an <span id="iref-event-field-87" class="iref"></span><a href="#event-field" class="internal xref">event field</a>. For the limited context of <span id="iref-notification-88" class="iref"></span><a href="#notification" class="internal xref">notifications</a> using the Per Resource Events Protocol, an <span id="iref-event-field-89" class="iref"></span><a href="#event-field" class="internal xref">event field</a> with the same name as an HTTP field <span class="bcp14">MUST</span> have identical semantics to that HTTP field, unless otherwise specified.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
-<p id="section-5.1-2">This specification restricts <span id="iref-accept-events-90" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> and <span id="iref-events-91" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> as Structured header fields* <span>[<a href="#HTTP-SF" class="cite xref">HTTP-SF</a>]</span>. From this it follows:<a href="#section-5.1-2" class="pilcrow">¶</a></p>
+<p id="section-5.1-1">The Per Resource Events Protocol reuses existing HTTP fields (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-5" class="relref">Section 5</a></span>) as <span id="iref-event-field-88" class="iref"></span><a href="#event-field" class="internal xref">event fields</a>. Any HTTP field <span class="bcp14">MAY</span> be used as an <span id="iref-event-field-89" class="iref"></span><a href="#event-field" class="internal xref">event field</a>. For the limited context of <span id="iref-notification-90" class="iref"></span><a href="#notification" class="internal xref">notifications</a> using the Per Resource Events Protocol, an <span id="iref-event-field-91" class="iref"></span><a href="#event-field" class="internal xref">event field</a> with the same name as an HTTP field <span class="bcp14">MUST</span> have identical semantics to that HTTP field, unless otherwise specified.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+<p id="section-5.1-2">This specification restricts <span id="iref-accept-events-92" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> and <span id="iref-events-93" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> as Structured header fields* <span>[<a href="#HTTP-SF" class="cite xref">HTTP-SF</a>]</span>. From this it follows:<a href="#section-5.1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5.1-3.1">
-            <p id="section-5.1-3.1.1">An <span id="iref-event-field-92" class="iref"></span><a href="#event-field" class="internal xref">event field</a> whose value is anything except a bare Item, that is, an Item without Parameters, <span class="bcp14">MUST</span> be specified inside an Inner List.<a href="#section-5.1-3.1.1" class="pilcrow">¶</a></p>
+            <p id="section-5.1-3.1.1">An <span id="iref-event-field-94" class="iref"></span><a href="#event-field" class="internal xref">event field</a> whose value is anything except a bare Item, that is, an Item without Parameters, <span class="bcp14">MUST</span> be specified inside an Inner List.<a href="#section-5.1-3.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-5.1-3.2">
-            <p id="section-5.1-3.2.1">Unless otherwise specified, an <span id="iref-event-field-93" class="iref"></span><a href="#event-field" class="internal xref">event field</a> that is not already defined as a Structured Field, therefore, <span class="bcp14">MUST</span> be handled as a Retrofit Structured Field <span>[<a href="#HTTP-Retrofit" class="cite xref">HTTP-Retrofit</a>]</span> when such handling is defined.<a href="#section-5.1-3.2.1" class="pilcrow">¶</a></p>
+            <p id="section-5.1-3.2.1">Unless otherwise specified, an <span id="iref-event-field-95" class="iref"></span><a href="#event-field" class="internal xref">event field</a> that is not already defined as a Structured Field, therefore, <span class="bcp14">MUST</span> be handled as a Retrofit Structured Field <span>[<a href="#HTTP-Retrofit" class="cite xref">HTTP-Retrofit</a>]</span> when such handling is defined.<a href="#section-5.1-3.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-5.1-3.3">
-            <p id="section-5.1-3.3.1">An <span id="iref-event-field-94" class="iref"></span><a href="#event-field" class="internal xref">event field</a> that is not already defined as a Structured Field but cannot be handled as a Retrofit Structured Field either, <span class="bcp14">MUST</span> be explicitly specified by the implementation.<a href="#section-5.1-3.3.1" class="pilcrow">¶</a></p>
+            <p id="section-5.1-3.3.1">An <span id="iref-event-field-96" class="iref"></span><a href="#event-field" class="internal xref">event field</a> that is not already defined as a Structured Field but cannot be handled as a Retrofit Structured Field either, <span class="bcp14">MUST</span> be explicitly specified by the implementation.<a href="#section-5.1-3.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1902,12 +1905,12 @@ appear in all capitals, as shown here.<a href="#section-3.2-1" class="pilcrow">�
         <h3 id="name-methods">
 <a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-methods" class="section-name selfRef">Methods</a>
         </h3>
-<p id="section-5.2-1">For the Per Resource Events Protocol, <code>HEAD</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-9.3.2" class="relref">Section 9.3.2</a></span>) and <code>GET</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-9.3.1" class="relref">Section 9.3.1</a></span>) are the only methods in response to which <span id="iref-notification-95" class="iref"></span><a href="#notification" class="internal xref">notifications</a> are advertised.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
-<p id="section-5.2-2">A <span id="iref-resource-server-96" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST NOT</span> send the <span id="iref-accept-events-97" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field with <code>prep</code> as a protocol in response to a request with any method other than <code>HEAD</code> or <code>GET</code>.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
-<p id="section-5.2-3">For the Per Resource Events Protocol, <code>GET</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-9.3.1" class="relref">Section 9.3.1</a></span>) is the only method by which <span id="iref-notification-98" class="iref"></span><a href="#notification" class="internal xref">notifications</a> are requested and for which <span id="iref-notification-99" class="iref"></span><a href="#notification" class="internal xref">notifications</a> response is defined.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
-<p id="section-5.2-4">An <span id="iref-application-client-100" class="iref"></span><a href="#application-client" class="internal xref">application client</a> <span class="bcp14">MUST NOT</span> send the <span id="iref-accept-events-101" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field with <code>prep</code> as a protocol in a request with any method other than <code>GET</code>.<a href="#section-5.2-4" class="pilcrow">¶</a></p>
-<p id="section-5.2-5">A <span id="iref-resource-server-102" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST NOT</span> send the <span id="iref-events-103" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> header field with the parameter <code>protocol</code> with a value of <code>prep</code> in response to a request with any method other than <code>GET</code>.<a href="#section-5.2-5" class="pilcrow">¶</a></p>
-<p id="section-5.2-6">A <span id="iref-resource-server-104" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST NOT</span> send the <span id="iref-events-105" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> header field except in response to a <code>GET</code> request.<a href="#section-5.2-6" class="pilcrow">¶</a></p>
+<p id="section-5.2-1">For the Per Resource Events Protocol, <code>HEAD</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-9.3.2" class="relref">Section 9.3.2</a></span>) and <code>GET</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-9.3.1" class="relref">Section 9.3.1</a></span>) are the only methods in response to which <span id="iref-notification-97" class="iref"></span><a href="#notification" class="internal xref">notifications</a> are advertised.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.2-2">A <span id="iref-resource-server-98" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST NOT</span> send the <span id="iref-accept-events-99" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field with <code>prep</code> as a protocol in response to a request with any method other than <code>HEAD</code> or <code>GET</code>.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
+<p id="section-5.2-3">For the Per Resource Events Protocol, <code>GET</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-9.3.1" class="relref">Section 9.3.1</a></span>) is the only method by which <span id="iref-notification-100" class="iref"></span><a href="#notification" class="internal xref">notifications</a> are requested and for which <span id="iref-notification-101" class="iref"></span><a href="#notification" class="internal xref">notifications</a> response is defined.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
+<p id="section-5.2-4">An <span id="iref-application-client-102" class="iref"></span><a href="#application-client" class="internal xref">application client</a> <span class="bcp14">MUST NOT</span> send the <span id="iref-accept-events-103" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field with <code>prep</code> as a protocol in a request with any method other than <code>GET</code>.<a href="#section-5.2-4" class="pilcrow">¶</a></p>
+<p id="section-5.2-5">A <span id="iref-resource-server-104" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST NOT</span> send the <span id="iref-events-105" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> header field with the parameter <code>protocol</code> with a value of <code>prep</code> in response to a request with any method other than <code>GET</code>.<a href="#section-5.2-5" class="pilcrow">¶</a></p>
+<p id="section-5.2-6">A <span id="iref-resource-server-106" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST NOT</span> send the <span id="iref-events-107" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> header field except in response to a <code>GET</code> request.<a href="#section-5.2-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="status-codes">
@@ -1915,9 +1918,9 @@ appear in all capitals, as shown here.<a href="#section-3.2-1" class="pilcrow">�
         <h3 id="name-status-codes">
 <a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-status-codes" class="section-name selfRef">Status Codes</a>
         </h3>
-<p id="section-5.3-1">The Per Resource Events Protocol reuses existing HTTP status codes (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-15" class="relref">Section 15</a></span>) to describe the result of the request for <span id="iref-notification-106" class="iref"></span><a href="#notification" class="internal xref">notifications</a> and the semantics of <span id="iref-notification-107" class="iref"></span><a href="#notification" class="internal xref">notifications</a> in the response.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
-<p id="section-5.3-2">In response to a request where <span id="iref-accept-events-108" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field indicates <code>prep</code> as the preferred protocol, a <span id="iref-resource-server-109" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> that supports <span id="iref-notification-110" class="iref"></span><a href="#notification" class="internal xref">notifications</a> using the Per Resource Events Protocol <span class="bcp14">MUST</span> communicate the status code for the <span id="iref-notification-111" class="iref"></span><a href="#notification" class="internal xref">notifications</a> response using the <code>status</code> parameter in the <span id="iref-events-112" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> header field.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
-<p id="section-5.3-3">For the limited context of <span id="iref-notification-113" class="iref"></span><a href="#notification" class="internal xref">notifications</a> using the Per Resource Events Protocol, the status code communicated using the <code>status</code> parameter in the <span id="iref-events-114" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> header field <span class="bcp14">MUST</span> have identical semantics to the corresponding HTTP status code, unless otherwise specified.<a href="#section-5.3-3" class="pilcrow">¶</a></p>
+<p id="section-5.3-1">The Per Resource Events Protocol reuses existing HTTP status codes (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-15" class="relref">Section 15</a></span>) to describe the result of the request for <span id="iref-notification-108" class="iref"></span><a href="#notification" class="internal xref">notifications</a> and the semantics of <span id="iref-notification-109" class="iref"></span><a href="#notification" class="internal xref">notifications</a> in the response.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
+<p id="section-5.3-2">In response to a request where <span id="iref-accept-events-110" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field indicates <code>prep</code> as the preferred protocol, a <span id="iref-resource-server-111" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> that supports <span id="iref-notification-112" class="iref"></span><a href="#notification" class="internal xref">notifications</a> using the Per Resource Events Protocol <span class="bcp14">MUST</span> communicate the status code for the <span id="iref-notification-113" class="iref"></span><a href="#notification" class="internal xref">notifications</a> response using the <code>status</code> parameter in the <span id="iref-events-114" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> header field.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
+<p id="section-5.3-3">For the limited context of <span id="iref-notification-115" class="iref"></span><a href="#notification" class="internal xref">notifications</a> using the Per Resource Events Protocol, the status code communicated using the <code>status</code> parameter in the <span id="iref-events-116" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> header field <span class="bcp14">MUST</span> have identical semantics to the corresponding HTTP status code, unless otherwise specified.<a href="#section-5.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1927,13 +1930,13 @@ appear in all capitals, as shown here.<a href="#section-3.2-1" class="pilcrow">�
       <h2 id="name-discovery">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-discovery" class="section-name selfRef">Discovery</a>
       </h2>
-<p id="section-6-1"><span id="iref-application-client-115" class="iref"></span><a href="#application-client" class="internal xref">Application clients</a> can engage in reactive content negotiation to discover if a <span id="iref-resource-server-116" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> supports <span id="iref-notification-117" class="iref"></span><a href="#notification" class="internal xref">notifications</a> using the Per Resource Events Protocol on a given resource.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-1"><span id="iref-application-client-117" class="iref"></span><a href="#application-client" class="internal xref">Application clients</a> can engage in reactive content negotiation to discover if a <span id="iref-resource-server-118" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> supports <span id="iref-notification-119" class="iref"></span><a href="#notification" class="internal xref">notifications</a> using the Per Resource Events Protocol on a given resource.<a href="#section-6-1" class="pilcrow">¶</a></p>
 <div id="discovery-request">
 <section id="section-6.1">
         <h3 id="name-request">
 <a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-request" class="section-name selfRef">Request</a>
         </h3>
-<p id="section-6.1-1">An <span id="iref-application-client-118" class="iref"></span><a href="#application-client" class="internal xref">application client</a> can discover the ability of a <span id="iref-resource-server-119" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> to deliver PREP <span id="iref-notification-120" class="iref"></span><a href="#notification" class="internal xref">notifications</a> for a target resource by sending a <code>HEAD</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-9.3.2" class="relref">Section 9.3.2</a></span>) request.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.1-1">An <span id="iref-application-client-120" class="iref"></span><a href="#application-client" class="internal xref">application client</a> can discover the ability of a <span id="iref-resource-server-121" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> to deliver PREP <span id="iref-notification-122" class="iref"></span><a href="#notification" class="internal xref">notifications</a> for a target resource by sending a <code>HEAD</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-9.3.2" class="relref">Section 9.3.2</a></span>) request.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="discovery-response-when-notifications-not-available">
@@ -1941,7 +1944,7 @@ appear in all capitals, as shown here.<a href="#section-3.2-1" class="pilcrow">�
         <h3 id="name-not-available">
 <a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-not-available" class="section-name selfRef">Not Available</a>
         </h3>
-<p id="section-6.2-1">In the response to a <code>HEAD</code> request, a <span id="iref-resource-server-121" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> that does not provide <span id="iref-notification-122" class="iref"></span><a href="#notification" class="internal xref">notifications</a> for the target resource using the Per Resource Events Protocol <span class="bcp14">MUST NOT</span> list <code>prep</code> as as one of the available protocols in the <span id="iref-accept-events-123" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+<p id="section-6.2-1">In the response to a <code>HEAD</code> request, a <span id="iref-resource-server-123" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> that does not provide <span id="iref-notification-124" class="iref"></span><a href="#notification" class="internal xref">notifications</a> for the target resource using the Per Resource Events Protocol <span class="bcp14">MUST NOT</span> list <code>prep</code> as as one of the available protocols in the <span id="iref-accept-events-125" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
 <span id="name-discovery-request"></span><div id="discovery-request-example">
 <figure id="figure-8">
           <div class="lang-http-message sourcecode" id="section-6.2-2.1">
@@ -1961,8 +1964,8 @@ Host: example.org
         <h3 id="name-available">
 <a href="#section-6.3" class="section-number selfRef">6.3. </a><a href="#name-available" class="section-name selfRef">Available</a>
         </h3>
-<p id="section-6.3-1">In response to a <code>HEAD</code> request, a <span id="iref-resource-server-124" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> that serves <span id="iref-notification-125" class="iref"></span><a href="#notification" class="internal xref">notifications</a> for the target resource using the Per Resource Events Protocol <span class="bcp14">SHOULD</span> include the <span id="iref-accept-events-126" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field, which <span class="bcp14">MUST</span> list <code>prep</code> as one of the available protocols.<a href="#section-6.3-1" class="pilcrow">¶</a></p>
-<p id="section-6.3-2">Associated with <code>prep</code> list item, the <span id="iref-resource-server-127" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST</span> include an <code>accept</code> <span id="iref-event-field-128" class="iref"></span><a href="#event-field" class="internal xref">event field</a> with at least one acceptable media-type for <span id="iref-notification-129" class="iref"></span><a href="#notification" class="internal xref">notifications</a>.<a href="#section-6.3-2" class="pilcrow">¶</a></p>
+<p id="section-6.3-1">In response to a <code>HEAD</code> request, a <span id="iref-resource-server-126" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> that serves <span id="iref-notification-127" class="iref"></span><a href="#notification" class="internal xref">notifications</a> for the target resource using the Per Resource Events Protocol <span class="bcp14">SHOULD</span> include the <span id="iref-accept-events-128" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field, which <span class="bcp14">MUST</span> list <code>prep</code> as one of the available protocols.<a href="#section-6.3-1" class="pilcrow">¶</a></p>
+<p id="section-6.3-2">Associated with <code>prep</code> list item, the <span id="iref-resource-server-129" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST</span> include an <code>accept</code> <span id="iref-event-field-130" class="iref"></span><a href="#event-field" class="internal xref">event field</a> with at least one acceptable media-type for <span id="iref-notification-131" class="iref"></span><a href="#notification" class="internal xref">notifications</a>.<a href="#section-6.3-2" class="pilcrow">¶</a></p>
 <span id="name-discovery-response"></span><div id="discovery-response-example">
 <figure id="figure-9">
           <div class="lang-http-message sourcecode" id="section-6.3-3.1">
@@ -1978,8 +1981,8 @@ Accept-Events: "prep"; accept="message/rfc822"
 </div>
 <aside id="section-6.3-4">
           <p id="section-6.3-4.1"><strong>Implementation Guidance</strong><a href="#section-6.3-4.1" class="pilcrow">¶</a></p>
-<p id="section-6.3-4.2">When <span id="iref-resource-server-130" class="iref"></span><a href="#resource-server" class="internal xref">resource servers</a> support HTTP/2 <span>[<a href="#RFC9113" class="cite xref">HTTP/2</a>]</span> for a resource, they are strongly encouraged to advertise it in the response.<a href="#section-6.3-4.2" class="pilcrow">¶</a></p>
-<p id="section-6.3-4.3">When a resource is accessible from different locations, <span id="iref-resource-server-131" class="iref"></span><a href="#resource-server" class="internal xref">resource servers</a> are encouraged to advertise these locations in the response.<a href="#section-6.3-4.3" class="pilcrow">¶</a></p>
+<p id="section-6.3-4.2">When <span id="iref-resource-server-132" class="iref"></span><a href="#resource-server" class="internal xref">resource servers</a> support HTTP/2 <span>[<a href="#RFC9113" class="cite xref">HTTP/2</a>]</span> for a resource, they are strongly encouraged to advertise it in the response.<a href="#section-6.3-4.2" class="pilcrow">¶</a></p>
+<p id="section-6.3-4.3">When a resource is accessible from different locations, <span id="iref-resource-server-133" class="iref"></span><a href="#resource-server" class="internal xref">resource servers</a> are encouraged to advertise these locations in the response.<a href="#section-6.3-4.3" class="pilcrow">¶</a></p>
 <p id="section-6.3-4.4">HTTP Alternative Services <span>[<a href="#RFC7838" class="cite xref">RFC7838</a>]</span>, for example, describes a mechanism for advertising these capabilities.<a href="#section-6.3-4.4" class="pilcrow">¶</a></p>
 </aside>
 </section>
@@ -1991,29 +1994,29 @@ Accept-Events: "prep"; accept="message/rfc822"
       <h2 id="name-request-2">
 <a href="#section-7" class="section-number selfRef">7. </a><a href="#name-request-2" class="section-name selfRef">Request</a>
       </h2>
-<p id="section-7-1">The Per Resource Events Protocol extends the content negotiation mechanism provided by HTTP allowing <span id="iref-application-client-132" class="iref"></span><a href="#application-client" class="internal xref">application clients</a> to negotiate <span id="iref-notification-133" class="iref"></span><a href="#notification" class="internal xref">notifications</a> independent of the <span id="iref-base-response-134" class="iref"></span><a href="#base-response" class="internal xref">base response</a>.<a href="#section-7-1" class="pilcrow">¶</a></p>
-<p id="section-7-2">In order to receive <span id="iref-notification-135" class="iref"></span><a href="#notification" class="internal xref">notifications</a> using the Per Resource Events Protocol from a resource, an <span id="iref-application-client-136" class="iref"></span><a href="#application-client" class="internal xref">application client</a> sends a <code>GET</code> request to <span id="iref-resource-server-137" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a>, which:<a href="#section-7-2" class="pilcrow">¶</a></p>
+<p id="section-7-1">The Per Resource Events Protocol extends the content negotiation mechanism provided by HTTP allowing <span id="iref-application-client-134" class="iref"></span><a href="#application-client" class="internal xref">application clients</a> to negotiate <span id="iref-notification-135" class="iref"></span><a href="#notification" class="internal xref">notifications</a> independent of the <span id="iref-base-response-136" class="iref"></span><a href="#base-response" class="internal xref">base response</a>.<a href="#section-7-1" class="pilcrow">¶</a></p>
+<p id="section-7-2">In order to receive <span id="iref-notification-137" class="iref"></span><a href="#notification" class="internal xref">notifications</a> using the Per Resource Events Protocol from a resource, an <span id="iref-application-client-138" class="iref"></span><a href="#application-client" class="internal xref">application client</a> sends a <code>GET</code> request to <span id="iref-resource-server-139" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a>, which:<a href="#section-7-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-7-3.1">
-          <p id="section-7-3.1.1"><span class="bcp14">MUST</span> include the <span id="iref-accept-events-138" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field, which:<a href="#section-7-3.1.1" class="pilcrow">¶</a></p>
+          <p id="section-7-3.1.1"><span class="bcp14">MUST</span> include the <span id="iref-accept-events-140" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field, which:<a href="#section-7-3.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-7-3.1.2.1">
-              <p id="section-7-3.1.2.1.1"><span class="bcp14">MUST</span> list <code>prep</code> as a preferred <span id="iref-notification-139" class="iref"></span><a href="#notification" class="internal xref">notification</a> protocol.<a href="#section-7-3.1.2.1.1" class="pilcrow">¶</a></p>
+              <p id="section-7-3.1.2.1.1"><span class="bcp14">MUST</span> list <code>prep</code> as a preferred <span id="iref-notification-141" class="iref"></span><a href="#notification" class="internal xref">notification</a> protocol.<a href="#section-7-3.1.2.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-7-3.1.2.1.2.1">
-                  <p id="section-7-3.1.2.1.2.1.1"><span class="bcp14">MAY</span> include zero or more <span id="iref-event-field-140" class="iref"></span><a href="#event-field" class="internal xref">event fields</a>. For example, <span id="iref-application-client-141" class="iref"></span><a href="#application-client" class="internal xref">application clients</a> <span class="bcp14">MAY</span> specify an <code>accept</code> <span id="iref-event-field-142" class="iref"></span><a href="#event-field" class="internal xref">event field</a> to indicate a preferred media-type for <span id="iref-notification-143" class="iref"></span><a href="#notification" class="internal xref">notifications</a>.<a href="#section-7-3.1.2.1.2.1.1" class="pilcrow">¶</a></p>
+                  <p id="section-7-3.1.2.1.2.1.1"><span class="bcp14">MAY</span> include zero or more <span id="iref-event-field-142" class="iref"></span><a href="#event-field" class="internal xref">event fields</a>. For example, <span id="iref-application-client-143" class="iref"></span><a href="#application-client" class="internal xref">application clients</a> <span class="bcp14">MAY</span> specify an <code>accept</code> <span id="iref-event-field-144" class="iref"></span><a href="#event-field" class="internal xref">event field</a> to indicate a preferred media-type for <span id="iref-notification-145" class="iref"></span><a href="#notification" class="internal xref">notifications</a>.<a href="#section-7-3.1.2.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
               </ul>
 </li>
           </ul>
 </li>
         <li class="normal" id="section-7-3.2">
-          <p id="section-7-3.2.1"><span class="bcp14">MAY</span> include the <code>Last-Event-ID</code> header field (<span>[<a href="#SSE" class="cite xref">SSE</a>]</span>, <a href="SSE#the-last-event-id-header">Section 9.2.4</a>) requesting the <span id="iref-resource-server-144" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> to not send the <span id="iref-base-response-145" class="iref"></span><a href="#base-response" class="internal xref">base response</a> body and resume <span id="iref-notification-146" class="iref"></span><a href="#notification" class="internal xref">notifications</a> from the event occurring immediately after the one specified.<a href="#section-7-3.2.1" class="pilcrow">¶</a></p>
+          <p id="section-7-3.2.1"><span class="bcp14">MAY</span> include the <code>Last-Event-ID</code> header field (<span>[<a href="#SSE" class="cite xref">SSE</a>]</span>, <a href="SSE#the-last-event-id-header">Section 9.2.4</a>) requesting the <span id="iref-resource-server-146" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> to not send the <span id="iref-base-response-147" class="iref"></span><a href="#base-response" class="internal xref">base response</a> body and resume <span id="iref-notification-148" class="iref"></span><a href="#notification" class="internal xref">notifications</a> from the event occurring immediately after the one specified.<a href="#section-7-3.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <aside id="section-7-4">
         <p id="section-7-4.1"><strong>Implementation Guidance</strong><a href="#section-7-4.1" class="pilcrow">¶</a></p>
-<p id="section-7-4.2">Set the <code>Last-Event-ID</code> to a wildcard <code>*</code> to explicitly request a <span id="iref-resource-server-147" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> to not send the <span id="iref-base-response-148" class="iref"></span><a href="#base-response" class="internal xref">base response</a> body in the response at all.<a href="#section-7-4.2" class="pilcrow">¶</a></p>
+<p id="section-7-4.2">Set the <code>Last-Event-ID</code> to a wildcard <code>*</code> to explicitly request a <span id="iref-resource-server-149" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> to not send the <span id="iref-base-response-150" class="iref"></span><a href="#base-response" class="internal xref">base response</a> body in the response at all.<a href="#section-7-4.2" class="pilcrow">¶</a></p>
 </aside>
 <span id="name-request-for-notifications"></span><div id="notifications-request-example">
 <figure id="figure-10">
@@ -2030,7 +2033,7 @@ Accept-Events: "prep"; accept="message/rfc822"
 <a href="#name-request-for-notifications" class="selfRef">Request for Notifications</a>
         </figcaption></figure>
 </div>
-<p id="section-7-6">A <span id="iref-resource-server-149" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST</span> ignore <span id="iref-event-field-150" class="iref"></span><a href="#event-field" class="internal xref">event fields</a> for <code>prep</code> <span id="iref-notification-151" class="iref"></span><a href="#notification" class="internal xref">notifications</a> in the <span id="iref-accept-events-152" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header that it does not recognize or implement.<a href="#section-7-6" class="pilcrow">¶</a></p>
+<p id="section-7-6">A <span id="iref-resource-server-151" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST</span> ignore <span id="iref-event-field-152" class="iref"></span><a href="#event-field" class="internal xref">event fields</a> for <code>prep</code> <span id="iref-notification-153" class="iref"></span><a href="#notification" class="internal xref">notifications</a> in the <span id="iref-accept-events-154" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header that it does not recognize or implement.<a href="#section-7-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="response-without-notifications">
@@ -2043,19 +2046,19 @@ Accept-Events: "prep"; accept="message/rfc822"
         <h3 id="name-not-available-2">
 <a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-not-available-2" class="section-name selfRef">Not Available</a>
         </h3>
-<p id="section-8.1-1">A <span id="iref-resource-server-153" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> not implementing the Per Resource Events Protocol (or not supporting it for the target resource) can ignore a request for <span id="iref-notification-154" class="iref"></span><a href="#notification" class="internal xref">notifications</a> and respond as if it received a normal request on that resource without impacting interoperability.<a href="#section-8.1-1" class="pilcrow">¶</a></p>
-<p id="section-8.1-2">A <span id="iref-resource-server-155" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> that does not provide <span id="iref-notification-156" class="iref"></span><a href="#notification" class="internal xref">notifications</a> using the Per Resource Events Protocol <span class="bcp14">MUST NOT</span>:<a href="#section-8.1-2" class="pilcrow">¶</a></p>
+<p id="section-8.1-1">A <span id="iref-resource-server-155" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> not implementing the Per Resource Events Protocol (or not supporting it for the target resource) can ignore a request for <span id="iref-notification-156" class="iref"></span><a href="#notification" class="internal xref">notifications</a> and respond as if it received a normal request on that resource without impacting interoperability.<a href="#section-8.1-1" class="pilcrow">¶</a></p>
+<p id="section-8.1-2">A <span id="iref-resource-server-157" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> that does not provide <span id="iref-notification-158" class="iref"></span><a href="#notification" class="internal xref">notifications</a> using the Per Resource Events Protocol <span class="bcp14">MUST NOT</span>:<a href="#section-8.1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-8.1-3.1">
-            <p id="section-8.1-3.1.1">list <code>prep</code> as as one of the available protocols in the <span id="iref-accept-events-157" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field, if sent in the response.<a href="#section-8.1-3.1.1" class="pilcrow">¶</a></p>
+            <p id="section-8.1-3.1.1">list <code>prep</code> as as one of the available protocols in the <span id="iref-accept-events-159" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field, if sent in the response.<a href="#section-8.1-3.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-8.1-3.2">
-            <p id="section-8.1-3.2.1">send the <span id="iref-events-158" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> header field in the response with the <code>protocol</code> <span id="iref-event-field-159" class="iref"></span><a href="#event-field" class="internal xref">event field</a> set to <code>prep</code>.<a href="#section-8.1-3.2.1" class="pilcrow">¶</a></p>
+            <p id="section-8.1-3.2.1">send the <span id="iref-events-160" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> header field in the response with the <code>protocol</code> <span id="iref-event-field-161" class="iref"></span><a href="#event-field" class="internal xref">event field</a> set to <code>prep</code>.<a href="#section-8.1-3.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <aside id="section-8.1-4">
           <p id="section-8.1-4.1"><strong>Implementation Guidance</strong><a href="#section-8.1-4.1" class="pilcrow">¶</a></p>
-<p id="section-8.1-4.2">Implementations are advised against sending <span id="iref-notification-160" class="iref"></span><a href="#notification" class="internal xref">notifications</a> for long-lived resources. A resource might be considered long-lived, if the <span id="iref-resource-server-161" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> determines that the resource is unlikely to change in the duration of the <span id="iref-notification-162" class="iref"></span><a href="#notification" class="internal xref">notification</a> response. In such instances, <span id="iref-resource-server-163" class="iref"></span><a href="#resource-server" class="internal xref">resource servers</a> are strongly advised to respond with the <code>Cache-Control</code> header and set the <code>max-age</code> parameter in it.<a href="#section-8.1-4.2" class="pilcrow">¶</a></p>
+<p id="section-8.1-4.2">Implementations are advised against sending <span id="iref-notification-162" class="iref"></span><a href="#notification" class="internal xref">notifications</a> for long-lived resources. A resource might be considered long-lived, if the <span id="iref-resource-server-163" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> determines that the resource is unlikely to change in the duration of the <span id="iref-notification-164" class="iref"></span><a href="#notification" class="internal xref">notification</a> response. In such instances, <span id="iref-resource-server-165" class="iref"></span><a href="#resource-server" class="internal xref">resource servers</a> are strongly advised to respond with the <code>Cache-Control</code> header and set the <code>max-age</code> parameter in it.<a href="#section-8.1-4.2" class="pilcrow">¶</a></p>
 </aside>
 </section>
 </div>
@@ -2064,7 +2067,7 @@ Accept-Events: "prep"; accept="message/rfc822"
         <h3 id="name-error-response">
 <a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-error-response" class="section-name selfRef">Error Response</a>
         </h3>
-<p id="section-8.2-1">A <span id="iref-resource-server-164" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST NOT</span> include PREP <span id="iref-notification-165" class="iref"></span><a href="#notification" class="internal xref">notifications</a> in a response, unless request results in one of the following status codes:<a href="#section-8.2-1" class="pilcrow">¶</a></p>
+<p id="section-8.2-1">A <span id="iref-resource-server-166" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST NOT</span> include PREP <span id="iref-notification-167" class="iref"></span><a href="#notification" class="internal xref">notifications</a> in a response, unless request results in one of the following status codes:<a href="#section-8.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-8.2-2.1">
             <p id="section-8.2-2.1.1"><code>200 (OK)</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-15.3.1" class="relref">Section 15.3.1</a></span>),<a href="#section-8.2-2.1.1" class="pilcrow">¶</a></p>
@@ -2079,16 +2082,16 @@ Accept-Events: "prep"; accept="message/rfc822"
             <p id="section-8.2-2.4.1"><code>226 (IM Used)</code> (<span>[<a href="#Delta" class="cite xref">Delta</a>], <a href="https://rfc-editor.org/rfc/rfc3229#section-10.4.1" class="relref">Section 10.4.1</a></span>).<a href="#section-8.2-2.4.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-8.2-3">A <span id="iref-resource-server-166" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> that does not serve PREP <span id="iref-notification-167" class="iref"></span><a href="#notification" class="internal xref">notifications</a>, on account of the response not having one of the above-mentioned status codes:<a href="#section-8.2-3" class="pilcrow">¶</a></p>
+<p id="section-8.2-3">A <span id="iref-resource-server-168" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> that does not serve PREP <span id="iref-notification-169" class="iref"></span><a href="#notification" class="internal xref">notifications</a>, on account of the response not having one of the above-mentioned status codes:<a href="#section-8.2-3" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-8.2-4.1">
-            <p id="section-8.2-4.1.1"><span class="bcp14">SHOULD</span> include the <span id="iref-events-168" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> header fields where:<a href="#section-8.2-4.1.1" class="pilcrow">¶</a></p>
+            <p id="section-8.2-4.1.1"><span class="bcp14">SHOULD</span> include the <span id="iref-events-170" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> header fields where:<a href="#section-8.2-4.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-8.2-4.1.2.1">
-                <p id="section-8.2-4.1.2.1.1">the <code>protocol</code> <span id="iref-event-field-169" class="iref"></span><a href="#event-field" class="internal xref">event field</a> <span class="bcp14">MUST</span> be set to a value of <code>prep</code>,<a href="#section-8.2-4.1.2.1.1" class="pilcrow">¶</a></p>
+                <p id="section-8.2-4.1.2.1.1">the <code>protocol</code> <span id="iref-event-field-171" class="iref"></span><a href="#event-field" class="internal xref">event field</a> <span class="bcp14">MUST</span> be set to a value of <code>prep</code>,<a href="#section-8.2-4.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
               <li class="normal" id="section-8.2-4.1.2.2">
-                <p id="section-8.2-4.1.2.2.1">the <code>status</code> <span id="iref-event-field-170" class="iref"></span><a href="#event-field" class="internal xref">event field</a> <span class="bcp14">MUST</span> be set to <code>412 (Precondition Failed)</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-15.5.13" class="relref">Section 15.5.13</a></span>) status code.<a href="#section-8.2-4.1.2.2.1" class="pilcrow">¶</a></p>
+                <p id="section-8.2-4.1.2.2.1">the <code>status</code> <span id="iref-event-field-172" class="iref"></span><a href="#event-field" class="internal xref">event field</a> <span class="bcp14">MUST</span> be set to <code>412 (Precondition Failed)</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-15.5.13" class="relref">Section 15.5.13</a></span>) status code.<a href="#section-8.2-4.1.2.2.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
@@ -2100,17 +2103,17 @@ Accept-Events: "prep"; accept="message/rfc822"
         <h3 id="name-notification-errors">
 <a href="#section-8.3" class="section-number selfRef">8.3. </a><a href="#name-notification-errors" class="section-name selfRef">Notification Errors</a>
         </h3>
-<p id="section-8.3-1">A <span id="iref-resource-server-171" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> might still not be able to send <span id="iref-notification-172" class="iref"></span><a href="#notification" class="internal xref">notifications</a> using the Per Resource Events Protocol requested by an <span id="iref-application-client-173" class="iref"></span><a href="#application-client" class="internal xref">application client</a> despite a valid response.<a href="#section-8.3-1" class="pilcrow">¶</a></p>
-<p id="section-8.3-2">A <span id="iref-resource-server-174" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> unable to serve PREP <span id="iref-notification-175" class="iref"></span><a href="#notification" class="internal xref">notifications</a>, even when the request results in a status code mentioned in <a href="#error-response" class="auto internal xref">Section 8.2</a>:<a href="#section-8.3-2" class="pilcrow">¶</a></p>
+<p id="section-8.3-1">A <span id="iref-resource-server-173" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> might still not be able to send <span id="iref-notification-174" class="iref"></span><a href="#notification" class="internal xref">notifications</a> using the Per Resource Events Protocol requested by an <span id="iref-application-client-175" class="iref"></span><a href="#application-client" class="internal xref">application client</a> despite a valid response.<a href="#section-8.3-1" class="pilcrow">¶</a></p>
+<p id="section-8.3-2">A <span id="iref-resource-server-176" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> unable to serve PREP <span id="iref-notification-177" class="iref"></span><a href="#notification" class="internal xref">notifications</a>, even when the request results in a status code mentioned in <a href="#error-response" class="auto internal xref">Section 8.2</a>:<a href="#section-8.3-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-8.3-3.1">
-            <p id="section-8.3-3.1.1"><span class="bcp14">SHOULD</span> include the <span id="iref-events-176" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> header fields in the response where:<a href="#section-8.3-3.1.1" class="pilcrow">¶</a></p>
+            <p id="section-8.3-3.1.1"><span class="bcp14">SHOULD</span> include the <span id="iref-events-178" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> header fields in the response where:<a href="#section-8.3-3.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-8.3-3.1.2.1">
-                <p id="section-8.3-3.1.2.1.1">the <code>protocol</code> <span id="iref-event-field-177" class="iref"></span><a href="#event-field" class="internal xref">event field</a> <span class="bcp14">MUST</span> be set to a value of <code>prep</code>,<a href="#section-8.3-3.1.2.1.1" class="pilcrow">¶</a></p>
+                <p id="section-8.3-3.1.2.1.1">the <code>protocol</code> <span id="iref-event-field-179" class="iref"></span><a href="#event-field" class="internal xref">event field</a> <span class="bcp14">MUST</span> be set to a value of <code>prep</code>,<a href="#section-8.3-3.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
               <li class="normal" id="section-8.3-3.1.2.2">
-                <p id="section-8.3-3.1.2.2.1">the <code>status</code> <span id="iref-event-field-178" class="iref"></span><a href="#event-field" class="internal xref">event field</a> <span class="bcp14">MUST</span> be set to appropriate  status code indicating the reason for not serving <span id="iref-notification-179" class="iref"></span><a href="#notification" class="internal xref">notifications</a>.<a href="#section-8.3-3.1.2.2.1" class="pilcrow">¶</a></p>
+                <p id="section-8.3-3.1.2.2.1">the <code>status</code> <span id="iref-event-field-180" class="iref"></span><a href="#event-field" class="internal xref">event field</a> <span class="bcp14">MUST</span> be set to appropriate  status code indicating the reason for not serving <span id="iref-notification-181" class="iref"></span><a href="#notification" class="internal xref">notifications</a>.<a href="#section-8.3-3.1.2.2.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
@@ -2129,7 +2132,7 @@ Accept-Events: "prep"; accept="message/rfc822"
         <h3 id="name-headers">
 <a href="#section-9.1" class="section-number selfRef">9.1. </a><a href="#name-headers" class="section-name selfRef">Headers</a>
         </h3>
-<p id="section-9.1-1">A <span id="iref-resource-server-180" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> providing <span id="iref-notification-181" class="iref"></span><a href="#notification" class="internal xref">notifications</a> using the Per Resource Events Protocol:<a href="#section-9.1-1" class="pilcrow">¶</a></p>
+<p id="section-9.1-1">A <span id="iref-resource-server-182" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> providing <span id="iref-notification-183" class="iref"></span><a href="#notification" class="internal xref">notifications</a> using the Per Resource Events Protocol:<a href="#section-9.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-9.1-2.1">
             <p id="section-9.1-2.1.1"><span class="bcp14">MUST</span> include the following header fields in the response:<a href="#section-9.1-2.1.1" class="pilcrow">¶</a></p>
@@ -2141,7 +2144,7 @@ Accept-Events: "prep"; accept="message/rfc822"
                 <p id="section-9.1-2.1.2.2.1"><code>Content-Type</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-8.3" class="relref">Section 8.3</a></span>) with the media type set to <code>multipart/mixed</code> (<span>[<a href="#RFC2046" class="cite xref">RFC2046</a>], <a href="https://rfc-editor.org/rfc/rfc2046#section-5.1.3" class="relref">Section 5.1.3</a></span>).<a href="#section-9.1-2.1.2.2.1" class="pilcrow">¶</a></p>
 </li>
               <li class="normal" id="section-9.1-2.1.2.3">
-                <p id="section-9.1-2.1.2.3.1"><span id="iref-events-182" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> which <span class="bcp14">MUST</span> include the following <span id="iref-event-field-183" class="iref"></span><a href="#event-field" class="internal xref">event fields</a>:<a href="#section-9.1-2.1.2.3.1" class="pilcrow">¶</a></p>
+                <p id="section-9.1-2.1.2.3.1"><span id="iref-events-184" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> which <span class="bcp14">MUST</span> include the following <span id="iref-event-field-185" class="iref"></span><a href="#event-field" class="internal xref">event fields</a>:<a href="#section-9.1-2.1.2.3.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-9.1-2.1.2.3.2.1">
                     <p id="section-9.1-2.1.2.3.2.1.1"><code>protocol</code> set to the value <code>prep</code>.<a href="#section-9.1-2.1.2.3.2.1.1" class="pilcrow">¶</a></p>
@@ -2150,11 +2153,11 @@ Accept-Events: "prep"; accept="message/rfc822"
                     <p id="section-9.1-2.1.2.3.2.2.1"><code>status</code> set to the <code>200 (OK)</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-15.3.1" class="relref">Section 15.3.1</a></span>) status code.<a href="#section-9.1-2.1.2.3.2.2.1" class="pilcrow">¶</a></p>
 </li>
                   <li class="normal" id="section-9.1-2.1.2.3.2.3">
-                    <p id="section-9.1-2.1.2.3.2.3.1"><code>expires</code> with an integer value in seconds indicating an interval after <code>Date</code> when <span id="iref-notification-184" class="iref"></span><a href="#notification" class="internal xref">notifications</a> will no longer be sent and the response stream is closed.<a href="#section-9.1-2.1.2.3.2.3.1" class="pilcrow">¶</a></p>
+                    <p id="section-9.1-2.1.2.3.2.3.1"><code>expires</code> with an integer value in seconds indicating an interval after <code>Date</code> when <span id="iref-notification-186" class="iref"></span><a href="#notification" class="internal xref">notifications</a> will no longer be sent and the response stream is closed.<a href="#section-9.1-2.1.2.3.2.3.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 <p id="section-9.1-2.1.2.3.3">
-NOTE: Since caching is meaningless in the context of <span id="iref-notification-185" class="iref"></span><a href="#notification" class="internal xref">notifications</a>, this specifications repurposes the deprecated <code>Expires</code> header field as an <span id="iref-event-field-186" class="iref"></span><a href="#event-field" class="internal xref">event field</a> to specify when the <span id="iref-notification-187" class="iref"></span><a href="#notification" class="internal xref">notifications</a> response ends.<a href="#section-9.1-2.1.2.3.3" class="pilcrow">¶</a></p>
+NOTE: Since caching is meaningless in the context of <span id="iref-notification-187" class="iref"></span><a href="#notification" class="internal xref">notifications</a>, this specifications repurposes the deprecated <code>Expires</code> header field as an <span id="iref-event-field-188" class="iref"></span><a href="#event-field" class="internal xref">event field</a> to specify when the <span id="iref-notification-189" class="iref"></span><a href="#notification" class="internal xref">notifications</a> response ends.<a href="#section-9.1-2.1.2.3.3" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
@@ -2165,10 +2168,10 @@ NOTE: Since caching is meaningless in the context of <span id="iref-notification
                 <p id="section-9.1-2.2.2.1.1"><code>Vary</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-12.5.5" class="relref">Section 12.5.5</a></span>) which <span class="bcp14">MUST</span> include the following values:<a href="#section-9.1-2.2.2.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-9.1-2.2.2.1.2.1">
-                    <p id="section-9.1-2.2.2.1.2.1.1"><span id="iref-accept-events-188" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a>.<a href="#section-9.1-2.2.2.1.2.1.1" class="pilcrow">¶</a></p>
+                    <p id="section-9.1-2.2.2.1.2.1.1"><span id="iref-accept-events-190" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a>.<a href="#section-9.1-2.2.2.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
                   <li class="normal" id="section-9.1-2.2.2.1.2.2">
-                    <p id="section-9.1-2.2.2.1.2.2.1"><code>Last-Event-ID</code>, if the request for PREP <span id="iref-notification-189" class="iref"></span><a href="#notification" class="internal xref">notifications</a> included the <code>Last-Event-ID</code> header field that was not ignored by the <span id="iref-resource-server-190" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a>.<a href="#section-9.1-2.2.2.1.2.2.1" class="pilcrow">¶</a></p>
+                    <p id="section-9.1-2.2.2.1.2.2.1"><code>Last-Event-ID</code>, if the request for PREP <span id="iref-notification-191" class="iref"></span><a href="#notification" class="internal xref">notifications</a> included the <code>Last-Event-ID</code> header field that was not ignored by the <span id="iref-resource-server-192" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a>.<a href="#section-9.1-2.2.2.1.2.2.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
@@ -2181,10 +2184,10 @@ NOTE: Since caching is meaningless in the context of <span id="iref-notification
             <p id="section-9.1-2.3.1"><span class="bcp14">MAY</span> include the following header fields in the response:<a href="#section-9.1-2.3.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-9.1-2.3.2.1">
-                <p id="section-9.1-2.3.2.1.1"><span id="iref-accept-events-191" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> which <span class="bcp14">MUST</span> list <code>prep</code> as one of the available <span id="iref-notification-192" class="iref"></span><a href="#notification" class="internal xref">notification</a> protocols. Associated with the <code>prep</code> list item, the <span id="iref-resource-server-193" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a>:<a href="#section-9.1-2.3.2.1.1" class="pilcrow">¶</a></p>
+                <p id="section-9.1-2.3.2.1.1"><span id="iref-accept-events-193" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> which <span class="bcp14">MUST</span> list <code>prep</code> as one of the available <span id="iref-notification-194" class="iref"></span><a href="#notification" class="internal xref">notification</a> protocols. Associated with the <code>prep</code> list item, the <span id="iref-resource-server-195" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a>:<a href="#section-9.1-2.3.2.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-9.1-2.3.2.1.2.1">
-                    <p id="section-9.1-2.3.2.1.2.1.1"><span class="bcp14">MUST</span> include an <code>accept</code> <span id="iref-event-field-194" class="iref"></span><a href="#event-field" class="internal xref">event field</a> with at least one acceptable media-type for <span id="iref-notification-195" class="iref"></span><a href="#notification" class="internal xref">notifications</a>.<a href="#section-9.1-2.3.2.1.2.1.1" class="pilcrow">¶</a></p>
+                    <p id="section-9.1-2.3.2.1.2.1.1"><span class="bcp14">MUST</span> include an <code>accept</code> <span id="iref-event-field-196" class="iref"></span><a href="#event-field" class="internal xref">event field</a> with at least one acceptable media-type for <span id="iref-notification-197" class="iref"></span><a href="#notification" class="internal xref">notifications</a>.<a href="#section-9.1-2.3.2.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
@@ -2198,13 +2201,13 @@ NOTE: Since caching is meaningless in the context of <span id="iref-notification
         <h3 id="name-body">
 <a href="#section-9.2" class="section-number selfRef">9.2. </a><a href="#name-body" class="section-name selfRef">Body</a>
         </h3>
-<p id="section-9.2-1">A <span id="iref-resource-server-196" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> sending PREP <span id="iref-notification-197" class="iref"></span><a href="#notification" class="internal xref">Notifications</a> <span class="bcp14">MUST</span> transmit a multipart message body (<span>[<a href="#RFC2046" class="cite xref">RFC2046</a>], <a href="https://rfc-editor.org/rfc/rfc2046#section-5.1" class="relref">Section 5.1</a></span>) with a media type of <code>multipart/mixed</code> (<span>[<a href="#RFC2046" class="cite xref">RFC2046</a>], <a href="https://rfc-editor.org/rfc/rfc2046#section-5.1.3" class="relref">Section 5.1.3</a></span>) with two body parts in the order specified below:<a href="#section-9.2-1" class="pilcrow">¶</a></p>
+<p id="section-9.2-1">A <span id="iref-resource-server-198" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> sending PREP <span id="iref-notification-199" class="iref"></span><a href="#notification" class="internal xref">Notifications</a> <span class="bcp14">MUST</span> transmit a multipart message body (<span>[<a href="#RFC2046" class="cite xref">RFC2046</a>], <a href="https://rfc-editor.org/rfc/rfc2046#section-5.1" class="relref">Section 5.1</a></span>) with a media type of <code>multipart/mixed</code> (<span>[<a href="#RFC2046" class="cite xref">RFC2046</a>], <a href="https://rfc-editor.org/rfc/rfc2046#section-5.1.3" class="relref">Section 5.1.3</a></span>) with two body parts in the order specified below:<a href="#section-9.2-1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-9.2-2">
 <li id="section-9.2-2.1">
-            <p id="section-9.2-2.1.1">Base Response: the message body that would have been sent had <span id="iref-notification-198" class="iref"></span><a href="#notification" class="internal xref">notifications</a> not been requested.<a href="#section-9.2-2.1.1" class="pilcrow">¶</a></p>
+            <p id="section-9.2-2.1.1">Base Response: the message body that would have been sent had <span id="iref-notification-200" class="iref"></span><a href="#notification" class="internal xref">notifications</a> not been requested.<a href="#section-9.2-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li id="section-9.2-2.2">
-            <p id="section-9.2-2.2.1"><span id="iref-notification-199" class="iref"></span><a href="#notification" class="internal xref">Notifications</a> Response: the multipart response body with body parts containing <span id="iref-notification-200" class="iref"></span><a href="#notification" class="internal xref">notifications</a> as defined in <a href="#notifications-part-body" class="auto internal xref">Section 9.2.2</a>.<a href="#section-9.2-2.2.1" class="pilcrow">¶</a></p>
+            <p id="section-9.2-2.2.1"><span id="iref-notification-201" class="iref"></span><a href="#notification" class="internal xref">Notifications</a> Response: the multipart response body with body parts containing <span id="iref-notification-202" class="iref"></span><a href="#notification" class="internal xref">notifications</a> as defined in <a href="#notifications-part-body" class="auto internal xref">Section 9.2.2</a>.<a href="#section-9.2-2.2.1" class="pilcrow">¶</a></p>
 </li>
         </ol>
 <div id="base-response-part-body">
@@ -2212,16 +2215,16 @@ NOTE: Since caching is meaningless in the context of <span id="iref-notification
           <h4 id="name-base-response">
 <a href="#section-9.2.1" class="section-number selfRef">9.2.1. </a><a href="#name-base-response" class="section-name selfRef">Base Response</a>
           </h4>
-<p id="section-9.2.1-1">By default, the Per Resource Events Protocol requires a <span id="iref-resource-server-201" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> to transmit the <span id="iref-base-response-202" class="iref"></span><a href="#base-response" class="internal xref">base response</a> body as first body part of multipart response body.
-This behaviour is desirable in most scenarios as we short-circuit an extra round trip that would otherwise be needed to fetch the current representation of the resource before fetching <span id="iref-notification-203" class="iref"></span><a href="#notification" class="internal xref">notifications</a> and eliminates the need to co-ordinate the two responses.<a href="#section-9.2.1-1" class="pilcrow">¶</a></p>
+<p id="section-9.2.1-1">By default, the Per Resource Events Protocol requires a <span id="iref-resource-server-203" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> to transmit the <span id="iref-base-response-204" class="iref"></span><a href="#base-response" class="internal xref">base response</a> body as first body part of multipart response body.
+This behaviour is desirable in most scenarios as we short-circuit an extra round trip that would otherwise be needed to fetch the current representation of the resource before fetching <span id="iref-notification-205" class="iref"></span><a href="#notification" class="internal xref">notifications</a> and eliminates the need to co-ordinate the two responses.<a href="#section-9.2.1-1" class="pilcrow">¶</a></p>
 <div id="base-response-opt-out">
 <section id="section-9.2.1.1">
             <h5 id="name-opt-out">
 <a href="#section-9.2.1.1" class="section-number selfRef">9.2.1.1. </a><a href="#name-opt-out" class="section-name selfRef">Opt out</a>
             </h5>
-<p id="section-9.2.1.1-1">An <span id="iref-application-client-204" class="iref"></span><a href="#application-client" class="internal xref">application client</a> requesting only <span id="iref-notification-205" class="iref"></span><a href="#notification" class="internal xref">notifications</a> using the Per Resource Events Protocol needs to explicitly opt out of receiving the <span id="iref-base-response-206" class="iref"></span><a href="#base-response" class="internal xref">base response</a> as described in <a href="#request" class="auto internal xref">Section 7</a>, <a href="#request" class="internal xref">Request</a>.<a href="#section-9.2.1.1-1" class="pilcrow">¶</a></p>
-<p id="section-9.2.1.1-2">If the request for PREP <span id="iref-notification-207" class="iref"></span><a href="#notification" class="internal xref">notifications</a> includes the <code>Last-Event-ID</code> header field (<span>[<a href="#SSE" class="cite xref">SSE</a>]</span>, <a href="SSE#the-last-event-id-header">Section 9.2.4</a>) which matches the <code>Event-ID</code> of the last event on the resource or wildcard character "*", a <span id="iref-resource-server-208" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">SHOULD NOT</span> send the content of the <span id="iref-base-response-209" class="iref"></span><a href="#base-response" class="internal xref">base response</a>.<a href="#section-9.2.1.1-2" class="pilcrow">¶</a></p>
-<p id="section-9.2.1.1-3">The <span id="iref-resource-server-210" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST</span> send still the first body part of the multipart response body, even if this part is empty. The <span id="iref-resource-server-211" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MAY</span> send the headers corresponding to the representation body that would have been sent in the <span id="iref-base-response-212" class="iref"></span><a href="#base-response" class="internal xref">base response</a>, and only omit the representation body of <span id="iref-base-response-213" class="iref"></span><a href="#base-response" class="internal xref">base response</a>.<a href="#section-9.2.1.1-3" class="pilcrow">¶</a></p>
+<p id="section-9.2.1.1-1">An <span id="iref-application-client-206" class="iref"></span><a href="#application-client" class="internal xref">application client</a> requesting only <span id="iref-notification-207" class="iref"></span><a href="#notification" class="internal xref">notifications</a> using the Per Resource Events Protocol needs to explicitly opt out of receiving the <span id="iref-base-response-208" class="iref"></span><a href="#base-response" class="internal xref">base response</a> as described in <a href="#request" class="auto internal xref">Section 7</a>, <a href="#request" class="internal xref">Request</a>.<a href="#section-9.2.1.1-1" class="pilcrow">¶</a></p>
+<p id="section-9.2.1.1-2">If the request for PREP <span id="iref-notification-209" class="iref"></span><a href="#notification" class="internal xref">notifications</a> includes the <code>Last-Event-ID</code> header field (<span>[<a href="#SSE" class="cite xref">SSE</a>]</span>, <a href="SSE#the-last-event-id-header">Section 9.2.4</a>) which matches the <code>Event-ID</code> of the last event on the resource or wildcard character "*", a <span id="iref-resource-server-210" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">SHOULD NOT</span> send the content of the <span id="iref-base-response-211" class="iref"></span><a href="#base-response" class="internal xref">base response</a>.<a href="#section-9.2.1.1-2" class="pilcrow">¶</a></p>
+<p id="section-9.2.1.1-3">The <span id="iref-resource-server-212" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST</span> send still the first body part of the multipart response body, even if this part is empty. The <span id="iref-resource-server-213" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MAY</span> send the headers corresponding to the representation body that would have been sent in the <span id="iref-base-response-214" class="iref"></span><a href="#base-response" class="internal xref">base response</a>, and only omit the representation body of <span id="iref-base-response-215" class="iref"></span><a href="#base-response" class="internal xref">base response</a>.<a href="#section-9.2.1.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2231,10 +2234,10 @@ This behaviour is desirable in most scenarios as we short-circuit an extra round
           <h4 id="name-notifications">
 <a href="#section-9.2.2" class="section-number selfRef">9.2.2. </a><a href="#name-notifications" class="section-name selfRef">Notifications</a>
           </h4>
-<p id="section-9.2.2-1">A <span id="iref-resource-server-214" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST</span> transmit PREP <span id="iref-notification-215" class="iref"></span><a href="#notification" class="internal xref">notifications</a> in the second body part of the multipart response as yet another embedded multipart message body (<span>[<a href="#RFC2046" class="cite xref">RFC2046</a>], <a href="https://rfc-editor.org/rfc/rfc2046#section-5.1" class="relref">Section 5.1</a></span>), with a media type of <code>multipart/digest</code> (<span>[<a href="#RFC2046" class="cite xref">RFC2046</a>], <a href="https://rfc-editor.org/rfc/rfc2046#section-5.1.5" class="relref">Section 5.1.5</a></span>) that <span class="bcp14">MAY</span> include zero or more body parts. Each body part of the <span id="iref-notification-216" class="iref"></span><a href="#notification" class="internal xref">notifications</a> multipart message body <span class="bcp14">MAY</span> contain at most one <span id="iref-notification-217" class="iref"></span><a href="#notification" class="internal xref">notification</a>.<a href="#section-9.2.2-1" class="pilcrow">¶</a></p>
+<p id="section-9.2.2-1">A <span id="iref-resource-server-216" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST</span> transmit PREP <span id="iref-notification-217" class="iref"></span><a href="#notification" class="internal xref">notifications</a> in the second body part of the multipart response as yet another embedded multipart message body (<span>[<a href="#RFC2046" class="cite xref">RFC2046</a>], <a href="https://rfc-editor.org/rfc/rfc2046#section-5.1" class="relref">Section 5.1</a></span>), with a media type of <code>multipart/digest</code> (<span>[<a href="#RFC2046" class="cite xref">RFC2046</a>], <a href="https://rfc-editor.org/rfc/rfc2046#section-5.1.5" class="relref">Section 5.1.5</a></span>) that <span class="bcp14">MAY</span> include zero or more body parts. Each body part of the <span id="iref-notification-218" class="iref"></span><a href="#notification" class="internal xref">notifications</a> multipart message body <span class="bcp14">MAY</span> contain at most one <span id="iref-notification-219" class="iref"></span><a href="#notification" class="internal xref">notification</a>.<a href="#section-9.2.2-1" class="pilcrow">¶</a></p>
 <aside id="section-9.2.2-2">
             <p id="section-9.2.2-2.1"><strong>Implementation Guidance</strong><a href="#section-9.2.2-2.1" class="pilcrow">¶</a></p>
-<p id="section-9.2.2-2.2">While not strictly necessary, it is strongly encouraged that <span id="iref-resource-server-218" class="iref"></span><a href="#resource-server" class="internal xref">resource servers</a> send <span id="iref-notification-219" class="iref"></span><a href="#notification" class="internal xref">notifications</a> in a manner such that the boundary delimiter (<span>[<a href="#RFC2046" class="cite xref">RFC2046</a>], <a href="https://rfc-editor.org/rfc/rfc2046#section-5.1.2" class="relref">Section 5.1.2</a></span>) is always at the end of a chunk (<span>[<a href="#RFC9112" class="cite xref">HTTP/1.1</a>], <a href="https://rfc-editor.org/rfc/rfc9112#section-7.1" class="relref">Section 7.1</a></span>) or data frame (<span>[<a href="#RFC9113" class="cite xref">HTTP/2</a>], <a href="https://rfc-editor.org/rfc/rfc9113#section-6.1" class="relref">Section 6.1</a></span>) as shown in the examples below. This way an <span id="iref-application-client-220" class="iref"></span><a href="#application-client" class="internal xref">application client</a> does not have to wait until the next chunk or frame (which might be a while or in cases of error never arrive) to be certain that the immediate message is complete.<a href="#section-9.2.2-2.2" class="pilcrow">¶</a></p>
+<p id="section-9.2.2-2.2">While not strictly necessary, it is strongly encouraged that <span id="iref-resource-server-220" class="iref"></span><a href="#resource-server" class="internal xref">resource servers</a> send <span id="iref-notification-221" class="iref"></span><a href="#notification" class="internal xref">notifications</a> in a manner such that the boundary delimiter (<span>[<a href="#RFC2046" class="cite xref">RFC2046</a>], <a href="https://rfc-editor.org/rfc/rfc2046#section-5.1.2" class="relref">Section 5.1.2</a></span>) is always at the end of a chunk (<span>[<a href="#RFC9112" class="cite xref">HTTP/1.1</a>], <a href="https://rfc-editor.org/rfc/rfc9112#section-7.1" class="relref">Section 7.1</a></span>) or data frame (<span>[<a href="#RFC9113" class="cite xref">HTTP/2</a>], <a href="https://rfc-editor.org/rfc/rfc9113#section-6.1" class="relref">Section 6.1</a></span>) as shown in the examples below. This way an <span id="iref-application-client-222" class="iref"></span><a href="#application-client" class="internal xref">application client</a> does not have to wait until the next chunk or frame (which might be a while or in cases of error never arrive) to be certain that the immediate message is complete.<a href="#section-9.2.2-2.2" class="pilcrow">¶</a></p>
 </aside>
 </section>
 </div>
@@ -2245,19 +2248,19 @@ This behaviour is desirable in most scenarios as we short-circuit an extra round
         <h3 id="name-termination">
 <a href="#section-9.3" class="section-number selfRef">9.3. </a><a href="#name-termination" class="section-name selfRef">Termination</a>
         </h3>
-<p id="section-9.3-1">A <span id="iref-resource-server-221" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST</span> end the <span id="iref-notification-222" class="iref"></span><a href="#notification" class="internal xref">notification</a> response in any one of the following scenarios:<a href="#section-9.3-1" class="pilcrow">¶</a></p>
+<p id="section-9.3-1">A <span id="iref-resource-server-223" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST</span> end the <span id="iref-notification-224" class="iref"></span><a href="#notification" class="internal xref">notification</a> response in any one of the following scenarios:<a href="#section-9.3-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-9.3-2.1">
-            <p id="section-9.3-2.1.1">Once the time specified in the <code>expires</code> parameter of the <span id="iref-events-223" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> header field has elapsed.<a href="#section-9.3-2.1.1" class="pilcrow">¶</a></p>
+            <p id="section-9.3-2.1.1">Once the time specified in the <code>expires</code> parameter of the <span id="iref-events-225" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> header field has elapsed.<a href="#section-9.3-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-9.3-2.2">
-            <p id="section-9.3-2.2.1">Immediately after sending a <span id="iref-notification-224" class="iref"></span><a href="#notification" class="internal xref">notification</a> upon a <code>DELETE</code> request on the resource that results in a response with <code>200 (OK)</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-15.3.1" class="relref">Section 15.3.1</a></span>) or <code>204 (No Content)</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-15.3.5" class="relref">Section 15.3.5</a></span>) status codes.<a href="#section-9.3-2.2.1" class="pilcrow">¶</a></p>
+            <p id="section-9.3-2.2.1">Immediately after sending a <span id="iref-notification-226" class="iref"></span><a href="#notification" class="internal xref">notification</a> upon a <code>DELETE</code> request on the resource that results in a response with <code>200 (OK)</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-15.3.1" class="relref">Section 15.3.1</a></span>) or <code>204 (No Content)</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-15.3.5" class="relref">Section 15.3.5</a></span>) status codes.<a href="#section-9.3-2.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-9.3-3">A <span id="iref-resource-server-225" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST</span> properly terminate the multipart responses as defined in <span>[<a href="#RFC2046" class="cite xref">RFC2046</a>], <a href="https://rfc-editor.org/rfc/rfc2046#section-5.1.2" class="relref">Section 5.1.2</a></span>, before closing the response stream.<a href="#section-9.3-3" class="pilcrow">¶</a></p>
+<p id="section-9.3-3">A <span id="iref-resource-server-227" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST</span> properly terminate the multipart responses as defined in <span>[<a href="#RFC2046" class="cite xref">RFC2046</a>], <a href="https://rfc-editor.org/rfc/rfc2046#section-5.1.2" class="relref">Section 5.1.2</a></span>, before closing the response stream.<a href="#section-9.3-3" class="pilcrow">¶</a></p>
 <aside id="section-9.3-4">
           <p id="section-9.3-4.1"><strong>Implementation Guidance</strong><a href="#section-9.3-4.1" class="pilcrow">¶</a></p>
-<p id="section-9.3-4.2">When a user navigates away from a website or an application using PREP <span id="iref-notification-226" class="iref"></span><a href="#notification" class="internal xref">notifications</a>, <span id="iref-application-client-227" class="iref"></span><a href="#application-client" class="internal xref">application clients</a> are strongly encouraged to properly close the response stream to ensure that servers do not keep sending <span id="iref-notification-228" class="iref"></span><a href="#notification" class="internal xref">notifications</a>.<a href="#section-9.3-4.2" class="pilcrow">¶</a></p>
+<p id="section-9.3-4.2">When a user navigates away from a website or an application using PREP <span id="iref-notification-228" class="iref"></span><a href="#notification" class="internal xref">notifications</a>, <span id="iref-application-client-229" class="iref"></span><a href="#application-client" class="internal xref">application clients</a> are strongly encouraged to properly close the response stream to ensure that servers do not keep sending <span id="iref-notification-230" class="iref"></span><a href="#notification" class="internal xref">notifications</a>.<a href="#section-9.3-4.2" class="pilcrow">¶</a></p>
 </aside>
 <div id="examples">
 <section id="section-9.3.1">
@@ -2352,13 +2355,13 @@ Content-Type: message/rfc822
       <h2 id="name-semantics-for-message-rfc82">
 <a href="#section-10" class="section-number selfRef">10. </a><a href="#name-semantics-for-message-rfc82" class="section-name selfRef">Semantics for <code>message/rfc822</code> notifications</a>
       </h2>
-<p id="section-10-1">The <code>multipart/digest</code> multipart media-type (<span>[<a href="#RFC2046" class="cite xref">RFC2046</a>], <a href="https://rfc-editor.org/rfc/rfc2046#section-5.1.5" class="relref">Section 5.1.5</a></span>) uses <code>message/rfc822</code> media-type (<span>[<a href="#RFC2046" class="cite xref">RFC2046</a>], <a href="https://rfc-editor.org/rfc/rfc2046#section-5.2.1" class="relref">Section 5.2.1</a></span>) for body parts as default. It follows that the Per Resource Events Protocol transmits <span id="iref-notification-229" class="iref"></span><a href="#notification" class="internal xref">notifications</a> as <code>message/rfc822</code>, unless the <span id="iref-application-client-230" class="iref"></span><a href="#application-client" class="internal xref">application client</a> requests otherwise.<a href="#section-10-1" class="pilcrow">¶</a></p>
+<p id="section-10-1">The <code>multipart/digest</code> multipart media-type (<span>[<a href="#RFC2046" class="cite xref">RFC2046</a>], <a href="https://rfc-editor.org/rfc/rfc2046#section-5.1.5" class="relref">Section 5.1.5</a></span>) uses <code>message/rfc822</code> media-type (<span>[<a href="#RFC2046" class="cite xref">RFC2046</a>], <a href="https://rfc-editor.org/rfc/rfc2046#section-5.2.1" class="relref">Section 5.2.1</a></span>) for body parts as default. It follows that the Per Resource Events Protocol transmits <span id="iref-notification-231" class="iref"></span><a href="#notification" class="internal xref">notifications</a> as <code>message/rfc822</code>, unless the <span id="iref-application-client-232" class="iref"></span><a href="#application-client" class="internal xref">application client</a> requests otherwise.<a href="#section-10-1" class="pilcrow">¶</a></p>
 <div id="rfc822-request">
 <section id="section-10.1">
         <h3 id="name-request-3">
 <a href="#section-10.1" class="section-number selfRef">10.1. </a><a href="#name-request-3" class="section-name selfRef">Request</a>
         </h3>
-<p id="section-10.1-1">An <span id="iref-application-client-231" class="iref"></span><a href="#application-client" class="internal xref">application clients</a> <span class="bcp14">MAY</span> specify additional parameters to <code>message/rfc822</code> <span id="iref-notification-232" class="iref"></span><a href="#notification" class="internal xref">notification</a> media-type in the <code>accept</code> <span id="iref-event-field-233" class="iref"></span><a href="#event-field" class="internal xref">event field</a> associated with the <code>prep</code> list item in the <span id="iref-accept-events-234" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field of the request.<a href="#section-10.1-1" class="pilcrow">¶</a></p>
+<p id="section-10.1-1">An <span id="iref-application-client-233" class="iref"></span><a href="#application-client" class="internal xref">application clients</a> <span class="bcp14">MAY</span> specify additional parameters to <code>message/rfc822</code> <span id="iref-notification-234" class="iref"></span><a href="#notification" class="internal xref">notification</a> media-type in the <code>accept</code> <span id="iref-event-field-235" class="iref"></span><a href="#event-field" class="internal xref">event field</a> associated with the <code>prep</code> list item in the <span id="iref-accept-events-236" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field of the request.<a href="#section-10.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="rfc822-notification">
@@ -2366,7 +2369,7 @@ Content-Type: message/rfc822
         <h3 id="name-notification">
 <a href="#section-10.2" class="section-number selfRef">10.2. </a><a href="#name-notification" class="section-name selfRef">Notification</a>
         </h3>
-<p id="section-10.2-1">A <span id="iref-resource-server-235" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> implementing the Per Resource Events Protocol <span class="bcp14">SHOULD</span> send a <span id="iref-notification-236" class="iref"></span><a href="#notification" class="internal xref">notification</a> to an <span id="iref-application-client-237" class="iref"></span><a href="#application-client" class="internal xref">application client</a> when a request with one of the following methods generates a response with any of the following status codes:<a href="#section-10.2-1" class="pilcrow">¶</a></p>
+<p id="section-10.2-1">A <span id="iref-resource-server-237" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> implementing the Per Resource Events Protocol <span class="bcp14">SHOULD</span> send a <span id="iref-notification-238" class="iref"></span><a href="#notification" class="internal xref">notification</a> to an <span id="iref-application-client-239" class="iref"></span><a href="#application-client" class="internal xref">application client</a> when a request with one of the following methods generates a response with any of the following status codes:<a href="#section-10.2-1" class="pilcrow">¶</a></p>
 <span id="name-notification-triggers"></span><div id="notification-triggers">
 <table class="center" id="table-1">
           <caption>
@@ -2425,7 +2428,7 @@ Content-Type: message/rfc822
           </tbody>
         </table>
 </div>
-<p id="section-10.2-3">The <span id="iref-notification-238" class="iref"></span><a href="#notification" class="internal xref">notification</a> <span class="bcp14">MUST NOT</span> be sent before the success response has been sent to the user agent that initiated the request.<a href="#section-10.2-3" class="pilcrow">¶</a></p>
+<p id="section-10.2-3">The <span id="iref-notification-240" class="iref"></span><a href="#notification" class="internal xref">notification</a> <span class="bcp14">MUST NOT</span> be sent before the success response has been sent to the user agent that initiated the request.<a href="#section-10.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="rfc822-headers">
@@ -2433,29 +2436,29 @@ Content-Type: message/rfc822
         <h3 id="name-headers-2">
 <a href="#section-10.3" class="section-number selfRef">10.3. </a><a href="#name-headers-2" class="section-name selfRef">Headers</a>
         </h3>
-<p id="section-10.3-1">A <span id="iref-resource-server-239" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST</span> include the following header fields in a <code>message/rfc822</code> formatted PREP <span id="iref-notification-240" class="iref"></span><a href="#notification" class="internal xref">notification</a>:<a href="#section-10.3-1" class="pilcrow">¶</a></p>
+<p id="section-10.3-1">A <span id="iref-resource-server-241" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST</span> include the following header fields in a <code>message/rfc822</code> formatted PREP <span id="iref-notification-242" class="iref"></span><a href="#notification" class="internal xref">notification</a>:<a href="#section-10.3-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-10.3-2">
           <dt id="section-10.3-2.1"><code>Method</code></dt>
           <dd style="margin-left: 1.5em" id="section-10.3-2.2">
-            <p id="section-10.3-2.2.1">identical to <code>:method</code> pseudo-header field in a HTTP/2 request (<span>[<a href="#RFC9113" class="cite xref">HTTP/2</a>], <a href="https://rfc-editor.org/rfc/rfc9113#section-8.3.1" class="relref">Section 8.3.1</a></span>), that specifies the request method that triggered the <span id="iref-notification-241" class="iref"></span><a href="#notification" class="internal xref">notification</a>.<a href="#section-10.3-2.2.1" class="pilcrow">¶</a></p>
+            <p id="section-10.3-2.2.1">identical to <code>:method</code> pseudo-header field in a HTTP/2 request (<span>[<a href="#RFC9113" class="cite xref">HTTP/2</a>], <a href="https://rfc-editor.org/rfc/rfc9113#section-8.3.1" class="relref">Section 8.3.1</a></span>), that specifies the request method that triggered the <span id="iref-notification-243" class="iref"></span><a href="#notification" class="internal xref">notification</a>.<a href="#section-10.3-2.2.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 <dt id="section-10.3-2.3"><code>Date</code></dt>
           <dd style="margin-left: 1.5em" id="section-10.3-2.4">
-            <p id="section-10.3-2.4.1">identical to <code>Date</code> header field in a HTTP response (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-6.6.1" class="relref">Section 6.6.1</a></span>), that specifies date and time at which the event that triggered the <span id="iref-notification-242" class="iref"></span><a href="#notification" class="internal xref">notification</a> was completed.<a href="#section-10.3-2.4.1" class="pilcrow">¶</a></p>
+            <p id="section-10.3-2.4.1">identical to <code>Date</code> header field in a HTTP response (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-6.6.1" class="relref">Section 6.6.1</a></span>), that specifies date and time at which the event that triggered the <span id="iref-notification-244" class="iref"></span><a href="#notification" class="internal xref">notification</a> was completed.<a href="#section-10.3-2.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 <dt id="section-10.3-2.5"><code>Event-ID</code></dt>
           <dd style="margin-left: 1.5em" id="section-10.3-2.6">
-            <p id="section-10.3-2.6.1">an opaque identifier for the generated <span id="iref-notification-243" class="iref"></span><a href="#notification" class="internal xref">notification</a>.<a href="#section-10.3-2.6.1" class="pilcrow">¶</a></p>
+            <p id="section-10.3-2.6.1">an opaque identifier for the generated <span id="iref-notification-245" class="iref"></span><a href="#notification" class="internal xref">notification</a>.<a href="#section-10.3-2.6.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-10.3-3">A <span id="iref-resource-server-244" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">SHOULD</span> include the following headers in a <code>message/rfc822</code> formatted PREP <span id="iref-notification-245" class="iref"></span><a href="#notification" class="internal xref">notification</a> when the state of the resource or its representation is modified as a result of the event:<a href="#section-10.3-3" class="pilcrow">¶</a></p>
+<p id="section-10.3-3">A <span id="iref-resource-server-246" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">SHOULD</span> include the following headers in a <code>message/rfc822</code> formatted PREP <span id="iref-notification-247" class="iref"></span><a href="#notification" class="internal xref">notification</a> when the state of the resource or its representation is modified as a result of the event:<a href="#section-10.3-3" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-10.3-4">
           <dt id="section-10.3-4.1"><code>ETag</code></dt>
           <dd style="margin-left: 1.5em" id="section-10.3-4.2">
-            <p id="section-10.3-4.2.1">identical to <code>ETag</code> header field (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-8.8.3" class="relref">Section 8.8.3</a></span>) in a HTTP response. The <code>ETag</code> sent <span class="bcp14">MUST</span> be for the same <code>Content-Type</code> as the representation that was sent in the <span id="iref-notification-246" class="iref"></span><a href="#notification" class="internal xref">notification</a> response or that would have been sent in the absense of the <code>Last-Events-ID</code> header.<a href="#section-10.3-4.2.1" class="pilcrow">¶</a></p>
+            <p id="section-10.3-4.2.1">identical to <code>ETag</code> header field (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-8.8.3" class="relref">Section 8.8.3</a></span>) in a HTTP response. The <code>ETag</code> sent <span class="bcp14">MUST</span> be for the same <code>Content-Type</code> as the representation that was sent in the <span id="iref-notification-248" class="iref"></span><a href="#notification" class="internal xref">notification</a> response or that would have been sent in the absense of the <code>Last-Events-ID</code> header.<a href="#section-10.3-4.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -2478,7 +2481,7 @@ ETag: "abc123"
 <a href="#name-put-notification-message" class="selfRef">`PUT` notification message</a>
           </figcaption></figure>
 </div>
-<p id="section-10.3-6">A <span id="iref-resource-server-247" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST</span> include the following headers in a <code>message/rfc822</code> formatted PREP <span id="iref-notification-248" class="iref"></span><a href="#notification" class="internal xref">notification</a> when a request modifies another resource:<a href="#section-10.3-6" class="pilcrow">¶</a></p>
+<p id="section-10.3-6">A <span id="iref-resource-server-249" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">MUST</span> include the following headers in a <code>message/rfc822</code> formatted PREP <span id="iref-notification-250" class="iref"></span><a href="#notification" class="internal xref">notification</a> when a request modifies another resource:<a href="#section-10.3-6" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-10.3-7">
           <dt id="section-10.3-7.1"><code>Content-Location</code></dt>
           <dd style="margin-left: 1.5em" id="section-10.3-7.2">
@@ -2512,19 +2515,19 @@ Content-Location: /foo
         <h3 id="name-body-2">
 <a href="#section-10.4" class="section-number selfRef">10.4. </a><a href="#name-body-2" class="section-name selfRef">Body</a>
         </h3>
-<p id="section-10.4-1">The body of a <code>message/rfc822</code> formatted PREP <span id="iref-notification-249" class="iref"></span><a href="#notification" class="internal xref">notification</a> might be used to provide a <span id="iref-delta-representation-250" class="iref"></span>delta representation, the difference between the state of the representation before and after the most recent event on the resource.<a href="#section-10.4-1" class="pilcrow">¶</a></p>
-<p id="section-10.4-2">If the <span id="iref-application-client-251" class="iref"></span><a href="#application-client" class="internal xref">application client</a> does not specify <code>delta</code> parameter associated with a preferred <span id="iref-notification-252" class="iref"></span><a href="#notification" class="internal xref">notifications</a> format of <code>message/rfc822</code> in the <code>accept</code> <span id="iref-event-field-253" class="iref"></span><a href="#event-field" class="internal xref">event field</a> of the <span><a href="#request" class="internal xref">​request</a> (<a href="#request" class="auto internal xref">Section 7</a>)</span> that results in <code>message/rfc822</code> formatted PREP <span id="iref-notification-254" class="iref"></span><a href="#notification" class="internal xref">notifications</a>, the <span id="iref-notification-255" class="iref"></span><a href="#notification" class="internal xref">notifications</a> <span class="bcp14">MUST NOT</span> contain a body.<a href="#section-10.4-2" class="pilcrow">¶</a></p>
-<p id="section-10.4-3">If state of the resource is not modified as a result of an HTTP operation, the resulting <span id="iref-notification-256" class="iref"></span><a href="#notification" class="internal xref">notification</a> <span class="bcp14">MUST NOT</span> contain a body.<a href="#section-10.4-3" class="pilcrow">¶</a></p>
-<p id="section-10.4-4">If the <span id="iref-application-client-257" class="iref"></span><a href="#application-client" class="internal xref">application client</a> specifies a <code>delta</code> parameter associated with a preferred <span id="iref-notification-258" class="iref"></span><a href="#notification" class="internal xref">notifications</a> format of <code>message/rfc822</code> in the <code>accept</code> <span id="iref-event-field-259" class="iref"></span><a href="#event-field" class="internal xref">event field</a> of the <span><a href="#request" class="internal xref">​request</a> (<a href="#request" class="auto internal xref">Section 7</a>)</span> that results in <code>message/rfc822</code> formatted PREP <span id="iref-notification-260" class="iref"></span><a href="#notification" class="internal xref">notifications</a>, a <span id="iref-resource-server-261" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a>:<a href="#section-10.4-4" class="pilcrow">¶</a></p>
+<p id="section-10.4-1">The body of a <code>message/rfc822</code> formatted PREP <span id="iref-notification-251" class="iref"></span><a href="#notification" class="internal xref">notification</a> might be used to provide a <span id="iref-delta-representation-252" class="iref"></span>delta representation, the difference between the state of the representation before and after the most recent event on the resource.<a href="#section-10.4-1" class="pilcrow">¶</a></p>
+<p id="section-10.4-2">If the <span id="iref-application-client-253" class="iref"></span><a href="#application-client" class="internal xref">application client</a> does not specify <code>delta</code> parameter associated with a preferred <span id="iref-notification-254" class="iref"></span><a href="#notification" class="internal xref">notifications</a> format of <code>message/rfc822</code> in the <code>accept</code> <span id="iref-event-field-255" class="iref"></span><a href="#event-field" class="internal xref">event field</a> of the <span><a href="#request" class="internal xref">​request</a> (<a href="#request" class="auto internal xref">Section 7</a>)</span> that results in <code>message/rfc822</code> formatted PREP <span id="iref-notification-256" class="iref"></span><a href="#notification" class="internal xref">notifications</a>, the <span id="iref-notification-257" class="iref"></span><a href="#notification" class="internal xref">notifications</a> <span class="bcp14">MUST NOT</span> contain a body.<a href="#section-10.4-2" class="pilcrow">¶</a></p>
+<p id="section-10.4-3">If state of the resource is not modified as a result of an HTTP operation, the resulting <span id="iref-notification-258" class="iref"></span><a href="#notification" class="internal xref">notification</a> <span class="bcp14">MUST NOT</span> contain a body.<a href="#section-10.4-3" class="pilcrow">¶</a></p>
+<p id="section-10.4-4">If the <span id="iref-application-client-259" class="iref"></span><a href="#application-client" class="internal xref">application client</a> specifies a <code>delta</code> parameter associated with a preferred <span id="iref-notification-260" class="iref"></span><a href="#notification" class="internal xref">notifications</a> format of <code>message/rfc822</code> in the <code>accept</code> <span id="iref-event-field-261" class="iref"></span><a href="#event-field" class="internal xref">event field</a> of the <span><a href="#request" class="internal xref">​request</a> (<a href="#request" class="auto internal xref">Section 7</a>)</span> that results in <code>message/rfc822</code> formatted PREP <span id="iref-notification-262" class="iref"></span><a href="#notification" class="internal xref">notifications</a>, a <span id="iref-resource-server-263" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a>:<a href="#section-10.4-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-10.4-5.1">
-            <p id="section-10.4-5.1.1"><span class="bcp14">SHOULD</span> send the <span id="iref-delta-representation-262" class="iref"></span>delta representation as the body of the <span id="iref-notification-263" class="iref"></span><a href="#notification" class="internal xref">notification</a> generated upon a <code>PATCH</code> (<span>[<a href="#RFC5789" class="cite xref">RFC5789</a>]</span>) operation.<a href="#section-10.4-5.1.1" class="pilcrow">¶</a></p>
+            <p id="section-10.4-5.1.1"><span class="bcp14">SHOULD</span> send the <span id="iref-delta-representation-264" class="iref"></span>delta representation as the body of the <span id="iref-notification-265" class="iref"></span><a href="#notification" class="internal xref">notification</a> generated upon a <code>PATCH</code> (<span>[<a href="#RFC5789" class="cite xref">RFC5789</a>]</span>) operation.<a href="#section-10.4-5.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-10.4-5.2">
-            <p id="section-10.4-5.2.1"><span class="bcp14">MAY</span> send the <span id="iref-delta-representation-264" class="iref"></span>delta representation as the body of the <span id="iref-notification-265" class="iref"></span><a href="#notification" class="internal xref">notification</a> generated upon a <code>PUT</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-9.3.4" class="relref">Section 9.3.4</a></span>) or a <code>POST</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-9.3.3" class="relref">Section 9.3.3</a></span>) operation.<a href="#section-10.4-5.2.1" class="pilcrow">¶</a></p>
+            <p id="section-10.4-5.2.1"><span class="bcp14">MAY</span> send the <span id="iref-delta-representation-266" class="iref"></span>delta representation as the body of the <span id="iref-notification-267" class="iref"></span><a href="#notification" class="internal xref">notification</a> generated upon a <code>PUT</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-9.3.4" class="relref">Section 9.3.4</a></span>) or a <code>POST</code> (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-9.3.3" class="relref">Section 9.3.3</a></span>) operation.<a href="#section-10.4-5.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-10.4-6">A <span id="iref-resource-server-266" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">SHOULD</span> send the <span id="iref-delta-representation-267" class="iref"></span>delta representation in the content-type preferred by the client as specified by the <code>delta</code> parameter.<a href="#section-10.4-6" class="pilcrow">¶</a></p>
+<p id="section-10.4-6">A <span id="iref-resource-server-268" class="iref"></span><a href="#resource-server" class="internal xref">resource server</a> <span class="bcp14">SHOULD</span> send the <span id="iref-delta-representation-269" class="iref"></span>delta representation in the content-type preferred by the client as specified by the <code>delta</code> parameter.<a href="#section-10.4-6" class="pilcrow">¶</a></p>
 <span id="name-patch-notification-with-del"></span><div id="rfc822-PATCH-delta">
 <figure id="figure-15">
           <div class="lang-http-message sourcecode" id="section-10.4-7.1">
@@ -2555,12 +2558,12 @@ Content-type: application/example
       <h2 id="name-implementation-guidance">
 <a href="#section-11" class="section-number selfRef">11. </a><a href="#name-implementation-guidance" class="section-name selfRef">Implementation Guidance</a>
       </h2>
-<p id="section-11-1">A Connect/Express style middleware for parsing the <code>Accept-Events</code> header field is available at <a href="https://github.com/CxRes/express-accept-events/">https://github.com/CxRes/express-accept-events/</a> and can be installed from npm as <code>express-accept-events</code>. Complementing this is a Connect/Express style middleware that negotiates an appropriate <span id="iref-notification-268" class="iref"></span><a href="#notification" class="internal xref">notifications</a> protocol on the resource based on the request made using the <code>Accept-Event</code> header field, available at <a href="https://github.com/CxRes/express-negotiate-events/">https://github.com/CxRes/express-negotiate-events/</a> and can be installed from npm as <code>express-negotiate-events</code>.<a href="#section-11-1" class="pilcrow">¶</a></p>
+<p id="section-11-1">A Connect/Express style middleware for parsing the <code>Accept-Events</code> header field is available at <a href="https://github.com/CxRes/express-accept-events/">https://github.com/CxRes/express-accept-events/</a> and can be installed from npm as <code>express-accept-events</code>. Complementing this is a Connect/Express style middleware that negotiates an appropriate <span id="iref-notification-270" class="iref"></span><a href="#notification" class="internal xref">notifications</a> protocol on the resource based on the request made using the <code>Accept-Event</code> header field, available at <a href="https://github.com/CxRes/express-negotiate-events/">https://github.com/CxRes/express-negotiate-events/</a> and can be installed from npm as <code>express-negotiate-events</code>.<a href="#section-11-1" class="pilcrow">¶</a></p>
 <p id="section-11-2">An early implementation of the Per Resource Events Protocol, also in the form of a Connect/Express style middleware, is available at <a href="https://github.com/CxRes/express-prep/">https://github.com/CxRes/express-prep/</a> and can be installed from npm as <code>express-prep</code>.<a href="#section-11-2" class="pilcrow">¶</a></p>
 <p id="section-11-3">Express Accept Events, Express Negotiate Events and Express PREP are Free and Open Source Software, released under the Mozilla Public License v2.0.<a href="#section-11-3" class="pilcrow">¶</a></p>
-<p id="section-11-4">The W3C Solid Community Group is developing a specification called Solid-PREP that defines representation and semantics for PREP <span id="iref-notification-269" class="iref"></span><a href="#notification" class="internal xref">notifications</a> sent from LDP Resources hosted on Solid storage. This specification enables Solid servers to incorporate the Per Resource Events as a means for sending <span id="iref-notification-270" class="iref"></span><a href="#notification" class="internal xref">notifications</a>. Solid-PREP is available at <a href="https://github.com/solid/solid-prep/">https://github.com/solid/solid-prep/</a> and is released under the W3C Software and Document license - version 2023.<a href="#section-11-4" class="pilcrow">¶</a></p>
-<p id="section-11-5">The Node Solid Server, an open source server that implements the Solid Protocol, is in the process of implementing <span id="iref-notification-271" class="iref"></span><a href="#notification" class="internal xref">notifications</a> using the Per Resource Events Protocol and Solid-PREP at <a href="https://github.com/nodeSolidServer/node-solid-server/tree/prep">https://github.com/nodeSolidServer/node-solid-server/tree/prep</a>.<a href="#section-11-5" class="pilcrow">¶</a></p>
-<p id="section-11-6">The PREP Fetch <a href="https://github.com/CxRes/prep-fetch/">https://github.com/CxRes/prep-fetch/</a> library provides a convinient way to consume fetch <span>[<a href="#FETCH" class="cite xref">FETCH</a>]</span> respsones containing PREP <span id="iref-notification-272" class="iref"></span><a href="#notification" class="internal xref">notification</a>. PREP Fetch itself is a thin wrapper on top of Multipart Fetch <a href="https://github.com/CxRes/multipart-fetch/">https://github.com/CxRes/multipart-fetch/</a> that streams the parts of a multipart response as a series of Fetch Responses.<a href="#section-11-6" class="pilcrow">¶</a></p>
+<p id="section-11-4">The W3C Solid Community Group is developing a specification called Solid-PREP that defines representation and semantics for PREP <span id="iref-notification-271" class="iref"></span><a href="#notification" class="internal xref">notifications</a> sent from LDP Resources hosted on Solid storage. This specification enables Solid servers to incorporate the Per Resource Events as a means for sending <span id="iref-notification-272" class="iref"></span><a href="#notification" class="internal xref">notifications</a>. Solid-PREP is available at <a href="https://solid.github.io/solid-prep/protocol/">https://solid.github.io/solid-prep/protocol/</a> and is released under the W3C Software and Document license - version 2023.<a href="#section-11-4" class="pilcrow">¶</a></p>
+<p id="section-11-5">The Node Solid Server, an open source server that implements the Solid Protocol, implements the Per Resource Events Protocol and Solid-PREP at <a href="https://github.com/nodeSolidServer/node-solid-server/tree/basic-prep">https://github.com/nodeSolidServer/node-solid-server/tree/basic-prep</a>. It is available for testing on the Solid community test server at <a href="https://solidcommunity.net:8443">https://solidcommunity.net:8443</a>.<a href="#section-11-5" class="pilcrow">¶</a></p>
+<p id="section-11-6">The PREP Fetch <a href="https://github.com/CxRes/prep-fetch/">https://github.com/CxRes/prep-fetch/</a> library provides a convinient way to consume fetch <span>[<a href="#FETCH" class="cite xref">FETCH</a>]</span> respsones containing PREP <span id="iref-notification-273" class="iref"></span><a href="#notification" class="internal xref">notification</a>. PREP Fetch itself is a thin wrapper on top of Multipart Fetch <a href="https://github.com/CxRes/multipart-fetch/">https://github.com/CxRes/multipart-fetch/</a> that streams the parts of a multipart response as a series of Fetch Responses.<a href="#section-11-6" class="pilcrow">¶</a></p>
 <p id="section-11-7">PREP Fetch and Multipart Fetch are Free and Open Source Software, released under the Mozilla Public License v2.0.<a href="#section-11-7" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2569,14 +2572,14 @@ Content-type: application/example
       <h2 id="name-security-considerations">
 <a href="#section-12" class="section-number selfRef">12. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-12-1">Since the Per Resource Events Protocol uses HTTP to transmit <span id="iref-notification-273" class="iref"></span><a href="#notification" class="internal xref">notifications</a>, it follows that the security and privacy considerations that apply to HTTP also apply to PREP. Considerations relevant to HTTP semantics and its use for transferring information over the Internet are discussed in <span><a href="https://rfc-editor.org/rfc/rfc9110#section-17" class="relref">Section 17</a> of [<a href="#HTTP" class="cite xref">HTTP</a>]</span>, and considerations related to HTTP/1.1 message syntax and parsing are discussed in <span><a href="https://rfc-editor.org/rfc/rfc9112#section-11" class="relref">Section 11</a> of [<a href="#RFC9112" class="cite xref">HTTP/1.1</a>]</span>.<a href="#section-12-1" class="pilcrow">¶</a></p>
-<p id="section-12-2">The following is a non-exhaustive list of security and privacy considerations that become especially pertinent due to the manner in which PREP uses HTTP for transmitting <span id="iref-notification-274" class="iref"></span><a href="#notification" class="internal xref">notifications</a>:<a href="#section-12-2" class="pilcrow">¶</a></p>
+<p id="section-12-1">Since the Per Resource Events Protocol uses HTTP to transmit <span id="iref-notification-274" class="iref"></span><a href="#notification" class="internal xref">notifications</a>, it follows that the security and privacy considerations that apply to HTTP also apply to PREP. Considerations relevant to HTTP semantics and its use for transferring information over the Internet are discussed in <span><a href="https://rfc-editor.org/rfc/rfc9110#section-17" class="relref">Section 17</a> of [<a href="#HTTP" class="cite xref">HTTP</a>]</span>, and considerations related to HTTP/1.1 message syntax and parsing are discussed in <span><a href="https://rfc-editor.org/rfc/rfc9112#section-11" class="relref">Section 11</a> of [<a href="#RFC9112" class="cite xref">HTTP/1.1</a>]</span>.<a href="#section-12-1" class="pilcrow">¶</a></p>
+<p id="section-12-2">The following is a non-exhaustive list of security and privacy considerations that become especially pertinent due to the manner in which PREP uses HTTP for transmitting <span id="iref-notification-275" class="iref"></span><a href="#notification" class="internal xref">notifications</a>:<a href="#section-12-2" class="pilcrow">¶</a></p>
 <div id="browser-fingerprinting">
 <section id="section-12.1">
         <h3 id="name-browser-fingerprinting">
 <a href="#section-12.1" class="section-number selfRef">12.1. </a><a href="#name-browser-fingerprinting" class="section-name selfRef">Browser Fingerprinting</a>
         </h3>
-<p id="section-12.1-1">The <span id="iref-accept-events-275" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field provides an extra vector that can aid unique identification of user agent. Follow the advice in <span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-17.13" class="relref">Section 17.13</a></span> to minimize the risk of fingerprinting.<a href="#section-12.1-1" class="pilcrow">¶</a></p>
+<p id="section-12.1-1">The <span id="iref-accept-events-276" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> header field provides an extra vector that can aid unique identification of user agent. Follow the advice in <span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-17.13" class="relref">Section 17.13</a></span> to minimize the risk of fingerprinting.<a href="#section-12.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="denial-of-service-attacks">
@@ -2584,7 +2587,7 @@ Content-type: application/example
         <h3 id="name-denial-of-service-attacks">
 <a href="#section-12.2" class="section-number selfRef">12.2. </a><a href="#name-denial-of-service-attacks" class="section-name selfRef">Denial-of-Service Attacks</a>
         </h3>
-<p id="section-12.2-1">Resources that serve <span id="iref-notification-276" class="iref"></span><a href="#notification" class="internal xref">notifications</a>, by virtue of keeping the response stream open for an extended period of time are more susceptible to Denial-of-Service attacks because the effort required to request <span id="iref-notification-277" class="iref"></span><a href="#notification" class="internal xref">notifications</a> from the same resource is tiny compared to the time, memory, and bandwidth consumed by attempting to serve the <span id="iref-notification-278" class="iref"></span><a href="#notification" class="internal xref">notifications</a>. Servers ought to ignore, coalesce, or reject egregious <span id="iref-notification-279" class="iref"></span><a href="#notification" class="internal xref">notification</a> request, such as repeated <span id="iref-notification-280" class="iref"></span><a href="#notification" class="internal xref">notification</a> requests to resource from the same origin.<a href="#section-12.2-1" class="pilcrow">¶</a></p>
+<p id="section-12.2-1">Resources that serve <span id="iref-notification-277" class="iref"></span><a href="#notification" class="internal xref">notifications</a>, by virtue of keeping the response stream open for an extended period of time are more susceptible to Denial-of-Service attacks because the effort required to request <span id="iref-notification-278" class="iref"></span><a href="#notification" class="internal xref">notifications</a> from the same resource is tiny compared to the time, memory, and bandwidth consumed by attempting to serve the <span id="iref-notification-279" class="iref"></span><a href="#notification" class="internal xref">notifications</a>. Servers ought to ignore, coalesce, or reject egregious <span id="iref-notification-280" class="iref"></span><a href="#notification" class="internal xref">notification</a> request, such as repeated <span id="iref-notification-281" class="iref"></span><a href="#notification" class="internal xref">notification</a> requests to resource from the same origin.<a href="#section-12.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2613,7 +2616,7 @@ Content-type: application/example
           <tbody>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">
-                <span id="iref-accept-events-281" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a>
+                <span id="iref-accept-events-282" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a>
 </td>
               <td class="text-left" rowspan="1" colspan="1">Provisional</td>
               <td class="text-left" rowspan="1" colspan="1">
@@ -2622,7 +2625,7 @@ Content-type: application/example
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">
-                <span id="iref-events-282" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a>
+                <span id="iref-events-283" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a>
 </td>
               <td class="text-left" rowspan="1" colspan="1">Provisional</td>
               <td class="text-left" rowspan="1" colspan="1">
@@ -2638,8 +2641,8 @@ Content-type: application/example
         <h3 id="name-notifications-protocol-regi">
 <a href="#section-13.2" class="section-number selfRef">13.2. </a><a href="#name-notifications-protocol-regi" class="section-name selfRef">Notifications Protocol Registry</a>
         </h3>
-<p id="section-13.2-1">The <span id="iref-accept-events-283" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> and <span id="iref-events-284" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> header fields identify specific protocols for <span id="iref-notification-285" class="iref"></span><a href="#notification" class="internal xref">notifications</a>. The "HTTP <span id="iref-notification-286" class="iref"></span><a href="#notification" class="internal xref">Notifications</a> Protocol Registry", created and maintained by IANA at <a href="https://www.iana.org/assignments/http-parameters/">https://www.iana.org/assignments/http-parameters/</a>, registers identifiers for <span id="iref-notification-287" class="iref"></span><a href="#notification" class="internal xref">notification</a> protocols.<a href="#section-13.2-1" class="pilcrow">¶</a></p>
-<p id="section-13.2-2"><span id="iref-notification-288" class="iref"></span><a href="#notification" class="internal xref">Notifications</a> protocol registrations <span class="bcp14">MUST</span> include the following fields:<a href="#section-13.2-2" class="pilcrow">¶</a></p>
+<p id="section-13.2-1">The <span id="iref-accept-events-284" class="iref"></span><a href="#accept-events-header" class="internal xref"><code>Accept-Events</code></a> and <span id="iref-events-285" class="iref"></span><a href="#events-header" class="internal xref"><code>Events</code></a> header fields identify specific protocols for <span id="iref-notification-286" class="iref"></span><a href="#notification" class="internal xref">notifications</a>. The "HTTP <span id="iref-notification-287" class="iref"></span><a href="#notification" class="internal xref">Notifications</a> Protocol Registry", created and maintained by IANA at <a href="https://www.iana.org/assignments/http-parameters/">https://www.iana.org/assignments/http-parameters/</a>, registers identifiers for <span id="iref-notification-288" class="iref"></span><a href="#notification" class="internal xref">notification</a> protocols.<a href="#section-13.2-1" class="pilcrow">¶</a></p>
+<p id="section-13.2-2"><span id="iref-notification-289" class="iref"></span><a href="#notification" class="internal xref">Notifications</a> protocol registrations <span class="bcp14">MUST</span> include the following fields:<a href="#section-13.2-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-13.2-3.1">
             <p id="section-13.2-3.1.1">Identifier<a href="#section-13.2-3.1.1" class="pilcrow">¶</a></p>
@@ -2669,7 +2672,7 @@ Content-type: application/example
             </tr>
           </tbody>
         </table>
-<p id="section-13.2-6">Values to be added to this namespace require IETF Review (see <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>], <a href="https://rfc-editor.org/rfc/rfc8126#section-4.8" class="relref">Section 4.8</a></span>). Identified protocols <span class="bcp14">MUST</span> conform to the purpose of sending <span id="iref-notification-289" class="iref"></span><a href="#notification" class="internal xref">notifications</a> as defined in <a href="#header-fields" class="auto internal xref">Section 4</a> of this document.<a href="#section-13.2-6" class="pilcrow">¶</a></p>
+<p id="section-13.2-6">Values to be added to this namespace require IETF Review (see <span>[<a href="#RFC8126" class="cite xref">RFC8126</a>], <a href="https://rfc-editor.org/rfc/rfc8126#section-4.8" class="relref">Section 4.8</a></span>). Identified protocols <span class="bcp14">MUST</span> conform to the purpose of sending <span id="iref-notification-290" class="iref"></span><a href="#notification" class="internal xref">notifications</a> as defined in <a href="#header-fields" class="auto internal xref">Section 4</a> of this document.<a href="#section-13.2-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2771,31 +2774,40 @@ Content-type: application/example
 </div>
 </section>
 </div>
+<div id="acknowledgments">
 <section id="appendix-A">
+      <h2 id="name-acknowledgments">
+<a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
+      </h2>
+<p id="appendix-A-1">I would like to express my gratitude to Tim Berners-Lee for his recommendation to the IRTF for the Diversity Travel Grant that allowed me to first present this draft at IETF 118. I would like to thank IRTF, and in particular, the selection committee for the Diversity Travel Grants for sponsoring my visit to the co-located IRTF and IETF meetings in Prague. I would also like to acknowledge the help and guidance from Dhruv Dhody that allowed me to make the trip.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-2">I would like to thank Alain Bourgeois for his continued help in implementing the Per Resource Events Protocol in the Node Solid Server. I am also grateful to the Solid community for their support and encouragement of this work.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<section id="appendix-B">
       <h2 id="name-index">
 <a href="#name-index" class="section-name selfRef">Index</a>
       </h2>
 <div id="rfc.index.index">
-<p id="appendix-A-1">
+<p id="appendix-B-1">
         <a href="#rfc.index.u65" class="internal xref">A</a>
         <a href="#rfc.index.u66" class="internal xref">B</a>
         <a href="#rfc.index.u68" class="internal xref">D</a>
         <a href="#rfc.index.u69" class="internal xref">E</a>
         <a href="#rfc.index.u78" class="internal xref">N</a>
-        <a href="#rfc.index.u82" class="internal xref">R</a><a href="#appendix-A-1" class="pilcrow">¶</a></p>
+        <a href="#rfc.index.u82" class="internal xref">R</a><a href="#appendix-B-1" class="pilcrow">¶</a></p>
 </div>
 <ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="appendix-A-2.1">
+<li class="normal ulEmpty" id="appendix-B-2.1">
           <div id="rfc.index.u65">
-<p id="appendix-A-2.1.1" class="keepWithNext">
-            <a href="#rfc.index.u65" class="internal xref">A</a><a href="#appendix-A-2.1.1" class="pilcrow">¶</a></p>
+<p id="appendix-B-2.1.1" class="keepWithNext">
+            <a href="#rfc.index.u65" class="internal xref">A</a><a href="#appendix-B-2.1.1" class="pilcrow">¶</a></p>
 </div>
 <ul class="compact normal ulEmpty">
-<li class="compact normal ulEmpty" id="appendix-A-2.1.2.1">
-              <span class="break"></span><dl class="dlCompact dlParallel" id="appendix-A-2.1.2.1.1">
-                <dt id="appendix-A-2.1.2.1.1.1">Accept-Events</dt>
-                <dd style="margin-left: 1.5em" id="appendix-A-2.1.2.1.1.2">
-                  <p id="appendix-A-2.1.2.1.1.2.1">
+<li class="compact normal ulEmpty" id="appendix-B-2.1.2.1">
+              <span class="break"></span><dl class="dlCompact dlParallel" id="appendix-B-2.1.2.1.1">
+                <dt id="appendix-B-2.1.2.1.1.1">Accept-Events</dt>
+                <dd style="margin-left: 1.5em" id="appendix-B-2.1.2.1.1.2">
+                  <p id="appendix-B-2.1.2.1.1.2.1">
                     <a href="#section-1.2.2-1" class="auto internal xref">Section 1.2.2, Paragraph 1</a>; 
 <a href="#section-1.2.2-3" class="auto internal xref">Section 1.2.2, Paragraph 3</a>; 
 <a href="#section-1.2.3-1" class="auto internal xref">Section 1.2.3, Paragraph 1</a>; 
@@ -2820,12 +2832,12 @@ Content-type: application/example
 <a href="#section-10.1-1" class="auto internal xref">Section 10.1, Paragraph 1</a>; 
 <a href="#section-12.1-1" class="auto internal xref">Section 12.1, Paragraph 1</a>; 
 <a href="#table-2" class="auto internal xref">Table 2</a>; 
-<a href="#section-13.2-1" class="auto internal xref">Section 13.2, Paragraph 1</a><a href="#appendix-A-2.1.2.1.1.2.1" class="pilcrow">¶</a></p>
+<a href="#section-13.2-1" class="auto internal xref">Section 13.2, Paragraph 1</a><a href="#appendix-B-2.1.2.1.1.2.1" class="pilcrow">¶</a></p>
 </dd>
                 <dd class="break"></dd>
-<dt id="appendix-A-2.1.2.1.1.3">application client</dt>
-                <dd style="margin-left: 1.5em" id="appendix-A-2.1.2.1.1.4">
-                  <p id="appendix-A-2.1.2.1.1.4.1">
+<dt id="appendix-B-2.1.2.1.1.3">application client</dt>
+                <dd style="margin-left: 1.5em" id="appendix-B-2.1.2.1.1.4">
+                  <p id="appendix-B-2.1.2.1.1.4.1">
                     <a href="#section-3.4-2.2.1" class="auto internal xref">Section 3.4, Paragraph 2.2.1</a>; 
 <a href="#section-3.5-2.2.1" class="auto internal xref">Section 3.5, Paragraph 2.2.1</a>; 
 <a href="#section-4.1-1" class="auto internal xref">Section 4.1, Paragraph 1</a>; 
@@ -2845,69 +2857,69 @@ Content-type: application/example
 <a href="#section-10.1-1" class="auto internal xref">Section 10.1, Paragraph 1</a>; 
 <a href="#section-10.2-1" class="auto internal xref">Section 10.2, Paragraph 1</a>; 
 <a href="#section-10.4-2" class="auto internal xref">Section 10.4, Paragraph 2</a>; 
-<a href="#section-10.4-4" class="auto internal xref">Section 10.4, Paragraph 4</a><a href="#appendix-A-2.1.2.1.1.4.1" class="pilcrow">¶</a></p>
+<a href="#section-10.4-4" class="auto internal xref">Section 10.4, Paragraph 4</a><a href="#appendix-B-2.1.2.1.1.4.1" class="pilcrow">¶</a></p>
 </dd>
               <dd class="break"></dd>
 </dl>
 </li>
           </ul>
 </li>
-        <li class="normal ulEmpty" id="appendix-A-2.2">
+        <li class="normal ulEmpty" id="appendix-B-2.2">
           <div id="rfc.index.u66">
-<p id="appendix-A-2.2.1" class="keepWithNext">
-            <a href="#rfc.index.u66" class="internal xref">B</a><a href="#appendix-A-2.2.1" class="pilcrow">¶</a></p>
+<p id="appendix-B-2.2.1" class="keepWithNext">
+            <a href="#rfc.index.u66" class="internal xref">B</a><a href="#appendix-B-2.2.1" class="pilcrow">¶</a></p>
 </div>
 <ul class="compact normal ulEmpty">
-<li class="compact normal ulEmpty" id="appendix-A-2.2.2.1">
-              <span class="break"></span><dl class="dlCompact dlParallel" id="appendix-A-2.2.2.1.1">
-                <dt id="appendix-A-2.2.2.1.1.1">base response</dt>
-                <dd style="margin-left: 1.5em" id="appendix-A-2.2.2.1.1.2">
-                  <p id="appendix-A-2.2.2.1.1.2.1">
+<li class="compact normal ulEmpty" id="appendix-B-2.2.2.1">
+              <span class="break"></span><dl class="dlCompact dlParallel" id="appendix-B-2.2.2.1.1">
+                <dt id="appendix-B-2.2.2.1.1.1">base response</dt>
+                <dd style="margin-left: 1.5em" id="appendix-B-2.2.2.1.1.2">
+                  <p id="appendix-B-2.2.2.1.1.2.1">
                     <a href="#section-7-1" class="auto internal xref">Section 7, Paragraph 1</a>; 
 <a href="#section-7-3.2.1" class="auto internal xref">Section 7, Paragraph 3.2.1</a>; 
 <a href="#section-7-4.2" class="auto internal xref">Section 7, Paragraph 4.2</a>; 
 <a href="#section-9.2.1-1" class="auto internal xref">Section 9.2.1, Paragraph 1</a>; 
 <a href="#section-9.2.1.1-1" class="auto internal xref">Section 9.2.1.1, Paragraph 1</a>; 
 <a href="#section-9.2.1.1-2" class="auto internal xref">Section 9.2.1.1, Paragraph 2</a>; 
-<a href="#section-9.2.1.1-3" class="auto internal xref">Section 9.2.1.1, Paragraph 3</a><a href="#appendix-A-2.2.2.1.1.2.1" class="pilcrow">¶</a></p>
+<a href="#section-9.2.1.1-3" class="auto internal xref">Section 9.2.1.1, Paragraph 3</a><a href="#appendix-B-2.2.2.1.1.2.1" class="pilcrow">¶</a></p>
 </dd>
               <dd class="break"></dd>
 </dl>
 </li>
           </ul>
 </li>
-        <li class="normal ulEmpty" id="appendix-A-2.3">
+        <li class="normal ulEmpty" id="appendix-B-2.3">
           <div id="rfc.index.u68">
-<p id="appendix-A-2.3.1" class="keepWithNext">
-            <a href="#rfc.index.u68" class="internal xref">D</a><a href="#appendix-A-2.3.1" class="pilcrow">¶</a></p>
+<p id="appendix-B-2.3.1" class="keepWithNext">
+            <a href="#rfc.index.u68" class="internal xref">D</a><a href="#appendix-B-2.3.1" class="pilcrow">¶</a></p>
 </div>
 <ul class="compact normal ulEmpty">
-<li class="compact normal ulEmpty" id="appendix-A-2.3.2.1">
-              <span class="break"></span><dl class="dlCompact dlParallel" id="appendix-A-2.3.2.1.1">
-                <dt id="appendix-A-2.3.2.1.1.1">delta representation</dt>
-                <dd style="margin-left: 1.5em" id="appendix-A-2.3.2.1.1.2">
-                  <p id="appendix-A-2.3.2.1.1.2.1">
+<li class="compact normal ulEmpty" id="appendix-B-2.3.2.1">
+              <span class="break"></span><dl class="dlCompact dlParallel" id="appendix-B-2.3.2.1.1">
+                <dt id="appendix-B-2.3.2.1.1.1">delta representation</dt>
+                <dd style="margin-left: 1.5em" id="appendix-B-2.3.2.1.1.2">
+                  <p id="appendix-B-2.3.2.1.1.2.1">
                     <strong><em><a href="#section-10.4-1" class="auto internal xref">Section 10.4, Paragraph 1</a></em></strong>; 
 <a href="#section-10.4-5.1.1" class="auto internal xref">Section 10.4, Paragraph 5.1.1</a>; 
 <a href="#section-10.4-5.2.1" class="auto internal xref">Section 10.4, Paragraph 5.2.1</a>; 
-<a href="#section-10.4-6" class="auto internal xref">Section 10.4, Paragraph 6</a><a href="#appendix-A-2.3.2.1.1.2.1" class="pilcrow">¶</a></p>
+<a href="#section-10.4-6" class="auto internal xref">Section 10.4, Paragraph 6</a><a href="#appendix-B-2.3.2.1.1.2.1" class="pilcrow">¶</a></p>
 </dd>
               <dd class="break"></dd>
 </dl>
 </li>
           </ul>
 </li>
-        <li class="normal ulEmpty" id="appendix-A-2.4">
+        <li class="normal ulEmpty" id="appendix-B-2.4">
           <div id="rfc.index.u69">
-<p id="appendix-A-2.4.1" class="keepWithNext">
-            <a href="#rfc.index.u69" class="internal xref">E</a><a href="#appendix-A-2.4.1" class="pilcrow">¶</a></p>
+<p id="appendix-B-2.4.1" class="keepWithNext">
+            <a href="#rfc.index.u69" class="internal xref">E</a><a href="#appendix-B-2.4.1" class="pilcrow">¶</a></p>
 </div>
 <ul class="compact normal ulEmpty">
-<li class="compact normal ulEmpty" id="appendix-A-2.4.2.1">
-              <span class="break"></span><dl class="dlCompact dlParallel" id="appendix-A-2.4.2.1.1">
-                <dt id="appendix-A-2.4.2.1.1.1">event field</dt>
-                <dd style="margin-left: 1.5em" id="appendix-A-2.4.2.1.1.2">
-                  <p id="appendix-A-2.4.2.1.1.2.1">
+<li class="compact normal ulEmpty" id="appendix-B-2.4.2.1">
+              <span class="break"></span><dl class="dlCompact dlParallel" id="appendix-B-2.4.2.1.1">
+                <dt id="appendix-B-2.4.2.1.1.1">event field</dt>
+                <dd style="margin-left: 1.5em" id="appendix-B-2.4.2.1.1.2">
+                  <p id="appendix-B-2.4.2.1.1.2.1">
                     <a href="#section-4.2-1" class="auto internal xref">Section 4.2, Paragraph 1</a>; 
 <a href="#section-5.1-1" class="auto internal xref">Section 5.1, Paragraph 1</a>; 
 <a href="#section-5.1-3.1.1" class="auto internal xref">Section 5.1, Paragraph 3.1.1</a>; 
@@ -2926,12 +2938,12 @@ Content-type: application/example
 <a href="#section-9.1-2.3.2.1.2.1.1" class="auto internal xref">Section 9.1, Paragraph 2.3.2.1.2.1.1</a>; 
 <a href="#section-10.1-1" class="auto internal xref">Section 10.1, Paragraph 1</a>; 
 <a href="#section-10.4-2" class="auto internal xref">Section 10.4, Paragraph 2</a>; 
-<a href="#section-10.4-4" class="auto internal xref">Section 10.4, Paragraph 4</a><a href="#appendix-A-2.4.2.1.1.2.1" class="pilcrow">¶</a></p>
+<a href="#section-10.4-4" class="auto internal xref">Section 10.4, Paragraph 4</a><a href="#appendix-B-2.4.2.1.1.2.1" class="pilcrow">¶</a></p>
 </dd>
                 <dd class="break"></dd>
-<dt id="appendix-A-2.4.2.1.1.3">Events</dt>
-                <dd style="margin-left: 1.5em" id="appendix-A-2.4.2.1.1.4">
-                  <p id="appendix-A-2.4.2.1.1.4.1">
+<dt id="appendix-B-2.4.2.1.1.3">Events</dt>
+                <dd style="margin-left: 1.5em" id="appendix-B-2.4.2.1.1.4">
+                  <p id="appendix-B-2.4.2.1.1.4.1">
                     <a href="#section-1.2.4.1-1" class="auto internal xref">Section 1.2.4.1, Paragraph 1</a>; 
 <a href="#section-3.5-2.6.1" class="auto internal xref">Section 3.5, Paragraph 2.6.1</a>; 
 <strong><em><a href="#events-header" class="auto internal xref">Section 4.2</a></em></strong>; 
@@ -2946,24 +2958,24 @@ Content-type: application/example
 <a href="#section-9.1-2.1.2.3.1" class="auto internal xref">Section 9.1, Paragraph 2.1.2.3.1</a>; 
 <a href="#section-9.3-2.1.1" class="auto internal xref">Section 9.3, Paragraph 2.1.1</a>; 
 <a href="#table-2" class="auto internal xref">Table 2</a>; 
-<a href="#section-13.2-1" class="auto internal xref">Section 13.2, Paragraph 1</a><a href="#appendix-A-2.4.2.1.1.4.1" class="pilcrow">¶</a></p>
+<a href="#section-13.2-1" class="auto internal xref">Section 13.2, Paragraph 1</a><a href="#appendix-B-2.4.2.1.1.4.1" class="pilcrow">¶</a></p>
 </dd>
               <dd class="break"></dd>
 </dl>
 </li>
           </ul>
 </li>
-        <li class="normal ulEmpty" id="appendix-A-2.5">
+        <li class="normal ulEmpty" id="appendix-B-2.5">
           <div id="rfc.index.u78">
-<p id="appendix-A-2.5.1" class="keepWithNext">
-            <a href="#rfc.index.u78" class="internal xref">N</a><a href="#appendix-A-2.5.1" class="pilcrow">¶</a></p>
+<p id="appendix-B-2.5.1" class="keepWithNext">
+            <a href="#rfc.index.u78" class="internal xref">N</a><a href="#appendix-B-2.5.1" class="pilcrow">¶</a></p>
 </div>
 <ul class="compact normal ulEmpty">
-<li class="compact normal ulEmpty" id="appendix-A-2.5.2.1">
-              <span class="break"></span><dl class="dlCompact dlParallel" id="appendix-A-2.5.2.1.1">
-                <dt id="appendix-A-2.5.2.1.1.1">notification</dt>
-                <dd style="margin-left: 1.5em" id="appendix-A-2.5.2.1.1.2">
-                  <p id="appendix-A-2.5.2.1.1.2.1">
+<li class="compact normal ulEmpty" id="appendix-B-2.5.2.1">
+              <span class="break"></span><dl class="dlCompact dlParallel" id="appendix-B-2.5.2.1.1">
+                <dt id="appendix-B-2.5.2.1.1.1">notification</dt>
+                <dd style="margin-left: 1.5em" id="appendix-B-2.5.2.1.1.2">
+                  <p id="appendix-B-2.5.2.1.1.2.1">
                     <a href="#section-abstract-1" class="auto internal xref">Section Abstract, Paragraph 1</a>; 
 <a href="#section-1-1" class="auto internal xref">Section 1, Paragraph 1</a>; 
 <a href="#section-1.1-3" class="auto internal xref">Section 1.1, Paragraph 3</a>; 
@@ -3067,31 +3079,30 @@ Content-type: application/example
 <a href="#section-10.4-5.2.1" class="auto internal xref">Section 10.4, Paragraph 5.2.1</a>; 
 <a href="#section-11-1" class="auto internal xref">Section 11, Paragraph 1</a>; 
 <a href="#section-11-4" class="auto internal xref">Section 11, Paragraph 4</a>; 
-<a href="#section-11-5" class="auto internal xref">Section 11, Paragraph 5</a>; 
 <a href="#section-11-6" class="auto internal xref">Section 11, Paragraph 6</a>; 
 <a href="#section-12-1" class="auto internal xref">Section 12, Paragraph 1</a>; 
 <a href="#section-12-2" class="auto internal xref">Section 12, Paragraph 2</a>; 
 <a href="#section-12.2-1" class="auto internal xref">Section 12.2, Paragraph 1</a>; 
 <a href="#section-13.2-1" class="auto internal xref">Section 13.2, Paragraph 1</a>; 
 <a href="#section-13.2-2" class="auto internal xref">Section 13.2, Paragraph 2</a>; 
-<a href="#section-13.2-6" class="auto internal xref">Section 13.2, Paragraph 6</a><a href="#appendix-A-2.5.2.1.1.2.1" class="pilcrow">¶</a></p>
+<a href="#section-13.2-6" class="auto internal xref">Section 13.2, Paragraph 6</a><a href="#appendix-B-2.5.2.1.1.2.1" class="pilcrow">¶</a></p>
 </dd>
               <dd class="break"></dd>
 </dl>
 </li>
           </ul>
 </li>
-        <li class="normal ulEmpty" id="appendix-A-2.6">
+        <li class="normal ulEmpty" id="appendix-B-2.6">
           <div id="rfc.index.u82">
-<p id="appendix-A-2.6.1" class="keepWithNext">
-            <a href="#rfc.index.u82" class="internal xref">R</a><a href="#appendix-A-2.6.1" class="pilcrow">¶</a></p>
+<p id="appendix-B-2.6.1" class="keepWithNext">
+            <a href="#rfc.index.u82" class="internal xref">R</a><a href="#appendix-B-2.6.1" class="pilcrow">¶</a></p>
 </div>
 <ul class="compact normal ulEmpty">
-<li class="compact normal ulEmpty" id="appendix-A-2.6.2.1">
-              <span class="break"></span><dl class="dlCompact dlParallel" id="appendix-A-2.6.2.1.1">
-                <dt id="appendix-A-2.6.2.1.1.1">resource server</dt>
-                <dd style="margin-left: 1.5em" id="appendix-A-2.6.2.1.1.2">
-                  <p id="appendix-A-2.6.2.1.1.2.1">
+<li class="compact normal ulEmpty" id="appendix-B-2.6.2.1">
+              <span class="break"></span><dl class="dlCompact dlParallel" id="appendix-B-2.6.2.1.1">
+                <dt id="appendix-B-2.6.2.1.1.1">resource server</dt>
+                <dd style="margin-left: 1.5em" id="appendix-B-2.6.2.1.1.2">
+                  <p id="appendix-B-2.6.2.1.1.2.1">
                     <a href="#section-3.4-2.2.1" class="auto internal xref">Section 3.4, Paragraph 2.2.1</a>; 
 <a href="#section-4.1-2" class="auto internal xref">Section 4.1, Paragraph 2</a>; 
 <a href="#section-4.2-1" class="auto internal xref">Section 4.2, Paragraph 1</a>; 
@@ -3135,7 +3146,7 @@ Content-type: application/example
 <a href="#section-10.3-3" class="auto internal xref">Section 10.3, Paragraph 3</a>; 
 <a href="#section-10.3-6" class="auto internal xref">Section 10.3, Paragraph 6</a>; 
 <a href="#section-10.4-4" class="auto internal xref">Section 10.4, Paragraph 4</a>; 
-<a href="#section-10.4-6" class="auto internal xref">Section 10.4, Paragraph 6</a><a href="#appendix-A-2.6.2.1.1.2.1" class="pilcrow">¶</a></p>
+<a href="#section-10.4-6" class="auto internal xref">Section 10.4, Paragraph 6</a><a href="#appendix-B-2.6.2.1.1.2.1" class="pilcrow">¶</a></p>
 </dd>
               <dd class="break"></dd>
 </dl>
@@ -3145,7 +3156,7 @@ Content-type: application/example
       </ul>
 </section>
 <div id="authors-addresses">
-<section id="appendix-B">
+<section id="appendix-C">
       <h2 id="name-authors-address">
 <a href="#name-authors-address" class="section-name selfRef">Author's Address</a>
       </h2>

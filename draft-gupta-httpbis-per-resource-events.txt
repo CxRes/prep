@@ -3,9 +3,9 @@
 
 
 HTTP                                                            R. Gupta
-Internet-Draft                                            5 October 2024
+Internet-Draft                                           21 October 2024
 Intended status: Standards Track                                        
-Expires: 8 April 2025
+Expires: 24 April 2025
 
 
                           Per Resource Events
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 April 2025.
+   This Internet-Draft will expire on 24 April 2025.
 
 Copyright Notice
 
@@ -127,6 +127,7 @@ Table of Contents
    14. References
      14.1.  Normative References
      14.2.  Informative References
+   Acknowledgments
    Index
    Author's Address
 
@@ -427,20 +428,24 @@ Table of Contents
    for events on a given resource.  It is not possible for resources to
    send notifications for arbitrary events such as state changes on
    multiple resources or combinations thereof.  Implementations using
-   Per Resource Events Protocol have to create separate resources to
+   the Per Resource Events Protocol have to create separate resources to
    realize such notification endpoints.  But this is no different from
    APIs built on top of existing messaging protocols (See, for example,
    [WS] and [WEBSUB]).
 
-   Due to the limits on connections per domain, the Per Resource Events
-   Protocol is not suitable for use with HTTP/1.1, especially when
-   providing notifications for multiple resource from the same domain
-   that might be accessed simultaneously.  This limitation is identical
-   to that of other HTTP based streaming based protocols such as Server-
-   Sent Events [SSE].  Implementations are strongly encouraged to adopt
-   HTTP/2 (or later) and implement mitigation strategies, such as to
-   maximize the number of concurrent connections and to provide
-   alternate locations for resources on different domains.
+   Browsers cap the number of persistent HTTP/1.1 connections per host,
+   limiting the suitability of the Per Resource Events Protocol for web
+   applications in the browser that simultaneously require notifications
+   from multiple resources on the same host.  This limitation is
+   identical to that of other HTTP streaming based protocols, such as
+   Server-Sent Events [SSE].  Implementations are strongly encouraged to
+   adopt HTTP/2 (or later).  HTTP/1.1 servers might consider setting up
+   a reverse proxy to serve PREP notifications over HTTP/2 (or later) or
+   implement mitigation strategies, such as to maximize the number of
+   concurrent connections and to provide alternate hosts for resources.
+   Browser clients receiving PREP notifications over an HTTP/1.1
+   connection are advised to exercise caution when opening multiple
+   simultaneous persistent connections to any given host.
 
 3.  Conformance
 
@@ -1212,15 +1217,17 @@ Table of Contents
    notifications sent from LDP Resources hosted on Solid storage.  This
    specification enables Solid servers to incorporate the Per Resource
    Events as a means for sending notifications.  Solid-PREP is available
-   at https://github.com/solid/solid-prep/ (https://github.com/solid/
-   solid-prep/) and is released under the W3C Software and Document
-   license - version 2023.
+   at https://solid.github.io/solid-prep/protocol/
+   (https://solid.github.io/solid-prep/protocol/) and is released under
+   the W3C Software and Document license - version 2023.
 
    The Node Solid Server, an open source server that implements the
-   Solid Protocol, is in the process of implementing notifications using
-   the Per Resource Events Protocol and Solid-PREP at
-   https://github.com/nodeSolidServer/node-solid-server/tree/prep
-   (https://github.com/nodeSolidServer/node-solid-server/tree/prep).
+   Solid Protocol, implements the Per Resource Events Protocol and
+   Solid-PREP at https://github.com/nodeSolidServer/node-solid-
+   server/tree/basic-prep (https://github.com/nodeSolidServer/node-
+   solid-server/tree/basic-prep).  It is available for testing on the
+   Solid community test server at https://solidcommunity.net:8443
+   (https://solidcommunity.net:8443).
 
    The PREP Fetch https://github.com/CxRes/prep-fetch/
    (https://github.com/CxRes/prep-fetch/) library provides a convinient
@@ -1401,6 +1408,22 @@ Table of Contents
    [WS]       "The WebSocket API", W3C NOTE websockets, W3C websockets,
               <https://www.w3.org/TR/websockets/>.
 
+Acknowledgments
+
+   I would like to express my gratitude to Tim Berners-Lee for his
+   recommendation to the IRTF for the Diversity Travel Grant that
+   allowed me to first present this draft at IETF 118.  I would like to
+   thank IRTF, and in particular, the selection committee for the
+   Diversity Travel Grants for sponsoring my visit to the co-located
+   IRTF and IETF meetings in Prague.  I would also like to acknowledge
+   the help and guidance from Dhruv Dhody that allowed me to make the
+   trip.
+
+   I would like to thank Alain Bourgeois for his continued help in
+   implementing the Per Resource Events Protocol in the Node Solid
+   Server.  I am also grateful to the Solid community for their support
+   and encouragement of this work.
+
 Index
 
    A B D E N R
@@ -1520,11 +1543,10 @@ Index
             Section 10.4, Paragraph 2; Section 10.4, Paragraph 3;
             Section 10.4, Paragraph 4; Section 10.4, Paragraph 5.1.1;
             Section 10.4, Paragraph 5.2.1; Section 11, Paragraph 1;
-            Section 11, Paragraph 4; Section 11, Paragraph 5;
-            Section 11, Paragraph 6; Section 12, Paragraph 1;
-            Section 12, Paragraph 2; Section 12.2, Paragraph 1;
-            Section 13.2, Paragraph 1; Section 13.2, Paragraph 2;
-            Section 13.2, Paragraph 6
+            Section 11, Paragraph 4; Section 11, Paragraph 6;
+            Section 12, Paragraph 1; Section 12, Paragraph 2;
+            Section 12.2, Paragraph 1; Section 13.2, Paragraph 1;
+            Section 13.2, Paragraph 2; Section 13.2, Paragraph 6
 
       R
 
