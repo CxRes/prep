@@ -6,9 +6,9 @@ An early implementation of the Per Resource Events Protocol, also in the form of
 
 Express Accept Events, Express Negotiate Events and Express PREP are Free and Open Source Software, released under the Mozilla Public License v2.0.
 
-The W3C Solid Community Group is developing a specification called Solid-PREP that defines representation and semantics for PREP notifications sent from LDP Resources hosted on Solid storage. This specification enables Solid servers to incorporate the Per Resource Events as a means for sending notifications. Solid-PREP is available at <https://github.com/solid/solid-prep/> and is released under the W3C Software and Document license - version 2023.
+The W3C Solid Community Group is developing a specification called Solid-PREP that defines representation and semantics for PREP notifications sent from LDP Resources hosted on Solid storage. This specification enables Solid servers to incorporate the Per Resource Events as a means for sending notifications. Solid-PREP is available at <https://solid.github.io/solid-prep/protocol/> and is released under the W3C Software and Document license - version 2023.
 
-The Node Solid Server, an open source server that implements the Solid Protocol, is in the process of implementing notifications using the Per Resource Events Protocol and Solid-PREP at <https://github.com/nodeSolidServer/node-solid-server/tree/prep>.
+The Node Solid Server, an open source server that implements the Solid Protocol, implements the Per Resource Events Protocol and Solid-PREP at <https://github.com/nodeSolidServer/node-solid-server/tree/basic-prep>. It is available for testing on the Solid community test server at <https://solidcommunity.net:8443>.
 
 The PREP Fetch <https://github.com/CxRes/prep-fetch/> library provides a convinient way to consume fetch {{FETCH}} respsones containing PREP notification. PREP Fetch itself is a thin wrapper on top of Multipart Fetch <https://github.com/CxRes/multipart-fetch/> that streams the parts of a multipart response as a series of Fetch Responses.
 
