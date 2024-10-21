@@ -118,3 +118,5 @@ Per Resource Events is a minimal protocol built on top of HTTP that allows clien
 {::include sections/iana.md}
 
 --- back
+
+{::include sections/acknowledgments.md}
