@@ -10,6 +10,26 @@ But web-applications today are dynamic. They provide (near-)instantaneous update
 
 Per Resource Events is a minimal protocol built on top of HTTP that allows clients to receive notifications directly from a resource of interest. Unlike other HTTP based solutions, {{&protocol}} supports the use of arbitrary media-types for notifications, which can be negotiated just like representations; thus giving implementers a lot of flexibility to customize notifications according to the needs of their application.
 
+Our goal with the {{&protocol}} is to make notification convenient for consumers. The {{&protocol}} allows a client to receive notifications together with the representation, saving on the unnecessary round trip. With a library like PREP Fetch, Per Resource Events may be consumed in JavaScript with just a few lines of code:
+
+~~~
+const response = fetch('http://example.com', {
+  headers: { 'Accept-Events': '"prep"' }
+});
+const prepResponse = prepFetch(response);
+
+const representation = await prepResponse.getRepresentation();
+// Do something with the representation
+// API identical to fetch Response
+
+const notifications = await prepResponse.getNotifications();
+for await (const notification of notifications) {
+  // do something with a notification
+  // API identical to fetch Response
+}
+~~~
+{: #prep-fetch-example title="PREP Fetch Example"}
+
 ## How it Works {#how-it-works}
 
 ### {{&empty}}
