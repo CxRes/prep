@@ -161,6 +161,30 @@ Table of Contents
    implementers a lot of flexibility to customize notifications
    according to the needs of their application.
 
+   Our goal with the Per Resource Events Protocol is to make
+   notification convenient for consumers.  The Per Resource Events
+   Protocol allows a client to receive notifications together with the
+   representation, saving on the unnecessary round trip.  With a library
+   like PREP Fetch, Per Resource Events may be consumed in JavaScript
+   with just a few lines of code:
+
+   const response = fetch('http://example.com', {
+     headers: { 'Accept-Events': '"prep"' }
+   });
+   const prepResponse = prepFetch(response);
+
+   const representation = await prepResponse.getRepresentation();
+   // Do something with the representation
+   // API identical to fetch Response
+
+   const notifications = await prepResponse.getNotifications();
+   for await (const notification of notifications) {
+     // do something with a notification
+     // API identical to fetch Response
+   }
+
+                        Figure 1: PREP Fetch Example
+
 1.2.  How it Works
 
    Consider an ordinary HTTP GET request:
@@ -168,7 +192,7 @@ Table of Contents
    GET /foo HTTP/1.1
    Host: example.org
 
-                   Figure 1: A sample HTTP `GET` request
+                   Figure 2: A sample HTTP `GET` request
 
    A client application that wishes to receive PREP notifications from a
    resource simply makes a GET request with just one additional
@@ -178,7 +202,7 @@ Table of Contents
    Host: example.org
    Accept-Events: "prep"
 
-               Figure 2: A minimal PREP notifications request
+               Figure 3: A minimal PREP notifications request
 
    Additional parameters might be added to the Accept-Events header to
    negotiate the form of notifications as discussed in Section 7,
@@ -197,7 +221,7 @@ Table of Contents
 
    Hello World!
 
-            Figure 3: Response to the sample HTTP `GET` request
+            Figure 4: Response to the sample HTTP `GET` request
 
    However, if the server supports the Per Resource Events Protocol, it
    sends a multipart response with the current representation followed
@@ -223,7 +247,7 @@ Table of Contents
    Accept-Events: "prep"; accept="message/rfc822"
    Content-Type: multipart/mixed; boundary="MAIN-SEPARATOR"
 
-            Figure 4: Response with PREP Notifications - Headers
+            Figure 5: Response with PREP Notifications - Headers
 
    The first part of this multipart response is the current
    representation of the resource:
@@ -233,7 +257,7 @@ Table of Contents
 
    Hello World!
 
-    Figure 5: Response with PREP Notifications - Current Representation
+    Figure 6: Response with PREP Notifications - Current Representation
 
    The client can request for this to be skipped by specifying a Last-
    Event-Id header set either to the ID of the previous representation
@@ -273,7 +297,7 @@ Table of Contents
    --MESSAGE-SEPARATOR--
    --MAIN-SEPARATOR--
 
-         Figure 6: Response with PREP Notifications - Notifications
+         Figure 7: Response with PREP Notifications - Notifications
 
    Together, the complete response with PREP notifications is:
 
@@ -312,7 +336,7 @@ Table of Contents
    --MESSAGE-SEPARATOR--
    --MAIN-SEPARATOR--
 
-                        Figure 7: Complete Response
+                        Figure 8: Complete Response
 
 1.3.  Scope
 
@@ -705,7 +729,7 @@ Table of Contents
    HEAD /foo HTTP/1.1
    Host: example.org
 
-                        Figure 8: Discovery Request
+                        Figure 9: Discovery Request
 
 6.3.  Available
 
@@ -722,7 +746,7 @@ Table of Contents
    Accept: text/html
    Accept-Events: "prep"; accept="message/rfc822"
 
-                        Figure 9: Discovery Response
+                       Figure 10: Discovery Response
 
       |  *Implementation Guidance*
       |  
@@ -771,7 +795,7 @@ Table of Contents
    Accept-Encoding: gzip
    Accept-Events: "prep"; accept="message/rfc822"
 
-                    Figure 10: Request for Notifications
+                    Figure 11: Request for Notifications
 
    A resource server MUST ignore event fields for prep notifications in
    the Accept-Events header that it does not recognize or implement.
@@ -1009,7 +1033,7 @@ Table of Contents
    --next-message--
    --main-boundary--
 
-       Figure 11: Notification Response with Representation included
+       Figure 12: Notification Response with Representation included
 
 9.3.1.2.  Response with Notifications Only
 
@@ -1034,7 +1058,7 @@ Table of Contents
    --next-message--
    --main-boundary--
 
-                Figure 12: Response with Notifications Only
+                Figure 13: Response with Notifications Only
 
 10.  Semantics for message/rfc822 notifications
 
@@ -1123,7 +1147,7 @@ Table of Contents
 
    --random-boundary
 
-                   Figure 13: `PUT` notification message
+                   Figure 14: `PUT` notification message
 
    A resource server MUST include the following headers in a message/
    rfc822 formatted PREP notification when a request modifies another
@@ -1142,7 +1166,7 @@ Table of Contents
 
    --random-boundary
 
-     Figure 14: `POST` notification message modifying another resource
+     Figure 15: `POST` notification message modifying another resource
 
 10.4.  Body
 
@@ -1188,7 +1212,7 @@ Table of Contents
 
    --random-boundary
 
-         Figure 15: `PATCH` notification with delta representation
+         Figure 16: `PATCH` notification with delta representation
 
 11.  Implementation Guidance
 
@@ -1492,61 +1516,62 @@ Index
       N
 
          notification  Section Abstract, Paragraph 1; Section 1,
-            Paragraph 1; Section 1.1, Paragraph 3; Section 1.2.2,
-            Paragraph 1; Section 1.2.2, Paragraph 3; Section 1.2.4,
-            Paragraph 1; Section 1.2.4.1, Paragraph 1; Section 1.2.4.3,
-            Paragraph 1; Section 1.2.4.3, Paragraph 2; Section 1.2.4.3,
-            Paragraph 3; Section 1.2.4.4, Paragraph 1; Section 1.3,
-            Paragraph 2.1.1; Section 1.3, Paragraph 2.2.1; Section 1.3,
-            Paragraph 2.3.1; Section 1.3, Paragraph 2.4.1; Section 1.3,
-            Paragraph 4.2.1; Section 1.3, Paragraph 4.2.2.1.1;
-            Section 1.3, Paragraph 4.2.2.2.1; Section 2, Paragraph 1;
-            Section 2, Paragraph 2; Section 2, Paragraph 3; Section 2.1,
-            Paragraph 1; Section 2.2, Paragraph 2.1.1; Section 2.2,
-            Paragraph 2.2.1; Section 2.2, Paragraph 2.3.1; Section 2.3,
-            Paragraph 2.2.1; Section 2.4, Paragraph 1; Section 2.4,
-            Paragraph 2; Section 3.5; Section 3.5, Paragraph 2.4.1;
-            Section 4, Paragraph 1; Section 4.1, Paragraph 1;
-            Section 4.1, Paragraph 2; Section 4.1, Paragraph 3;
-            Section 4.1, Paragraph 4; Section 4.1.1, Paragraph 1;
-            Section 4.1.1, Paragraph 2; Section 4.1.2, Paragraph 1;
-            Section 4.1.2, Paragraph 2; Section 4.1.2, Paragraph 3;
-            Section 4.2, Paragraph 1; Section 4.2.2, Paragraph 1;
-            Section 5.1, Paragraph 1; Section 5.2, Paragraph 1;
-            Section 5.2, Paragraph 3; Section 5.3, Paragraph 1;
-            Section 5.3, Paragraph 2; Section 5.3, Paragraph 3;
-            Section 6, Paragraph 1; Section 6.1, Paragraph 1;
-            Section 6.2, Paragraph 1; Section 6.3, Paragraph 1;
-            Section 6.3, Paragraph 2; Section 7, Paragraph 1; Section 7,
-            Paragraph 2; Section 7, Paragraph 3.1.2.1.1; Section 7,
-            Paragraph 3.1.2.1.2.1.1; Section 7, Paragraph 3.2.1;
-            Section 7, Paragraph 6; Section 8.1, Paragraph 1;
-            Section 8.1, Paragraph 2; Section 8.1, Paragraph 4.2;
-            Section 8.2, Paragraph 1; Section 8.2, Paragraph 3;
-            Section 8.3, Paragraph 1; Section 8.3, Paragraph 2;
-            Section 8.3, Paragraph 3.1.2.2.1; Section 9.1, Paragraph 1;
-            Section 9.1, Paragraph 2.1.2.3.2.3.1; Section 9.1, Paragraph
-            2.1.2.3.3; Section 9.1, Paragraph 2.2.2.1.2.2.1;
-            Section 9.1, Paragraph 2.3.2.1.1; Section 9.1, Paragraph
-            2.3.2.1.2.1.1; Section 9.2, Paragraph 1; Section 9.2,
-            Paragraph 2.1.1; Section 9.2, Paragraph 2.2.1;
-            Section 9.2.1, Paragraph 1; Section 9.2.1.1, Paragraph 1;
-            Section 9.2.1.1, Paragraph 2; Section 9.2.2, Paragraph 1;
-            Section 9.2.2, Paragraph 2.2; Section 9.3, Paragraph 1;
-            Section 9.3, Paragraph 2.2.1; Section 9.3, Paragraph 4.2;
-            Section 10, Paragraph 1; Section 10.1, Paragraph 1;
-            Section 10.2, Paragraph 1; Section 10.2, Paragraph 3;
-            Section 10.3, Paragraph 1; Section 10.3, Paragraph 2.2.1;
-            Section 10.3, Paragraph 2.4.1; Section 10.3, Paragraph
-            2.6.1; Section 10.3, Paragraph 3; Section 10.3, Paragraph
-            4.2.1; Section 10.3, Paragraph 6; Section 10.4, Paragraph 1;
-            Section 10.4, Paragraph 2; Section 10.4, Paragraph 3;
-            Section 10.4, Paragraph 4; Section 10.4, Paragraph 5.1.1;
-            Section 10.4, Paragraph 5.2.1; Section 11, Paragraph 1;
-            Section 11, Paragraph 4; Section 11, Paragraph 6;
-            Section 12, Paragraph 1; Section 12, Paragraph 2;
-            Section 12.2, Paragraph 1; Section 13.2, Paragraph 1;
-            Section 13.2, Paragraph 2; Section 13.2, Paragraph 6
+            Paragraph 1; Section 1.1, Paragraph 3; Section 1.1,
+            Paragraph 4; Section 1.2.2, Paragraph 1; Section 1.2.2,
+            Paragraph 3; Section 1.2.4, Paragraph 1; Section 1.2.4.1,
+            Paragraph 1; Section 1.2.4.3, Paragraph 1; Section 1.2.4.3,
+            Paragraph 2; Section 1.2.4.3, Paragraph 3; Section 1.2.4.4,
+            Paragraph 1; Section 1.3, Paragraph 2.1.1; Section 1.3,
+            Paragraph 2.2.1; Section 1.3, Paragraph 2.3.1; Section 1.3,
+            Paragraph 2.4.1; Section 1.3, Paragraph 4.2.1; Section 1.3,
+            Paragraph 4.2.2.1.1; Section 1.3, Paragraph 4.2.2.2.1;
+            Section 2, Paragraph 1; Section 2, Paragraph 2; Section 2,
+            Paragraph 3; Section 2.1, Paragraph 1; Section 2.2,
+            Paragraph 2.1.1; Section 2.2, Paragraph 2.2.1; Section 2.2,
+            Paragraph 2.3.1; Section 2.3, Paragraph 2.2.1; Section 2.4,
+            Paragraph 1; Section 2.4, Paragraph 2; Section 3.5;
+            Section 3.5, Paragraph 2.4.1; Section 4, Paragraph 1;
+            Section 4.1, Paragraph 1; Section 4.1, Paragraph 2;
+            Section 4.1, Paragraph 3; Section 4.1, Paragraph 4;
+            Section 4.1.1, Paragraph 1; Section 4.1.1, Paragraph 2;
+            Section 4.1.2, Paragraph 1; Section 4.1.2, Paragraph 2;
+            Section 4.1.2, Paragraph 3; Section 4.2, Paragraph 1;
+            Section 4.2.2, Paragraph 1; Section 5.1, Paragraph 1;
+            Section 5.2, Paragraph 1; Section 5.2, Paragraph 3;
+            Section 5.3, Paragraph 1; Section 5.3, Paragraph 2;
+            Section 5.3, Paragraph 3; Section 6, Paragraph 1;
+            Section 6.1, Paragraph 1; Section 6.2, Paragraph 1;
+            Section 6.3, Paragraph 1; Section 6.3, Paragraph 2;
+            Section 7, Paragraph 1; Section 7, Paragraph 2; Section 7,
+            Paragraph 3.1.2.1.1; Section 7, Paragraph 3.1.2.1.2.1.1;
+            Section 7, Paragraph 3.2.1; Section 7, Paragraph 6;
+            Section 8.1, Paragraph 1; Section 8.1, Paragraph 2;
+            Section 8.1, Paragraph 4.2; Section 8.2, Paragraph 1;
+            Section 8.2, Paragraph 3; Section 8.3, Paragraph 1;
+            Section 8.3, Paragraph 2; Section 8.3, Paragraph 3.1.2.2.1;
+            Section 9.1, Paragraph 1; Section 9.1, Paragraph
+            2.1.2.3.2.3.1; Section 9.1, Paragraph 2.1.2.3.3;
+            Section 9.1, Paragraph 2.2.2.1.2.2.1; Section 9.1, Paragraph
+            2.3.2.1.1; Section 9.1, Paragraph 2.3.2.1.2.1.1;
+            Section 9.2, Paragraph 1; Section 9.2, Paragraph 2.1.1;
+            Section 9.2, Paragraph 2.2.1; Section 9.2.1, Paragraph 1;
+            Section 9.2.1.1, Paragraph 1; Section 9.2.1.1, Paragraph 2;
+            Section 9.2.2, Paragraph 1; Section 9.2.2, Paragraph 2.2;
+            Section 9.3, Paragraph 1; Section 9.3, Paragraph 2.2.1;
+            Section 9.3, Paragraph 4.2; Section 10, Paragraph 1;
+            Section 10.1, Paragraph 1; Section 10.2, Paragraph 1;
+            Section 10.2, Paragraph 3; Section 10.3, Paragraph 1;
+            Section 10.3, Paragraph 2.2.1; Section 10.3, Paragraph
+            2.4.1; Section 10.3, Paragraph 2.6.1; Section 10.3,
+            Paragraph 3; Section 10.3, Paragraph 4.2.1; Section 10.3,
+            Paragraph 6; Section 10.4, Paragraph 1; Section 10.4,
+            Paragraph 2; Section 10.4, Paragraph 3; Section 10.4,
+            Paragraph 4; Section 10.4, Paragraph 5.1.1; Section 10.4,
+            Paragraph 5.2.1; Section 11, Paragraph 1; Section 11,
+            Paragraph 4; Section 11, Paragraph 6; Section 12, Paragraph
+            1; Section 12, Paragraph 2; Section 12.2, Paragraph 1;
+            Section 13.2, Paragraph 1; Section 13.2, Paragraph 2;
+            Section 13.2, Paragraph 6
 
       R
 
